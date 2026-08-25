@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 
 import getVisaProgram from "@/services/cms/visa-programs/get-visa-program";
 
-import VisaBanner from "@/components/Pages/Visa/VisaBanner";
-import VisaContentLayout from "@/components/Pages/Visa/VisaContentLayout";
+import VisaBanner from "@/components/Pages/visa/VisaBanner";
+import VisaContentLayout from "@/components/Pages/visa/VisaContentLayout";
 
 export default async function VisaPage({ params }) {
   const { slug } = await params;

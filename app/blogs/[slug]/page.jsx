@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 
 import { getPostBySlug } from "@/services/cms/posts/get-post-by-slug";
 
-import BlogBanner from "@/components/Posts/BlogBanner";
-import PostContentLayout from "@/components/Posts/PostContentLayout";
+import BlogBanner from "@/components/posts/BlogBanner";
+import PostContentLayout from "@/components/posts/PostContentLayout";
 
 
 export default async function BlogPage({params}) {

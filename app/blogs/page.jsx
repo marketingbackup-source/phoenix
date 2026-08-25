@@ -1,7 +1,7 @@
 import { getPosts } from "@/services/cms/posts/get-posts";
 import { getCategoryId } from "@/services/cms/categories/get-category-id";
 
-import PostGrid from "@/components/Posts/PostGrid";
+import PostGrid from "@/components/posts/PostGrid";
 
 
 export default async function BlogsPage(){
