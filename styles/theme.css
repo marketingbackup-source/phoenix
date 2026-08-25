@@ -1,0 +1,384 @@
+/* ========================================
+   GOOGLE FONTS
+======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+
+    /* ========================================
+       Brand Colors
+    ======================================== */
+
+    --color-red-1: #E60000;
+    --color-red-2: #B80000;
+    --color-red-3: #8A0000;
+    --color-red-4: #720000;
+
+    --color-black: #000000;
+
+    --color-gray-1: #1A1A1A;
+    --color-gray-2: #666666;
+    --color-gray-3: #808080;
+
+    --color-white: #ffffff;
+
+
+    /* ========================================
+       Font Family
+    ======================================== */
+    --font-body: "Montserrat", sans-serif;
+    --font-heading: "Cormorant Garamond", serif;
+
+}
+
+
+
+/* ========================================
+   GLOBAL TYPOGRAPHY
+======================================== */
+
+
+body {
+    font-family: var(--font-body);
+}
+
+.backgroundProps{
+    @apply
+    bg-no-repeat
+    bg-cover
+    bg-center
+    relative;
+}
+
+
+
+/* Font sizes  */
+.fs-60-32{
+    font-size: clamp(2rem, 0.8359rem + 2.4284vw, 3.75rem);
+}
+.fs-52-32{
+    font-size: clamp(2rem, 1.1685rem + 1.7346vw, 3.25rem);
+}
+.fs-36-24{
+    font-size: clamp(1.5rem, 0.8359rem + 1.4284vw, 2.25rem);
+}
+.fs-20-16{
+    font-size: clamp(1rem, 0.8337rem + 0.3469vw, 1.25rem);
+}
+/* ========================================
+   HEADING FONT
+======================================== */
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+h1{
+    font-size: clamp(2.00rem, calc(0.864rem + 3.030vw), 4.50rem);
+}
+
+/* ========================================
+   BODY ELEMENTS
+======================================== */
+
+
+p,
+li,
+td,
+th,
+label,
+input,
+textarea,
+select,
+button {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 0.8337rem + 0.3469vw, 1.25rem);
+    line-height: 1.7;
+}
+
+
+
+p {
+    margin-bottom:20px;
+}
+
+
+
+ul,
+ol {
+    padding-left:25px;
+}
+
+
+
+li {
+    margin-bottom:10px;
+}
+
+
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+
+/* ========================================
+   SPACING SYSTEM
+======================================== */
+
+
+/* ========================================
+   PADDING ALL SIDES
+======================================== */
+
+.p-120-50 {
+    @apply p-[clamp(50px,6.25vw,120px)];
+}
+
+.p-100-40 {
+    @apply p-[clamp(40px,5.2vw,100px)];
+}
+
+.p-80-30 {
+    @apply p-[clamp(30px,4.2vw,80px)];
+}
+
+.p-60-20 {
+    @apply p-[clamp(20px,3.1vw,60px)];
+}
+
+.p-40-15 {
+    @apply p-[clamp(15px,2.1vw,40px)];
+}
+
+
+
+/* ========================================
+   PADDING TOP
+======================================== */
+
+.pt-120-50 {
+    @apply pt-[clamp(50px,6.25vw,120px)];
+}
+
+.pt-100-40 {
+    @apply pt-[clamp(40px,5.2vw,100px)];
+}
+
+.pt-80-30 {
+    @apply pt-[clamp(30px,4.2vw,80px)];
+}
+
+.pt-60-20 {
+    @apply pt-[clamp(20px,3.1vw,60px)];
+}
+
+.pt-40-15 {
+    @apply pt-[clamp(15px,2.1vw,40px)];
+}
+
+
+
+/* ========================================
+   PADDING BOTTOM
+======================================== */
+
+.pb-120-50 {
+    @apply pb-[clamp(50px,6.25vw,120px)];
+}
+
+.pb-100-40 {
+    @apply pb-[clamp(40px,5.2vw,100px)];
+}
+
+.pb-80-30 {
+    @apply pb-[clamp(30px,4.2vw,80px)];
+}
+
+.pb-60-20 {
+    @apply pb-[clamp(20px,3.1vw,60px)];
+}
+
+.pb-40-15 {
+    @apply pb-[clamp(15px,2.1vw,40px)];
+}
+
+
+
+/* ========================================
+   PADDING X
+======================================== */
+
+.px-80-20 {
+    @apply px-[clamp(20px,4.2vw,80px)];
+}
+
+.px-60-20 {
+    @apply px-[clamp(20px,3.1vw,60px)];
+}
+
+.px-40-15 {
+    @apply px-[clamp(15px,2.1vw,40px)];
+}
+
+
+
+/* ========================================
+   PADDING Y
+======================================== */
+
+.py-120-50 {
+    @apply py-[clamp(50px,6.25vw,120px)];
+}
+
+.py-100-40 {
+    @apply py-[clamp(40px,5.2vw,100px)];
+}
+
+.py-80-30 {
+    @apply py-[clamp(30px,4.2vw,80px)];
+}
+
+.py-60-20 {
+    @apply py-[clamp(20px,3.1vw,60px)];
+}
+
+.py-40-15 {
+    @apply py-[clamp(15px,2.1vw,40px)];
+}
+
+
+
+/* ========================================
+   MARGIN SYSTEM
+======================================== */
+
+
+.mt-80-30 {
+    @apply mt-[clamp(30px,4.2vw,80px)];
+}
+
+.mt-60-20 {
+    @apply mt-[clamp(20px,3.1vw,60px)];
+}
+
+.mt-40-15 {
+    @apply mt-[clamp(15px,2.1vw,40px)];
+}
+
+
+.mb-80-30 {
+    @apply mb-[clamp(30px,4.2vw,80px)];
+}
+
+.mb-60-20 {
+    @apply mb-[clamp(20px,3.1vw,60px)];
+}
+
+.mb-40-15 {
+    @apply mb-[clamp(15px,2.1vw,40px)];
+}
+
+
+
+.mx-auto {
+    @apply mx-auto;
+}
+
+
+
+/* ========================================
+   GAP SYSTEM
+======================================== */
+
+
+.gap-80-30 {
+    @apply gap-[clamp(30px,4.2vw,80px)];
+}
+
+.gap-60-20 {
+    @apply gap-[clamp(20px,3.1vw,60px)];
+}
+
+.gap-40-15 {
+    @apply gap-[clamp(15px,2.1vw,40px)];
+}
+
+.gap-30-10 {
+    @apply gap-[clamp(10px,1.5vw,30px)];
+}
+
+
+
+/* ========================================
+   COLUMN GAP
+======================================== */
+
+
+.gap-x-80-30 {
+    @apply gap-x-[clamp(30px,4.2vw,80px)];
+}
+
+.gap-x-60-20 {
+    @apply gap-x-[clamp(20px,3.1vw,60px)];
+}
+
+
+.gap-y-80-30 {
+    @apply gap-y-[clamp(30px,4.2vw,80px)];
+}
+
+.gap-y-60-20 {
+    @apply gap-y-[clamp(20px,3.1vw,60px)];
+}
+
+
+
+/* ========================================
+   COMMON FLEX
+======================================== */
+
+
+.flex-center {
+    @apply flex items-center justify-center;
+}
+
+
+.flex-between {
+    @apply flex items-center justify-between;
+}
+
+
+.flex-start {
+    @apply flex items-start justify-start;
+}
+
+
+.flex-column {
+    @apply flex flex-col;
+}
+
+
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+
+.container-main {
+
+    @apply 
+    w-full 
+    max-w-[1440px]
+    mx-auto
+    px-[clamp(20px,4vw,60px)];
+
+}

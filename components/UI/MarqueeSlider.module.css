@@ -1,0 +1,22 @@
+.track {
+  animation: marquee var(--speed) linear infinite;
+  animation-direction: var(--direction);
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+.item {
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

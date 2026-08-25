@@ -1,0 +1,152 @@
+<svg
+  width="1600"
+  height="700"
+  viewBox="0 0 1600 700"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g opacity="0.28">
+    <path
+      d="M-120 650C160 420 350 330 610 345C870 360 1010 520 1260 485C1450 458 1570 350 1740 180"
+      stroke="url(#lineGradient)"
+      stroke-width="1.2"
+    />
+
+    <path
+      d="M-80 720C170 490 390 420 620 430C890 442 1040 590 1280 550C1450 522 1585 430 1720 300"
+      stroke="url(#lineGradient)"
+      stroke-width="1"
+    />
+
+    <path
+      d="M-170 570C90 360 320 275 560 295C820 316 990 455 1215 420C1420 388 1560 260 1720 80"
+      stroke="url(#lineGradient)"
+      stroke-width="1"
+    />
+
+    <path
+      d="M70 760C260 535 450 455 690 470C940 486 1070 610 1295 590C1480 574 1600 500 1710 390"
+      stroke="url(#lineGradient)"
+      stroke-width="0.9"
+    />
+
+    <path
+      d="M280 740C420 560 600 500 810 520C1040 540 1165 640 1370 625C1500 615 1605 570 1700 485"
+      stroke="url(#lineGradient)"
+      stroke-width="0.8"
+    />
+  </g>
+
+  <g opacity="0.18">
+    <path
+      d="M180 690L420 470L690 470L965 565L1215 420L1455 455"
+      stroke="#FFFFFF"
+      stroke-width="0.8"
+    />
+
+    <path
+      d="M35 615L305 395L560 295L815 360L1060 505L1280 550L1510 420"
+      stroke="#FFFFFF"
+      stroke-width="0.8"
+    />
+
+    <path
+      d="M245 525L500 345L760 385L1010 520L1260 485L1515 300"
+      stroke="#FFFFFF"
+      stroke-width="0.75"
+    />
+
+    <path
+      d="M420 470L500 345"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M690 470L760 385"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M965 565L1010 520"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M1215 420L1260 485"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M305 395L420 470"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M560 295L500 345"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M815 360L760 385"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+
+    <path
+      d="M1060 505L1010 520"
+      stroke="#FFFFFF"
+      stroke-width="0.65"
+    />
+  </g>
+
+  <g fill="#FFFFFF">
+    <circle cx="35" cy="615" r="2.2" opacity="0.35" />
+    <circle cx="180" cy="690" r="2" opacity="0.25" />
+    <circle cx="245" cy="525" r="2.2" opacity="0.35" />
+    <circle cx="305" cy="395" r="2.4" opacity="0.42" />
+    <circle cx="420" cy="470" r="2.2" opacity="0.35" />
+    <circle cx="500" cy="345" r="2.5" opacity="0.45" />
+    <circle cx="560" cy="295" r="2.4" opacity="0.4" />
+    <circle cx="690" cy="470" r="2.2" opacity="0.35" />
+    <circle cx="760" cy="385" r="2.5" opacity="0.45" />
+    <circle cx="815" cy="360" r="2.2" opacity="0.35" />
+    <circle cx="965" cy="565" r="2.1" opacity="0.3" />
+    <circle cx="1010" cy="520" r="2.5" opacity="0.45" />
+    <circle cx="1060" cy="505" r="2.1" opacity="0.3" />
+    <circle cx="1215" cy="420" r="2.4" opacity="0.42" />
+    <circle cx="1260" cy="485" r="2.2" opacity="0.35" />
+    <circle cx="1280" cy="550" r="2.1" opacity="0.3" />
+    <circle cx="1455" cy="455" r="2.2" opacity="0.35" />
+    <circle cx="1510" cy="420" r="2.4" opacity="0.4" />
+    <circle cx="1515" cy="300" r="2.2" opacity="0.35" />
+  </g>
+
+  <g fill="#E60000">
+    <circle cx="500" cy="345" r="3.5" opacity="0.8" />
+    <circle cx="1010" cy="520" r="3.5" opacity="0.75" />
+    <circle cx="1215" cy="420" r="3.5" opacity="0.7" />
+  </g>
+
+  <defs>
+    <linearGradient
+      id="lineGradient"
+      x1="0"
+      y1="350"
+      x2="1600"
+      y2="350"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#FFFFFF" stop-opacity="0" />
+      <stop offset="0.2" stop-color="#FFFFFF" stop-opacity="0.45" />
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.7" />
+      <stop offset="0.8" stop-color="#FFFFFF" stop-opacity="0.4" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+</svg>

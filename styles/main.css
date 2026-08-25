@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+
+/* ==========================
+   Base Button
+========================== */
+
+
+.base-button {
+
+    @apply inline-flex items-center
+    overflow-hidden
+    rounded-[14px]
+    cursor-pointer
+    border-2
+    transition-all duration-300;
+
+}
+
+
+
+/* ==========================
+   Text Area
+========================== */
+
+
+.base-button > span:first-child {
+
+    @apply relative overflow-hidden
+    px-4 py-3
+    uppercase
+    text-sm
+    font-semibold
+    tracking-wide;
+
+    z-index:1;
+
+}
+
+
+.base-button > span:first-child::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    transform:scaleX(0);
+
+    transform-origin:right;
+
+    transition:transform .4s ease;
+
+    z-index:-1;
+
+}
+
+
+
+/* ==========================
+   Icon Area
+========================== */
+
+
+.base-button > span:last-child {
+
+    @apply relative flex items-center justify-center;
+
+    width:42px;
+    height:44px;
+
+    overflow:hidden;
+
+    z-index:1;
+
+}
+
+
+.base-button > span:last-child::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    transform:scaleX(0);
+
+    transform-origin:right;
+
+    transition:transform .4s ease;
+
+    z-index:-1;
+
+}
+
+
+
+/* Keep SVG above overlay */
+
+.base-button > span:last-child svg {
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+/* ==========================
+   PRIMARY BUTTON
+========================== */
+
+
+.base-button.primary {
+
+    @apply bg-[var(--color-red-3)]
+    border-[var(--color-red-3)]
+    text-white;
+
+}
+
+
+/* Text wipe */
+
+.base-button.primary > span:first-child::before {
+
+    @apply bg-white;
+
+}
+
+
+.base-button.primary:hover > span:first-child::before {
+
+    transform:scaleX(1);
+
+}
+
+
+.base-button.primary:hover > span:first-child {
+
+    color:var(--color-red-3);
+
+}
+
+
+
+/* Icon wipe */
+
+.base-button.primary > span:last-child {
+
+    @apply bg-white;
+
+    color:var(--color-red-3);
+
+}
+
+
+.base-button.primary > span:last-child::before {
+
+    @apply bg-[var(--color-red-3)];
+
+}
+
+
+.base-button.primary:hover > span:last-child::before {
+
+    transform:scaleX(1);
+
+}
+
+
+.base-button.primary:hover > span:last-child {
+
+    color:white;
+
+}
+
+
+
+
+
+/* ==========================
+   SECONDARY BUTTON
+========================== */
+
+
+.base-button.secondary {
+
+    @apply bg-white
+    border-[var(--color-red-3)]
+    text-[var(--color-red-3)];
+
+}
+
+
+
+/* Text wipe */
+
+.base-button.secondary > span:first-child::before {
+
+    background:var(--color-red-3);
+
+}
+
+
+.base-button.secondary:hover > span:first-child::before {
+
+    transform:scaleX(1);
+
+}
+
+
+.base-button.secondary:hover > span:first-child {
+
+    color:white;
+
+}
+
+
+
+/* Icon wipe */
+
+.base-button.secondary > span:last-child {
+
+    background:var(--color-red-3);
+
+    color:white;
+
+}
+
+
+.base-button.secondary > span:last-child::before {
+
+    @apply bg-white;
+
+}
+
+
+.base-button.secondary:hover > span:last-child::before {
+
+    transform:scaleX(1);
+
+}
+
+
+.base-button.secondary:hover > span:last-child {
+
+    color:var(--color-red-3);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer CSS */
+.footer-nav-heading{
+  @apply text-white uppercase tracking-[1px] text-sm font-medium;
+}
+
+.footer-nav-item{
+  @apply text-white/60 text-sm transition duration-300 hover:text-white;
+}
+
+.footer-contact{
+  @apply text-white/70 text-sm !mb-0;
+}
+
+.footer-bottom-text{
+  @apply text-white/50 text-sm;
+}
