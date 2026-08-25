@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useMemo } from "react";
 
-import VisaTOC from "@/components/Pages/Visa/VisaTOC";
-import VisaContent from "@/components/Pages/Visa/VisaContent";
+import VisaTOC from "@/components/Pages/visa/VisaTOC";
+import VisaContent from "@/components/Pages/visa/VisaContent";
 
 export default function PostContentLayout({ content, image }) {
   const headings = useMemo(() => {
