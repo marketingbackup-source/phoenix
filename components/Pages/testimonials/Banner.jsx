@@ -47,7 +47,7 @@ export default function TestimonialsBanner() {
           w-[300px]
           h-[300px]
           rounded-full
-          bg-[var(--color-red-3)]
+          bg-[var(--color-red-1)]
           opacity-5
           blur-[160px]
           "
@@ -113,7 +113,7 @@ export default function TestimonialsBanner() {
               className="
               uppercase
               tracking-[2px]
-              text-[var(--color-red-3)]
+              text-[var(--color-red-1)]
               !mb-5
               "
             >
@@ -131,7 +131,7 @@ export default function TestimonialsBanner() {
             >
 
               Our{" "}
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Success
               </span>{" "}
               Stories
@@ -202,7 +202,7 @@ export default function TestimonialsBanner() {
                     <Quote
                       size={70}
                       className="
-                      text-[var(--color-red-3)]
+                      text-[var(--color-red-1)]
                       opacity-30
                       !mb-8
                       "

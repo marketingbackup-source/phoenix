@@ -19,7 +19,7 @@ export default function ApprovalBanner() {
           w-[500px]
           h-[500px]
           rounded-full
-          bg-[var(--color-red-3)]
+          bg-[var(--color-red-1)]
           opacity-10
           blur-[160px]
           "
@@ -82,7 +82,7 @@ export default function ApprovalBanner() {
               className="
               uppercase
               tracking-[2px]
-              text-[var(--color-red-3)]
+              text-[var(--color-red-1)]
               !mb-5
               "
             >
@@ -101,7 +101,7 @@ export default function ApprovalBanner() {
             >
 
               Proven Success Through{" "}
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Immigration Approvals
               </span>
 

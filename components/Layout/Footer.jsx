@@ -104,7 +104,7 @@ export default function Footer(){
         w-[600px]
         h-[400px]
         rounded-full
-        bg-[var(--color-red-3)]
+        bg-[var(--color-red-1)]
         opacity-10
         blur-[180px]
         "
@@ -255,7 +255,7 @@ export default function Footer(){
                   items-center
                   justify-center
                   px-4
-                  bg-[var(--color-red-3)]
+                  bg-[var(--color-red-1)]
                   text-white
                   "
                 >

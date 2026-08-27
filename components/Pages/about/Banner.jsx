@@ -19,7 +19,7 @@ export default function AboutBanner() {
           w-[500px]
           h-[500px]
           rounded-full
-          bg-[var(--color-red-3)]
+          bg-[var(--color-red-1)]
           opacity-10
           blur-[160px]
           "
@@ -78,7 +78,7 @@ export default function AboutBanner() {
               className="
               uppercase
               tracking-[2px]
-              text-[var(--color-red-3)]
+              text-[var(--color-red-1)]
               !mb-5
               "
             >
@@ -95,7 +95,7 @@ export default function AboutBanner() {
               "
             >
               Building Global Success Through
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 {" "}Strategic Immigration Solutions
               </span>
             </h1>

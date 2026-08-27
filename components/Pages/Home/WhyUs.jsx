@@ -47,7 +47,7 @@ export default function WhyPhoenix() {
           w-[500px]
           h-[500px]
           rounded-full
-          bg-[var(--color-red-3)]
+          bg-[var(--color-red-1)]
           opacity-10
           blur-[160px]
           "
@@ -125,7 +125,7 @@ export default function WhyPhoenix() {
               "
             >
 
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Why
               </span>{" "}
               Phoenix
@@ -207,16 +207,16 @@ export default function WhyPhoenix() {
                     w-14
                     h-14
                     rounded-2xl
-                    bg-[var(--color-red-3)]/10
+                    bg-[var(--color-red-1)]/10
                     border
-                    border-[var(--color-red-3)]/20
+                    border-[var(--color-red-1)]/20
                     !mb-6
                     "
                   >
 
                     <Icon
                       size={28}
-                      className="text-[var(--color-red-3)]"
+                      className="text-[var(--color-red-1)]"
                     />
 
                   </div>

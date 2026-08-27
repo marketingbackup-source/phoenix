@@ -44,7 +44,7 @@ export default function GlobalCountries() {
       <div className="container-main">
         <div className="text-center !mb-12">
           <h2 className="fs-52-32 uppercase font-normal leading-[1]">
-            Start Your <span className="text-[var(--color-red-3)]">Global</span>{" "}
+            Start Your <span className="text-[var(--color-red-1)]">Global</span>{" "}
             Success Story
           </h2>
         </div>
@@ -64,12 +64,12 @@ export default function GlobalCountries() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
             <div className="absolute bottom-5 left-5 right-5">
-              <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 p-4 transition-all duration-500 group-hover:bg-[var(--color-red-3)] group-hover:border-[var(--color-red-3)]">
+              <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 p-4 transition-all duration-500 group-hover:bg-[var(--color-red-1)] group-hover:border-[var(--color-red-1)]">
                 <h3 className="text-white text-sm sm:text-base uppercase font-medium transition-colors duration-500">
                   {item.country}
                 </h3>
 
-                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[var(--color-red-3)] transition-all duration-500">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[var(--color-red-1)] transition-all duration-500">
                   <ArrowUpRight size={20} />
                 </span>
               </div>

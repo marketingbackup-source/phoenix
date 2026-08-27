@@ -52,7 +52,7 @@ export default async function PressReleasePage(){
             "
           >
 
-            Press <span className="text-[var(--color-red-3)]">
+            Press <span className="text-[var(--color-red-1)]">
               Release
             </span>
 

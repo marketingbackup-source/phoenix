@@ -90,7 +90,7 @@ export default function PostCard({
             text-sm
             uppercase
             tracking-[1px]
-            text-[var(--color-red-3)]
+            text-[var(--color-red-1)]
             "
           >
             Read More
@@ -103,7 +103,7 @@ export default function PostCard({
             h-10
             rounded-full
             bg-gray-100
-            group-hover:bg-[var(--color-red-3)]
+            group-hover:bg-[var(--color-red-1)]
             group-hover:text-white
             transition-all
             duration-500

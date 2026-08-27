@@ -46,7 +46,7 @@ export default function BusinessOpportunities() {
 
           <h2 className="fs-52-32 uppercase font-normal leading-[1]">
             Buy A{" "}
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Business
             </span>{" "}
             In USA
@@ -77,14 +77,14 @@ export default function BusinessOpportunities() {
 
             <div className="absolute bottom-5 left-5 right-5">
 
-              <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 p-4 transition-all duration-500 group-hover:bg-[var(--color-red-3)] group-hover:border-[var(--color-red-3)]">
+              <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 p-4 transition-all duration-500 group-hover:bg-[var(--color-red-1)] group-hover:border-[var(--color-red-1)]">
 
                 <h3 className="text-white text-sm sm:text-base uppercase font-medium transition-colors duration-500">
                   {business.title}
                 </h3>
 
 
-                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[var(--color-red-3)] transition-all duration-500 group-hover:bg-white group-hover:text-[var(--color-red-3)]">
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-[var(--color-red-1)] transition-all duration-500 group-hover:bg-white group-hover:text-[var(--color-red-1)]">
 
                   <ArrowUpRight size={20}/>
 

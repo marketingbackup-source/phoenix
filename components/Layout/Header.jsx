@@ -392,7 +392,7 @@ export default function SiteHeader(){
                           transition-all
                           duration-300
                           hover:bg-gray-50
-                          hover:!text-[var(--color-red-3)]
+                          hover:!text-[var(--color-red-1)]
                           "
                         >
                           {child.label}
@@ -455,7 +455,7 @@ export default function SiteHeader(){
                             className="
                             footer-nav-heading
                             !mb-4
-                            !text-[var(--color-red-3)]
+                            !text-[var(--color-red-1)]
                             "
                           >
                             {group.label}
@@ -486,7 +486,7 @@ export default function SiteHeader(){
                                   !text-black
                                   transition-colors
                                   duration-300
-                                  hover:!text-[var(--color-red-3)]
+                                  hover:!text-[var(--color-red-1)]
                                   "
                                 >
                                   {child.label}

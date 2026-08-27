@@ -21,7 +21,7 @@ export default function VisaMobile({ destinations }) {
 
         <h2 className="fs-52-32 font-normal leading-[1] uppercase">
           Choose Your{" "}
-          <span className="text-[var(--color-red-3)]">
+          <span className="text-[var(--color-red-1)]">
             Destination
           </span>
         </h2>
@@ -91,7 +91,7 @@ export default function VisaMobile({ destinations }) {
                 </h3>
 
 
-                <p className="text-[var(--color-red-3)] fs-20-16 !mb-4">
+                <p className="text-[var(--color-red-1)] fs-20-16 !mb-4">
 
                   {destination.subtitle}
 
@@ -114,7 +114,7 @@ export default function VisaMobile({ destinations }) {
                       className="flex items-start gap-3"
                     >
 
-                      <span className="mt-2 w-2 h-2 rounded-full bg-[var(--color-red-3)] shrink-0" />
+                      <span className="mt-2 w-2 h-2 rounded-full bg-[var(--color-red-1)] shrink-0" />
 
                       <span className="text-gray-600">
                         {point}

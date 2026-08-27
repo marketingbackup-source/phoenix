@@ -70,7 +70,7 @@ export default function OurTeam() {
         <div className="text-center !mb-12">
 
           <h2 className="fs-52-32 uppercase font-normal leading-[1]">
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Our
             </span>{" "}
             Team

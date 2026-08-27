@@ -16,7 +16,7 @@ export default function TrustAuthority() {
         w-[900px]
         h-[400px]
         rounded-full
-        bg-[var(--color-red-3)]
+        bg-[var(--color-red-1)]
         opacity-20
         blur-[180px]
         "
@@ -30,7 +30,7 @@ export default function TrustAuthority() {
         w-[500px]
         h-[500px]
         rounded-full
-        bg-[var(--color-red-3)]
+        bg-[var(--color-red-1)]
         opacity-10
         blur-[160px]
         "

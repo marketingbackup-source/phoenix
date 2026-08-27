@@ -116,8 +116,8 @@
 
 .base-button.primary {
 
-    @apply bg-[var(--color-red-3)]
-    border-[var(--color-red-3)]
+    @apply bg-[var(--color-red-1)]
+    border-[var(--color-red-1)]
     text-white;
 
 }
@@ -141,7 +141,7 @@
 
 .base-button.primary:hover > span:first-child {
 
-    color:var(--color-red-3);
+    color:var(--color-red-1);
 
 }
 
@@ -153,14 +153,14 @@
 
     @apply bg-white;
 
-    color:var(--color-red-3);
+    color:var(--color-red-1);
 
 }
 
 
 .base-button.primary > span:last-child::before {
 
-    @apply bg-[var(--color-red-3)];
+    @apply bg-[var(--color-red-1)];
 
 }
 
@@ -190,8 +190,8 @@
 .base-button.secondary {
 
     @apply bg-white
-    border-[var(--color-red-3)]
-    text-[var(--color-red-3)];
+    border-[var(--color-red-1)]
+    text-[var(--color-red-1)];
 
 }
 
@@ -201,7 +201,7 @@
 
 .base-button.secondary > span:first-child::before {
 
-    background:var(--color-red-3);
+    background:var(--color-red-1);
 
 }
 
@@ -225,7 +225,7 @@
 
 .base-button.secondary > span:last-child {
 
-    background:var(--color-red-3);
+    background:var(--color-red-1);
 
     color:white;
 
@@ -248,7 +248,7 @@
 
 .base-button.secondary:hover > span:last-child {
 
-    color:var(--color-red-3);
+    color:var(--color-red-1);
 
 }
 

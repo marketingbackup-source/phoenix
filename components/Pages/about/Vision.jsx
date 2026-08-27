@@ -84,7 +84,7 @@ export default function MissionVision() {
                   w-40
                   h-40
                   rounded-full
-                  bg-[var(--color-red-3)]
+                  bg-[var(--color-red-1)]
                   opacity-10
                   blur-3xl
                   "
@@ -112,7 +112,7 @@ export default function MissionVision() {
 
                     {item.first}{" "}
 
-                    <span className="text-[var(--color-red-3)]">
+                    <span className="text-[var(--color-red-1)]">
                       {item.second}
                     </span>
 
@@ -126,16 +126,16 @@ export default function MissionVision() {
                     w-16
                     h-16
                     rounded-2xl
-                    bg-[var(--color-red-3)]/10
+                    bg-[var(--color-red-1)]/10
                     backdrop-blur-xl
                     border
-                    border-[var(--color-red-3)]/20
+                    border-[var(--color-red-1)]/20
                     "
                   >
 
                     <Icon
                       size={32}
-                      className="text-[var(--color-red-3)]"
+                      className="text-[var(--color-red-1)]"
                     />
 
                   </div>

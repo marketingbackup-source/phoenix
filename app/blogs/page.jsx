@@ -52,7 +52,7 @@ export default async function BlogsPage(){
             "
           >
 
-            Latest <span className="text-[var(--color-red-3)]">
+            Latest <span className="text-[var(--color-red-1)]">
               Insights
             </span>
 

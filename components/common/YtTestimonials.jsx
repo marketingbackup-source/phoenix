@@ -44,7 +44,7 @@ export default function ClientTestimonials() {
           >
 
             What Our{" "}
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Clients
             </span>{" "}
             Say About Us

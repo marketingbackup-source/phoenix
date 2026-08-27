@@ -19,7 +19,7 @@ export default function ContactBanner() {
           w-[500px]
           h-[500px]
           rounded-full
-          bg-[var(--color-red-3)]
+          bg-[var(--color-red-1)]
           opacity-10
           blur-[160px]
           "
@@ -83,7 +83,7 @@ export default function ContactBanner() {
               className="
               uppercase
               tracking-[2px]
-              text-[var(--color-red-3)]
+              text-[var(--color-red-1)]
               !mb-5
               "
             >
@@ -102,7 +102,7 @@ export default function ContactBanner() {
             >
 
               Let's Build Your{" "}
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Global Future
               </span>
 

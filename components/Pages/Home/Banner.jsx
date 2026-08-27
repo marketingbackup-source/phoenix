@@ -19,7 +19,7 @@ export default function Banner() {
               toLink="/contact"
               style="secondary"
             ><Headset
-                className="ml-2 transition-colors duration-300 group-hover:text-[var(--color-red-3)]"
+                className="ml-2 transition-colors duration-300 group-hover:text-[var(--color-red-1)]"
                 size={20}
               /></BaseButton>
           </div>

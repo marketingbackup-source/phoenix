@@ -46,7 +46,7 @@ export default function Featured() {
         w-[600px]
         h-[300px]
         rounded-full
-        bg-[var(--color-red-3)]
+        bg-[var(--color-red-1)]
         opacity-10
         blur-[160px]
         "
@@ -65,7 +65,7 @@ export default function Featured() {
             "
           >
 
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Featured
             </span>{" "}
             In The News
@@ -119,7 +119,7 @@ export default function Featured() {
                 h-[2px]
                 bg-gradient-to-r
                 from-transparent
-                via-[var(--color-red-3)]
+                via-[var(--color-red-1)]
                 to-transparent
                 opacity-0
                 transition-opacity
@@ -155,7 +155,7 @@ export default function Featured() {
                   className="
                   w-10
                   h-[2px]
-                  bg-[var(--color-red-3)]
+                  bg-[var(--color-red-1)]
                   !mb-6
                   "
                 />

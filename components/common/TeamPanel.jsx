@@ -69,7 +69,7 @@ export default function CoreTeam() {
         w-[600px]
         h-[300px]
         rounded-full
-        bg-[var(--color-red-3)]
+        bg-[var(--color-red-1)]
         opacity-10
         blur-[160px]
         "
@@ -87,7 +87,7 @@ export default function CoreTeam() {
             leading-[1]
             "
           >
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Core
             </span>{" "}
             Team

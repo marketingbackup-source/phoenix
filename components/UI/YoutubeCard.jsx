@@ -73,7 +73,7 @@ export default function YoutubeCard({
           rounded-full
           bg-white/90
           backdrop-blur-xl
-          text-[var(--color-red-3)]
+          text-[var(--color-red-1)]
           transition-all
           duration-500
           group-hover:scale-110

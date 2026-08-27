@@ -14,7 +14,7 @@ export default function BaseSelect({
         <select
           defaultValue=""
           aria-label={placeholder}
-          className={`w-full appearance-none border border-gray-200 bg-white px-5 py-3 pr-12 text-[#232323] outline-none transition focus:border-[var(--color-red-3)] ${className}`}
+          className={`w-full appearance-none border border-gray-200 bg-white px-5 py-3 pr-12 text-[#232323] outline-none transition focus:border-[var(--color-red-1)] ${className}`}
           {...register(name)}
         >
           <option value="" disabled>

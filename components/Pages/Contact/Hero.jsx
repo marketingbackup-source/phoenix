@@ -117,7 +117,7 @@ export default function ContactHero() {
                       items-center
                       justify-center
                       p-4
-                      bg-[var(--color-red-3)]
+                      bg-[var(--color-red-1)]
                       "
                     >
 

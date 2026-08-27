@@ -70,7 +70,7 @@ export default function Youtube() {
         w-[600px]
         h-[300px]
         rounded-full
-        bg-[var(--color-red-3)]
+        bg-[var(--color-red-1)]
         opacity-10
         blur-[160px]
         "
@@ -94,7 +94,7 @@ export default function Youtube() {
             "
           >
 
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               See
             </span>{" "}
             How It Works
@@ -141,7 +141,7 @@ export default function Youtube() {
             "
           >
 
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               What Our Clients
             </span>{" "}
             Think About Us?

@@ -99,7 +99,7 @@ export default function VisaTOC({
                 className="
                 text-left
                 text-gray-500
-                hover:text-[var(--color-red-3)]
+                hover:text-[var(--color-red-1)]
                 transition-all
                 duration-300
                 !text-sm
@@ -108,7 +108,7 @@ export default function VisaTOC({
 
                 <span
                   className="
-                  text-[var(--color-red-3)]
+                  text-[var(--color-red-1)]
                   mr-2
                   "
                 >

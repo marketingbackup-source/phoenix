@@ -5,51 +5,51 @@ import MarqueeSlider from "@/components/UI/MarqueeSlider";
 const partners = [
   {
     name: "ABP News",
-    logo: "/images/partners/abp.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/abp.png",
   },
   {
     name: "Bloomberg",
-    logo: "/images/partners/bloom.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/bloom.png",
   },
   {
     name: "Business Standard",
-    logo: "/images/partners/businessStandard.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/business.png",
   },
   {
     name: "CNBC",
-    logo: "/images/partners/cnbc.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/cnbc.png",
   },
   {
     name: "Daily Post",
-    logo: "/images/partners/dailypost.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/dailypost.png",
   },
   {
     name: "Forbes",
-    logo: "/images/partners/forbes.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/forbes.png",
   },
   {
     name: "Hindustan Times",
-    logo: "/images/partners/Hindustan_Times_logo.svg.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/hindustan.png",
   },
   {
     name: "Khaleej Times",
-    logo: "/images/partners/Khaleej_Times.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/khaleej.png",
   },
   {
     name: "LiveMint",
-    logo: "/images/partners/livemintLogo.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/livemintLogo.png",
   },
   {
     name: "Times of India",
-    logo: "/images/partners/times of india.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/times-of-india.png",
   },
   {
     name: "The Week",
-    logo: "/images/partners/week.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/Logo_The_Week.png",
   },
   {
     name: "Yahoo",
-    logo: "/images/partners/yahoo.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/yahoo.png",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function TrustedPartners() {
           >
 
             Our{" "}
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Media
             </span>{" "}
             Partners

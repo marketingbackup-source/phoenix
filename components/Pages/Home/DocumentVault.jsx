@@ -42,7 +42,7 @@ export default function DocumentVault() {
             <h2 className="fs-52-32 font-normal leading-[1] uppercase !mb-8">
               Your Documents,
               <br />
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Locked In.
               </span>
             </h2>

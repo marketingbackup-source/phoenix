@@ -163,7 +163,7 @@ export default function Approvals() {
           >
 
             Our{" "}
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Approvals
             </span>
 
@@ -203,7 +203,7 @@ export default function Approvals() {
               >
 
                 Visa{" "}
-                <span className="text-[var(--color-red-3)]">
+                <span className="text-[var(--color-red-1)]">
                   Approvals
                 </span>
 
@@ -261,7 +261,7 @@ export default function Approvals() {
               >
 
                 Petition{" "}
-                <span className="text-[var(--color-red-3)]">
+                <span className="text-[var(--color-red-1)]">
                   Approvals
                 </span>
 

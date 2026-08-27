@@ -420,7 +420,7 @@ body {
    BASE
 ======================================== */
 .proof60DaysSwiper.swiper {
-  height: 50vh;
+  height: 60vh;
   align-items: center;
   overflow: hidden !important;
 }
@@ -629,7 +629,7 @@ body {
 }
 
 .visa-content a {
-  @apply text-[var(--color-red-3)]
+  @apply text-[var(--color-red-1)]
     underline;
 }
 

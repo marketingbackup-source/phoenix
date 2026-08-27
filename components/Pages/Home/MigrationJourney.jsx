@@ -19,11 +19,11 @@ export default function USJourney() {
 
             <h2 className="fs-52-32 font-normal leading-[1] uppercase !mb-8">
               Your USA{" "}
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Business
               </span>
               <br />
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 Migration
               </span>{" "}
               Journey

@@ -95,7 +95,7 @@ export default function Achievements() {
             "
           >
 
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Achievements
             </span>
 

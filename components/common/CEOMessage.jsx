@@ -20,7 +20,7 @@ export default function CEOMessage() {
 
 
             <h2 className="fs-52-32 uppercase font-normal leading-[1] !mb-8">
-              <span className="text-[var(--color-red-3)]">
+              <span className="text-[var(--color-red-1)]">
                 CEO'S
               </span>{" "}
               MESSAGE
@@ -41,16 +41,16 @@ export default function CEOMessage() {
 
             <div className="relative overflow-hidden rounded-3xl bg-white/60 backdrop-blur-xl border border-gray-200 p-8 !mb-8">
 
-              <div className="absolute left-0 top-0 h-full w-1 bg-[var(--color-red-3)]" />
+              <div className="absolute left-0 top-0 h-full w-1 bg-[var(--color-red-1)]" />
 
 
               <p className="uppercase tracking-[2px] text-lg leading-[1.6] font-medium !mb-0">
 
-                <span className="text-[var(--color-red-3)]">
+                <span className="text-[var(--color-red-1)]">
                   We are committed
                 </span>{" "}
                 to becoming the #1 leader in business migration{" "}
-                <span className="text-[var(--color-red-3)]">
+                <span className="text-[var(--color-red-1)]">
                   worldwide by 2028.
                 </span>
 
@@ -86,7 +86,7 @@ export default function CEOMessage() {
 
             <div className="relative">
 
-              <div className="absolute -inset-8 rounded-full bg-[var(--color-red-3)] opacity-10 blur-3xl" />
+              <div className="absolute -inset-8 rounded-full bg-[var(--color-red-1)] opacity-10 blur-3xl" />
 
 
               <div className="relative overflow-hidden rounded-4xl">

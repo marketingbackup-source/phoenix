@@ -126,13 +126,13 @@ function LocationCard({location}) {
           w-10
           h-10
           rounded-full
-          bg-[var(--color-red-3)]/10
+          bg-[var(--color-red-1)]/10
           "
         >
 
           <MapPin
             size={20}
-            className="text-[var(--color-red-3)]"
+            className="text-[var(--color-red-1)]"
           />
 
         </div>
@@ -220,7 +220,7 @@ export default function GlobalPresence() {
           w-[500px]
           h-[500px]
           rounded-full
-          bg-[var(--color-red-3)]
+          bg-[var(--color-red-1)]
           opacity-10
           blur-[160px]
           "
@@ -261,7 +261,7 @@ export default function GlobalPresence() {
           >
 
             Our{" "}
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Global
             </span>{" "}
             Presence

@@ -149,7 +149,7 @@ export default function NewsCoverageGrid() {
             "
           >
             News{" "}
-            <span className="text-[var(--color-red-3)]">
+            <span className="text-[var(--color-red-1)]">
               Coverage
             </span>
           </h2>
