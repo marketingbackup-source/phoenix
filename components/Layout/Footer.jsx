@@ -398,35 +398,11 @@ export default function Footer(){
           left-1/2
           -translate-x-1/2
           overflow-hidden
+          flex items-center justify-center
           "
         >
 
-          <div
-            className="
-            flex
-            justify-center
-            overflow-hidden
-            "
-          >
-
-            <span
-              className="
-              whitespace-nowrap
-              uppercase
-              text-[clamp(9rem,24vw,20rem)]
-              font-semibold
-              leading-none
-              tracking-[-6px]
-              text-white/[0.035]
-              line-height-[0]
-              mb-[-7%]
-              "
-            >
-              Phoenix
-            </span>
-
-
-          </div>
+          <img src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/BLACK-e1788156161191.png" alt="Phoenix Logo bleeded" className="w-auto h-[250px] mb-[-2%]" />
 
 
         </div>

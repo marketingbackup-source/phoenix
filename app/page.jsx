@@ -49,8 +49,8 @@ export default async function HomePage() {
       <Proof></Proof>
       <MigrationJourney></MigrationJourney>
       <DocumentVault></DocumentVault>
-      <VisaDestinations></VisaDestinations>
       <GlobalCountries></GlobalCountries>
+      <VisaDestinations></VisaDestinations>
       <BusinessOpportunities></BusinessOpportunities>
       <CEOMessage></CEOMessage>
       <Team></Team>

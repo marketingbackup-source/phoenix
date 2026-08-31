@@ -8,7 +8,7 @@ const mediaBase =
 
 const newsItems = [
   {
-    logo:`${mediaBase}insights.webp`,
+    logo:`${mediaBase}ET.webp`,
     title:"Global Entrepreneurs Eye New Zealand as Fast-Track Investor Visa Gains Attention",
     type:"article",
   },
@@ -193,7 +193,7 @@ export default function NewsCoverageGrid() {
 
               <div
                 className="
-                h-[110px]
+                h-[140px]
                 flex-center
                 bg-gray-50
                 px-8
@@ -203,11 +203,11 @@ export default function NewsCoverageGrid() {
                 <Image
                   src={item.logo}
                   alt="Media Logo"
-                  width={180}
-                  height={70}
+                  width={120}
+                  height={120}
                   className="
-                  max-h-[55px]
-                  max-w-[160px]
+                  !h-[80px]
+                  !w-auto
                   object-contain
                   "
                 />

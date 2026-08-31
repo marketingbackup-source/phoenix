@@ -88,15 +88,11 @@ export default function IndustryPartners() {
                 alt={item.name}
                 loading="lazy"
                 className="
-                max-w-[150px]
-                max-h-[55px]
+                h-[70px]
+                w-auto
                 object-contain
-                grayscale
-                opacity-70
                 transition-all
                 duration-500
-                hover:grayscale-0
-                hover:opacity-100
                 "
               />
 
@@ -138,15 +134,11 @@ export default function IndustryPartners() {
                 alt={item.name}
                 loading="lazy"
                 className="
-                max-w-[150px]
-                max-h-[55px]
+                h-[70px]
+                w-auto
                 object-contain
-                grayscale
-                opacity-70
                 transition-all
                 duration-500
-                hover:grayscale-0
-                hover:opacity-100
                 "
               />
 

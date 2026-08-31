@@ -1,288 +1,259 @@
 "use client";
 
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { MoveRight } from "lucide-react";
 
+import BaseButton from "@/components/UI/BaseButton";
+import BaseSelect from "@/components/UI/BaseSelect";
+import useFormSubmission from "@/hooks/useFormSubmission";
+
+const formSchema = z.object({
+  name: z.string().trim().min(2, "Please enter your name"),
+
+  phone: z
+    .string()
+    .trim()
+    .min(7, "Please enter a valid phone number")
+    .regex(/^[0-9+\-\s()]+$/, "Please enter a valid phone number"),
+
+  annualTurnover: z.string().min(1, "Please select annual turnover"),
+
+  inquiryPurpose: z
+    .string()
+    .min(1, "Please select the purpose of inquiry"),
+});
+
+const annualTurnoverOptions = [
+  {
+    value: "1 Cr",
+    label: "1 Cr",
+  },
+  {
+    value: "2 Cr",
+    label: "2 Cr",
+  },
+  {
+    value: "3 Cr+",
+    label: "3 Cr+",
+  },
+];
+
+const inquiryPurposeOptions = [
+  {
+    value: "I want a job in USA",
+    label: "I want a job in USA",
+  },
+  {
+    value: "Work/Visitor Visa",
+    label: "Work/Visitor Visa",
+  },
+  {
+    value: "Planning to expand",
+    label: "Planning to expand",
+  },
+  {
+    value: "Open a New US Office",
+    label: "Open a New US Office",
+  },
+  {
+    value: "Acquire a US Business",
+    label: "Acquire a US Business",
+  },
+  {
+    value: "Transfer to My US Company",
+    label: "Transfer to My US Company",
+  },
+  {
+    value: "Check My L-1 Visa Eligibility",
+    label: "Check My L-1 Visa Eligibility",
+  },
+  {
+    value: "Not Sure (Need Guidance)",
+    label: "Not Sure (Need Guidance)",
+  },
+];
+
+const inputClass = `
+  w-full
+  rounded-xl
+  border
+  border-gray-200
+  bg-white/70
+  px-4
+  py-3
+  text-black
+  outline-none
+  transition
+  duration-300
+  focus:border-[var(--color-red-1)]
+`;
+
+const errorClass =
+  "!mt-2 !mb-0 text-sm text-[var(--color-red-1)]";
 
 export default function VisaInquiryForm() {
-
-  const [formData,setFormData] = useState({
-    name:"",
-    phone:"",
-    email:"",
-    city:"",
-    message:"",
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      annualTurnover: "",
+      inquiryPurpose: "",
+    },
   });
 
+  const {
+    submitForm: submitVisaInquiry,
+    isSubmitting,
+    submissionError,
+    submissionMessage,
+    clearSubmissionState,
+  } = useFormSubmission({
+    endpoint: "/api/contact",
+  });
 
-  const [errors,setErrors] = useState({});
+  async function submitForm(data) {
+    clearSubmissionState();
 
+    const result = await submitVisaInquiry(data);
 
-  const handleChange = (e)=>{
-
-    setFormData({
-      ...formData,
-      [e.target.name]:e.target.value,
-    });
-
-  };
-
-
-
-  const validate = ()=>{
-
-    const newErrors = {};
-
-
-    if(!formData.name.trim()){
-      newErrors.name = "Name is required";
+    if (result.success) {
+      reset();
     }
-
-
-    if(!formData.phone.trim()){
-      newErrors.phone = "Phone number is required";
-    }
-
-
-    if(
-      formData.email &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-    ){
-      newErrors.email = "Enter valid email";
-    }
-
-
-    return newErrors;
-
-  };
-
-
-
-
-  const handleSubmit = (e)=>{
-
-    e.preventDefault();
-
-
-    const validationErrors = validate();
-
-
-    if(Object.keys(validationErrors).length){
-
-      setErrors(validationErrors);
-      return;
-
-    }
-
-
-    setErrors({});
-
-
-    console.log("Visa Enquiry Data:",formData);
-
-
-    setFormData({
-      name:"",
-      phone:"",
-      email:"",
-      city:"",
-      message:"",
-    });
-
-  };
-
-
+  }
 
   return (
-
     <div
       className="
-      rounded-4xl
-      bg-white/[0.45]
-      backdrop-blur-2xl
-      border
-      border-gray-200
-      p-6
+        rounded-4xl
+        bg-white/[0.45]
+        backdrop-blur-2xl
+        border
+        border-gray-200
+        p-6
       "
     >
-
-
       <h3
         className="
-        fs-32-20
-        uppercase
-        text-black
-        !mb-6
+          fs-32-20
+          uppercase
+          text-black
+          !mb-6
         "
       >
         Get Expert Guidance
       </h3>
 
-
-
       <form
-        onSubmit={handleSubmit}
-        className="
-        flex
-        flex-col
-        gap-5
-        "
+        onSubmit={handleSubmit(submitForm)}
+        noValidate
+        className="flex flex-col gap-5"
       >
-
-
         <div>
-
           <input
             type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="
-            w-full
-            rounded-xl
-            border
-            border-gray-200
-            bg-white/70
-            px-4
-            py-3
-            outline-none
-            "
+            placeholder="Name"
+            aria-label="Name"
+            className={inputClass}
+            {...register("name")}
           />
 
           {errors.name && (
-            <p className="text-red-600 text-sm !mt-2 !mb-0">
-              {errors.name}
+            <p className={errorClass}>
+              {errors.name.message}
             </p>
           )}
-
         </div>
 
-
-
-
         <div>
-
           <input
             type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-            className="
-            w-full
-            rounded-xl
-            border
-            border-gray-200
-            bg-white/70
-            px-4
-            py-3
-            outline-none
-            "
+            placeholder="Phone"
+            aria-label="Phone"
+            className={inputClass}
+            {...register("phone")}
           />
 
           {errors.phone && (
-            <p className="text-red-600 text-sm !mt-2 !mb-0">
-              {errors.phone}
+            <p className={errorClass}>
+              {errors.phone.message}
             </p>
           )}
-
         </div>
 
+        <BaseSelect
+          name="annualTurnover"
+          placeholder="Annual Turnover"
+          options={annualTurnoverOptions}
+          register={register}
+          error={errors.annualTurnover}
+        />
 
+        <BaseSelect
+          name="inquiryPurpose"
+          placeholder="Purpose of Inquiry"
+          options={inquiryPurposeOptions}
+          register={register}
+          error={errors.inquiryPurpose}
+        />
 
-
-        <div>
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
+        {submissionError && (
+          <p
+            role="alert"
             className="
-            w-full
-            rounded-xl
-            border
-            border-gray-200
-            bg-white/70
-            px-4
-            py-3
-            outline-none
+              !mb-0
+              rounded-md
+              border
+              border-red-200
+              bg-red-50
+              px-4
+              py-3
+              text-sm
+              text-[var(--color-red-1)]
             "
-          />
+          >
+            {submissionError}
+          </p>
+        )}
 
-          {errors.email && (
-            <p className="text-red-600 text-sm !mt-2 !mb-0">
-              {errors.email}
-            </p>
-          )}
+        {submissionMessage && (
+          <p
+            role="status"
+            className="
+              !mb-0
+              rounded-md
+              border
+              border-green-200
+              bg-green-50
+              px-4
+              py-3
+              text-sm
+              text-green-700
+            "
+          >
+            {submissionMessage}
+          </p>
+        )}
 
-        </div>
-
-
-
-
-        <input
-          type="text"
-          name="city"
-          placeholder="City"
-          value={formData.city}
-          onChange={handleChange}
-          className="
-          w-full
-          rounded-xl
-          border
-          border-gray-200
-          bg-white/70
-          px-4
-          py-3
-          outline-none
-          "
-        />
-
-
-
-
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          rows="4"
-          value={formData.message}
-          onChange={handleChange}
-          className="
-          w-full
-          rounded-xl
-          border
-          border-gray-200
-          bg-white/70
-          px-4
-          py-3
-          outline-none
-          resize-none
-          "
-        />
-
-
-
-
-        <button
+        <BaseButton
+          title={isSubmitting ? "Submitting..." : "Submit Enquiry"}
           type="submit"
-          className="
-          base-button
-          primary
-          w-full
-          "
+          style="primary w-fit"
+          disabled={isSubmitting}
         >
-          Submit Enquiry
-        </button>
-
-
-
+          <MoveRight
+            size={20}
+            className="ml-2 transition-colors duration-300 group-hover:text-[var(--color-white)]"
+          />
+        </BaseButton>
       </form>
-
-
     </div>
-
   );
-
 }

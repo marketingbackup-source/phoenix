@@ -16,116 +16,120 @@ import BaseButton from "@/components/UI/BaseButton";
 
 const navigationItems = [
   {
-    label:"Home",
-    href:"/",
+    label: "Home",
+    href: "/",
   },
   {
-    label:"Our Success Story",
-    children:[
+    label: "Our Success Story",
+    children: [
       {
-        label:"Testimonials",
-        href:"/testimonials",
+        label: "Testimonials",
+        href: "/testimonials",
       },
       {
-        label:"Our Approvals",
-        href:"/approvals",
+        label: "Our Approvals",
+        href: "/approvals",
       },
     ],
   },
   {
-    label:"Program Offered",
-    megaMenu:true,
-    groups:[
+    label: "Program Offered",
+    megaMenu: true,
+    groups: [
       {
-        label:"USA",
-        children:[
+        label: "USA",
+        children: [
           {
-            label:"L1 Visa",
-            href:"/visa-programs/l1-visa-usa",
+            label: "US Green Card by Investment",
+            href: "/visa-programs/us-green-card-by-investment",
           },
           {
-            label:"O1 Visa",
-            href:"/visa-programs/o-1-visa-usa",
+            label: "L1 Visa",
+            href: "/visa-programs/l1-visa",
           },
           {
-            label:"E2 Visa",
-            href:"#",
+            label: "O1 Visa",
+            href: "/visa-programs/o1-visa",
           },
           {
-            label:"EB1A Visa",
-            href:"/visa-programs/eb-1a-visa-usa",
+            label: "E2 Visa",
+            href: "/visa-programs/e2-visa",
           },
           {
-            label:"EB1C Visa",
-            href:"#",
+            label: "EB1A Visa",
+            href: "/visa-programs/eb1a-visa",
           },
           {
-            label:"EB-2 NIW Visa",
-            href:"#",
+            label: "EB1C Visa",
+            href: "/visa-programs/eb1c-visa",
+          },
+          {
+            label: "EB-2 NIW Visa",
+            href: "/visa-programs/eb-2-niw-visa",
           },
         ],
       },
       {
-        label:"Australia",
-        children:[
+        label: "Australia",
+        children: [
           {
-            label:"National Innovation Visa",
-            href:"/visa-programs/national-innovation-visa-subclass-858",
+            label: "National Innovation Visa",
+            href: "/visa-programs/niv",
           },
         ],
       },
       {
-        label:"European Union",
-        children:[
+        label: "European Union",
+        children: [
           {
-            label:"Citizenship By Investment",
-            href:"#",
+            label: "Citizenship By Investment",
+            href: "/visa-programs/european-union",
           },
         ],
       },
       {
-        label:"New Zealand",
-        children:[
+        label: "New Zealand",
+        children: [
           {
-            label:"Investor Work Visa",
-            href:"#",
+            label: "Investor Work Visa",
+            href: "/visa-programs/new-zealand-investor-work-visa",
           },
         ],
       },
     ],
   },
   {
-    label:"Resources",
-    children:[
+    label: "Resources",
+    children: [
       {
-        label:"Our Offices",
-        href:"/locations",
+        label: "Our Offices",
+        href: "/locations",
       },
       {
-        label:"Events & Seminars",
-        href:"#",
+        label: "Events & Seminars",
+        href: "#",
       },
       {
-        label:"Blogs",
-        href:"/blogs",
+        label: "Blogs",
+        href: "/blogs",
       },
       {
-        label:"Press Release",
-        href:"/press-release",
+        label: "Press Release",
+        href: "/press-release",
       },
       {
-        label:"News Coverage",
-        href:"/news-coverage",
+        label: "News Coverage",
+        href: "/news-coverage",
       },
     ],
   },
   {
-    label:"About Us",
-    href:"/about",
+    label: "About Us",
+    href: "/about",
   },
   {
-    label:"Contact Us",
-    href:"/contact",
+    label: "Contact Us",
+    href: "/contact",
   },
 ];
 

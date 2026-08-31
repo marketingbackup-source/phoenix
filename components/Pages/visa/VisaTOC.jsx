@@ -2,138 +2,103 @@
 
 import { useState } from "react";
 
-export default function VisaTOC({
-  headings = [],
-}) {
-
+export default function VisaTOC({ headings = [] }) {
   const [open, setOpen] = useState(false);
-
+  const [activeId, setActiveId] = useState("");
 
   const scrollToSection = (id) => {
+    setActiveId(id);
 
     const element = document.getElementById(id);
 
-    if(element){
-
+    if (element) {
       element.scrollIntoView({
-        behavior:"smooth",
-        block:"start",
+        behavior: "smooth",
+        block: "start",
       });
-
     }
-
   };
 
-
   return (
-
     <div
       className="
-      rounded-4xl
-      bg-white/[0.45]
-      backdrop-blur-2xl
-      border
-      border-gray-200
-      p-3 lg:p-6
+        rounded-4xl
+        bg-white/[0.45]
+        backdrop-blur-2xl
+        border
+        border-gray-200
+        p-3
+        lg:p-5
       "
     >
-
-
       {/* Mobile Accordion Header */}
-
       <button
-        onClick={()=>setOpen(!open)}
+        onClick={() => setOpen(!open)}
         className="
-        lg:hidden
-        flex-between
-        w-full
-        text-black
-        uppercase
-        font-medium
+          lg:hidden
+          flex-between
+          w-full
+          text-black
+          uppercase
+          font-medium
+          py-2
         "
       >
-
         Table Of Contents
 
-        <span>
-          {open ? "-" : "+"}
-        </span>
-
+        <span>{open ? "-" : "+"}</span>
       </button>
-
-
 
       <div
         className={`
-        ${open ? "block" : "hidden"}
-        lg:block
+          ${open ? "block" : "hidden"}
+          lg:block
         `}
       >
-
-
         <ul
           className="
-          list-none
-          !p-0
-          !m-0
-          max-h-[calc(100vh-400px)]
-          overflow-y-auto
-          
+            list-none
+            !p-0
+            !m-0
+            max-h-[calc(100vh-300px)]
+            overflow-y-auto
+            pr-1
           "
         >
-
-
-          {headings.map((item)=>(
-
-            <li
-              key={item.id}
-              className="
-              !mb-2
-              "
-            >
-
+          {headings.map((item) => (
+            <li key={item.id} className="!mb-3">
               <button
-                onClick={() =>
-                  scrollToSection(item.id)
-                }
-                className="
-                text-left
-                text-gray-500
-                hover:text-[var(--color-red-1)]
-                transition-all
-                duration-300
-                !text-sm
-                "
+                onClick={() => scrollToSection(item.id)}
+                className={`
+                  relative
+                  w-full
+                  text-left
+                  bg-[#f8f8f8]
+                  border-l-[5px]
+                  rounded-[4px]
+                  px-5
+                  py-3
+                  text-[#292929]
+                  !text-base
+                  leading-snug
+                  font-medium
+                  tracking-[0.02em]
+                  transition-all
+                  duration-300
+                  hover:text-[var(--color-red-1)]
+                  ${
+                    activeId === item.id
+                      ? "border-l-[var(--color-red-1)]"
+                      : "border-l-[#e7e7e7]"
+                  }
+                `}
               >
-
-                <span
-                  className="
-                  text-[var(--color-red-1)]
-                  mr-2
-                  "
-                >
-                  {String(item.number).padStart(2,"0")}
-                </span>
-
-
                 {item.title}
-
-
               </button>
-
-
             </li>
-
           ))}
-
-
         </ul>
-
-
       </div>
-
-
     </div>
-
   );
 }
