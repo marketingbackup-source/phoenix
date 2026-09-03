@@ -164,7 +164,7 @@ export default function ContactBanner() {
 
 
               <Image
-                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/contact-support.webp"
+                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/about-us.webp"
                 alt="Contact Phoenix Business Advisory"
                 width={700}
                 height={700}
