@@ -147,7 +147,7 @@ export default function AboutBanner() {
             >
 
               <Image
-                src="/images/about/banner.jpeg"
+                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/about-us-1-e1788429693609.webp"
                 alt="Phoenix Business Advisory"
                 width={700}
                 height={700}
