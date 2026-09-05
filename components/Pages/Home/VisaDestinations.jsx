@@ -16,10 +16,11 @@ const VISA_DESTINATIONS = [
       "Establish a new office in the USA.",
       "Pathway toward permanent residency.",
     ],
-    video:
-      "https://l1visausa.com/wp-content/uploads/2026/08/EU-2-1.mp4",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/usa.webp",
     link: "/usa-business-visa",
   },
+
   {
     country: "Australia",
     flag: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/6666ca675b8c4493235ade25_Aus-flat.png",
@@ -34,10 +35,11 @@ const VISA_DESTINATIONS = [
       "Business and investment opportunities.",
       "Pathway toward permanent residency.",
     ],
-    video:
-      "https://l1visausa.com/wp-content/uploads/2026/08/EU-2-1.mp4",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/aus.webp",
     link: "/australia-business-visa",
   },
+
   {
     country: "New Zealand",
     flag: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/668c1de2bce4364450c63d8b_New-zealand.png",
@@ -52,10 +54,11 @@ const VISA_DESTINATIONS = [
       "Business expansion opportunities.",
       "Pathway toward residence.",
     ],
-    video:
-      "https://l1visausa.com/wp-content/uploads/2026/08/EU-2-1.mp4",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/nz.webp",
     link: "/new-zealand-investor-work-visa",
   },
+
   {
     country: "European Union",
     flag: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/6a06f189abe6ed7a98044edd_european-union-flag.png",
@@ -70,8 +73,8 @@ const VISA_DESTINATIONS = [
       "Global mobility benefits.",
       "Citizenship through investment.",
     ],
-    video:
-      "https://l1visausa.com/wp-content/uploads/2026/08/EU-2-1.mp4",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/eu.webp",
     link: "/european-union-citizenship-by-investment",
   },
 ];

@@ -49,15 +49,14 @@ export default async function HomePage() {
       <Proof></Proof>
       <MigrationJourney></MigrationJourney>
       <DocumentVault></DocumentVault>
-      <GlobalCountries></GlobalCountries>
-      <VisaDestinations></VisaDestinations>
+      {/* <GlobalCountries></GlobalCountries> */}
       <BusinessOpportunities></BusinessOpportunities>
+      <VisaDestinations></VisaDestinations>
       <CEOMessage></CEOMessage>
       <Team></Team>
       <SuccessStories></SuccessStories>
       <Featured></Featured>
       <Youtube></Youtube>
-      <TeamPanel></TeamPanel>
       <Faq badge="Frequently Asked Questions"
         title="Everything you need to know before joining"
         description="Find answers to common questions about registration, attendance, webinar access, and session recordings."
