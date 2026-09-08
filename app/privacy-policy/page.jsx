@@ -38,11 +38,11 @@ export default function PrivacyPolicyPage() {
       <section className="bg-black text-white py-100-40">
         <div className="container-main">
           <div className="max-w-4xl">
-            <p className="!mb-4 text-[var(--color-red-1)] font-semibold uppercase tracking-widest">
+            <p className=" text-[var(--color-red-1)] font-semibold uppercase tracking-widest !text-white/80">
               Legal
             </p>
 
-            <h1 className="uppercase">Privacy Policy</h1>
+            <h1 className="uppercase !text-white/80">Privacy Policy</h1>
 
             <p className="fs-20-16 !mb-0 mt-6 text-white/70 max-w-3xl">
               This Privacy Policy explains how Phoenix Business Advisory
@@ -86,7 +86,7 @@ export default function PrivacyPolicyPage() {
             <article className="lg:col-span-3">
               {/* Introduction */}
               <div className="pb-60-20 border-b border-black/10">
-                <h2 className="fs-36-24 uppercase mb-6">
+                <h2 className="fs-36-24 uppercase mb-6 ">
                   Privacy Policy
                 </h2>
 
@@ -208,7 +208,7 @@ export default function PrivacyPolicyPage() {
                 id="information-sharing"
                 className="pt-60-20 pb-60-20 border-b border-black/10 scroll-mt-28"
               >
-                <h2 className="fs-36-24 uppercase mb-6">
+                <h2 className="fs-36-24 uppercase mb-6 ">
                   Information Sharing
                 </h2>
 

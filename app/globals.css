@@ -76,7 +76,7 @@ body {
 }
 
 .site-header__nav-link {
-  @apply relative text-sm font-semibold text-black/50
+  @apply relative text-sm !font-semibold text-black/50
   transition-colors duration-300
   hover:text-black;
 }

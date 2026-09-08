@@ -135,7 +135,7 @@ export default function OurTeam() {
           >
 
             <h3 className="
-            text-white
+            !text-white
             uppercase
             text-xl
             font-medium
@@ -145,7 +145,7 @@ export default function OurTeam() {
 
 
             <p className="
-            text-white/80
+            !text-white/80
             text-sm
             uppercase
             tracking-[2px]

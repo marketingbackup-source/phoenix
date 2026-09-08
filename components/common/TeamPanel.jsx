@@ -161,7 +161,7 @@ export default function CoreTeam() {
 
                     <h3
                       className="
-                      text-white
+                      !text-white
                       uppercase
                       text-lg
                       font-medium
@@ -174,7 +174,7 @@ export default function CoreTeam() {
 
                     <p
                       className="
-                      text-white/80
+                      !text-white/80
                       !text-sm
                       uppercase
                       tracking-[1px]

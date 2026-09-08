@@ -105,17 +105,17 @@ export default function CEOMessage() {
 
                   <div className="rounded-2xl bg-black/40 backdrop-blur-xl border border-white/20 p-5">
 
-                    <h3 className="text-white uppercase text-xl">
+                    <h3 className="!text-white uppercase text-xl">
                       MP Singh
                     </h3>
 
 
-                    <p className="text-white/70 text-sm uppercase tracking-[2px] !mb-1">
+                    <p className="!text-white/70 text-sm uppercase tracking-[2px] !mb-1">
                       Founder & CEO
                     </p>
 
 
-                    <p className="text-white/70 text-sm !mb-0">
+                    <p className="!text-white/70 text-sm !mb-0">
                       Phoenix Business Advisory
                     </p>
 
