@@ -1,27 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "../styles/main.css";
-import "../styles/theme.css"
+import "../styles/theme.css";
 
-import Header from '@/components/Layout/Header'
-
-import Footer from '@/components/Layout/Footer'
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 
 export const metadata: Metadata = {
   title: "Phoenix Business Advisory",
-  description: "Apply for USA Business Visa &amp; USA Green Card with Phoenix Business Advisory — trusted experts in global business migration for USA, Australia, New Zealand, EU &amp; UAE.",
+  description:
+    "Apply for USA Business Visa & USA Green Card with Phoenix Business Advisory — trusted experts in global business migration for USA, Australia, New Zealand, EU & UAE.",
 };
 
 export default function RootLayout({
@@ -30,14 +18,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
+      <head>
+        <link
+          rel="preconnect"
+          href="https://api.fontshare.com"
+        />
+
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500sss,600,700&display=swap"
+        />
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401&display=swap" rel="stylesheet"/>
+      </head>
+
       <body className="min-h-full flex flex-col">
-        <Header></Header>
+        <Header />
         {children}
-        <Footer></Footer>
+        <Footer />
       </body>
     </html>
   );

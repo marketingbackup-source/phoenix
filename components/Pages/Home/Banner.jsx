@@ -10,7 +10,7 @@ export default function Banner() {
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="w-full lg:w-7/12">
-              <h1 className="fs-60-32 !font-normal leading-[0.95] uppercase !mb-8">Acquire a Business in the USA & Get Your <span className="text-green-700">Green Card</span> in 2 Years*
+              <h1 className="fs-52-32 leading-[0.95] uppercase !mb-8">Acquire Business in USA Get <span className="text-green-700">Green Card</span> in 2 Years*
               </h1>
               <p className="text-gray-500 !mb-8 lg:!mb-12">Phoenix Business Advisory has helped entrepreneurs, investors, founders, and business owners confidently establish and expand their businesses in the USA, Australia, and other global markets. From business setup to immigration strategy, our experts guide you through every step.</p>
               <BaseButton

@@ -1,7 +1,8 @@
 /* ========================================
    GOOGLE FONTS
 ======================================== */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+
 
 :root {
 
@@ -14,9 +15,8 @@
     /* ========================================
        Font Family
     ======================================== */
-    --font-body: "Montserrat", sans-serif;
-    --font-heading: "Josefin Sans", sans-serif;
-
+    --font-body: 'General Sans', sans-serif;
+    --font-heading: "Clash Display", sans-serif;
 }
 
 
@@ -65,8 +65,9 @@ h4,
 h5,
 h6 {
     font-family: var(--font-heading);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.15;
+    color: var(--color-gray-1);
 }
 
 h1{
@@ -90,6 +91,8 @@ button {
     font-family: var(--font-body);
     font-size: clamp(1rem, 0.8337rem + 0.3469vw, 1.25rem);
     line-height: 1.7;
+    font-weight: 300 !important;
+    color: var(--color-gray-1);
 }
 
 

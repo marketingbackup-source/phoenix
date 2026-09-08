@@ -68,7 +68,7 @@ export default function TrustedPartners() {
             fs-52-32
             font-normal
             uppercase
-            text-white
+            !text-white
             "
           >
 

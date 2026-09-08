@@ -13,7 +13,6 @@ import Team from '@/components/Pages/Home/Team';
 import SuccessStories from '@/components/Pages/Home/SuccessStories';
 import Featured from '@/components/Pages/Home/Featured';
 import Youtube from '@/components/Pages/Home/Youtube';
-import TeamPanel from '@/components/common/TeamPanel';
 const faqs = [
   {
     question: "Who should attend these webinars?",
