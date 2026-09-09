@@ -3,16 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  ChevronDown,
-  Headset,
-  Menu,
-  X,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, Headset, Menu, X } from "lucide-react";
 
 import BaseButton from "@/components/UI/BaseButton";
-
+import CallbackModal from "@/components/UI/CallbackModal";
 const navigationItems = [
   {
     label: "Home",
@@ -138,7 +132,7 @@ export default function SiteHeader() {
   const [openMobileMenu, setOpenMobileMenu] = useState(null);
   const [openMobileGroup, setOpenMobileGroup] = useState(null);
   const [activeDesktopGroup, setActiveDesktopGroup] = useState("USA");
-
+  const [isCallbackOpen, setIsCallbackOpen] = useState(false);
   function openMenu() {
     setIsMenuOpen(true);
   }
@@ -150,45 +144,28 @@ export default function SiteHeader() {
   }
 
   function toggleMobileMenu(label) {
-    setOpenMobileMenu(
-      openMobileMenu === label
-        ? null
-        : label
-    );
+    setOpenMobileMenu(openMobileMenu === label ? null : label);
 
     setOpenMobileGroup(null);
   }
 
   function toggleMobileGroup(label) {
-    setOpenMobileGroup(
-      openMobileGroup === label
-        ? null
-        : label
-    );
+    setOpenMobileGroup(openMobileGroup === label ? null : label);
   }
 
   useEffect(() => {
     function handleScroll() {
-      setIsScrolled(
-        window.scrollY > 20
-      );
+      setIsScrolled(window.scrollY > 20);
     }
 
     handleScroll();
 
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      {
-        passive: true,
-      }
-    );
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => {
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -206,32 +183,21 @@ export default function SiteHeader() {
       }
     }
 
-    window.addEventListener(
-      "keydown",
-      handleEscapeKey
-    );
+    window.addEventListener("keydown", handleEscapeKey);
 
     return () => {
       document.body.style.overflow = "";
 
-      window.removeEventListener(
-        "keydown",
-        handleEscapeKey
-      );
+      window.removeEventListener("keydown", handleEscapeKey);
     };
   }, [isMenuOpen]);
 
   return (
     <>
       <header
-        className={`site-header ${
-          isScrolled
-            ? "site-header--scrolled"
-            : ""
-        }`}
+        className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}
       >
         <div className="site-header__container">
-
           <Link
             href="/"
             className="site-header__brand"
@@ -246,7 +212,6 @@ export default function SiteHeader() {
               className="site-header__brand-image"
             />
           </Link>
-
 
           {/* Desktop Navigation */}
 
@@ -264,12 +229,8 @@ export default function SiteHeader() {
                   }
                 }}
               >
-
                 {item.href ? (
-                  <Link
-                    href={item.href}
-                    className="site-header__nav-link"
-                  >
+                  <Link href={item.href} className="site-header__nav-link">
                     {item.label}
                   </Link>
                 ) : (
@@ -295,7 +256,6 @@ export default function SiteHeader() {
                     />
                   </button>
                 )}
-
 
                 {/* Standard Desktop Dropdown */}
 
@@ -352,7 +312,6 @@ export default function SiteHeader() {
                   </div>
                 )}
 
-
                 {/* Desktop Program Offered Mega Menu */}
 
                 {item.megaMenu && (
@@ -387,7 +346,6 @@ export default function SiteHeader() {
                         shadow-[0_12px_35px_rgba(0,0,0,0.10)]
                       "
                     >
-
                       {/* Country Tabs */}
 
                       <div
@@ -401,19 +359,15 @@ export default function SiteHeader() {
                         "
                       >
                         <div className="flex flex-col gap-2">
-
                           {item.groups.map((group) => {
-                            const isActive =
-                              activeDesktopGroup === group.label;
+                            const isActive = activeDesktopGroup === group.label;
 
                             return (
                               <button
                                 key={group.label}
                                 type="button"
                                 onMouseEnter={() =>
-                                  setActiveDesktopGroup(
-                                    group.label
-                                  )
+                                  setActiveDesktopGroup(group.label)
                                 }
                                 className={`
                                   flex
@@ -466,19 +420,14 @@ export default function SiteHeader() {
                               </button>
                             );
                           })}
-
                         </div>
                       </div>
-
 
                       {/* Program Links */}
 
                       <div className="flex-1 p-8">
-
                         {item.groups.map((group) => {
-
-                          const isActive =
-                            activeDesktopGroup === group.label;
+                          const isActive = activeDesktopGroup === group.label;
 
                           if (!isActive) {
                             return null;
@@ -492,9 +441,7 @@ export default function SiteHeader() {
                                 animate-[fadeIn_0.25s_ease-out]
                               "
                             >
-
                               <div className="!mb-6">
-
                                 <p
                                   className="
                                     footer-nav-heading
@@ -512,9 +459,7 @@ export default function SiteHeader() {
                                     bg-[var(--color-red-1)]
                                   "
                                 />
-
                               </div>
-
 
                               {/* Always Two Columns */}
 
@@ -551,9 +496,7 @@ export default function SiteHeader() {
                                       hover:!text-[var(--color-red-1)]
                                     "
                                   >
-                                    <span className="pr-3">
-                                      {child.label}
-                                    </span>
+                                    <span className="pr-3">{child.label}</span>
 
                                     <ArrowRight
                                       size={16}
@@ -570,41 +513,35 @@ export default function SiteHeader() {
                                   </Link>
                                 ))}
                               </div>
-
                             </div>
                           );
                         })}
-
                       </div>
-
                     </div>
                   </div>
                 )}
-
               </div>
             ))}
           </nav>
 
-
           <div className="site-header__desktop-cta">
             <BaseButton
               title="Get a Call in 55 Second"
-              link
-              toLink="/contact"
+              type="button"
+              onClick={() => setIsCallbackOpen(true)}
               style="primary"
             >
               <Headset
                 size={20}
                 className="
-                  ml-2
-                  transition-colors
-                  duration-300
-                  group-hover:text-[var(--color-white)]
-                "
+      ml-2
+      transition-colors
+      duration-300
+      group-hover:text-[var(--color-white)]
+      "
               />
             </BaseButton>
           </div>
-
 
           <button
             type="button"
@@ -614,44 +551,27 @@ export default function SiteHeader() {
             aria-controls="mobile-navigation"
             aria-expanded={isMenuOpen}
           >
-            <Menu
-              size={26}
-              strokeWidth={1.8}
-              aria-hidden="true"
-            />
+            <Menu size={26} strokeWidth={1.8} aria-hidden="true" />
           </button>
-
         </div>
       </header>
-
 
       {/* Mobile Overlay */}
 
       <div
-        className={`mobile-menu-overlay ${
-          isMenuOpen
-            ? "is-open"
-            : ""
-        }`}
+        className={`mobile-menu-overlay ${isMenuOpen ? "is-open" : ""}`}
         onClick={closeMenu}
         aria-hidden="true"
       />
-
 
       {/* Mobile Menu */}
 
       <aside
         id="mobile-navigation"
-        className={`mobile-menu ${
-          isMenuOpen
-            ? "is-open"
-            : ""
-        }`}
+        className={`mobile-menu ${isMenuOpen ? "is-open" : ""}`}
         aria-hidden={!isMenuOpen}
       >
-
         <div className="mobile-menu__header">
-
           <Link
             href="/"
             className="mobile-menu__brand"
@@ -676,21 +596,11 @@ export default function SiteHeader() {
             onClick={closeMenu}
             aria-label="Close navigation menu"
           >
-            <X
-              size={26}
-              strokeWidth={1.8}
-              aria-hidden="true"
-            />
+            <X size={26} strokeWidth={1.8} aria-hidden="true" />
           </button>
-
         </div>
 
-
-        <nav
-          className="mobile-menu__navigation"
-          aria-label="Mobile navigation"
-        >
-
+        <nav className="mobile-menu__navigation" aria-label="Mobile navigation">
           {navigationItems.map((item) => (
             <div
               key={item.label}
@@ -699,7 +609,6 @@ export default function SiteHeader() {
                 border-white/10
               "
             >
-
               {/* Normal Mobile Link */}
 
               {item.href ? (
@@ -711,9 +620,7 @@ export default function SiteHeader() {
                   "
                   onClick={closeMenu}
                 >
-                  <span className="!text-white">
-                    {item.label}
-                  </span>
+                  <span className="!text-white">{item.label}</span>
 
                   <ArrowRight
                     size={18}
@@ -725,18 +632,14 @@ export default function SiteHeader() {
               ) : (
                 <button
                   type="button"
-                  onClick={() =>
-                    toggleMobileMenu(item.label)
-                  }
+                  onClick={() => toggleMobileMenu(item.label)}
                   className="
                     mobile-menu__nav-link
                     w-full
                     !text-white
                   "
                 >
-                  <span className="!text-white">
-                    {item.label}
-                  </span>
+                  <span className="!text-white">{item.label}</span>
 
                   <ChevronDown
                     size={18}
@@ -745,16 +648,11 @@ export default function SiteHeader() {
                       !text-white
                       transition-transform
                       duration-300
-                      ${
-                        openMobileMenu === item.label
-                          ? "rotate-180"
-                          : ""
-                      }
+                      ${openMobileMenu === item.label ? "rotate-180" : ""}
                     `}
                   />
                 </button>
               )}
-
 
               {/* Mobile Standard Accordion */}
 
@@ -800,7 +698,6 @@ export default function SiteHeader() {
                 </div>
               )}
 
-
               {/* Mobile Programs Accordion */}
 
               {item.megaMenu && (
@@ -831,14 +728,9 @@ export default function SiteHeader() {
                           last:border-b-0
                         "
                       >
-
                         <button
                           type="button"
-                          onClick={() =>
-                            toggleMobileGroup(
-                              group.label
-                            )
-                          }
+                          onClick={() => toggleMobileGroup(group.label)}
                           className="
                             flex
                             w-full
@@ -867,8 +759,7 @@ export default function SiteHeader() {
                               transition-transform
                               duration-300
                               ${
-                                openMobileGroup ===
-                                group.label
+                                openMobileGroup === group.label
                                   ? "rotate-180"
                                   : ""
                               }
@@ -876,15 +767,13 @@ export default function SiteHeader() {
                           />
                         </button>
 
-
                         <div
                           className={`
                             overflow-hidden
                             transition-all
                             duration-300
                             ${
-                              openMobileGroup ===
-                              group.label
+                              openMobileGroup === group.label
                                 ? "max-h-[600px] opacity-100"
                                 : "max-h-0 opacity-0"
                             }
@@ -898,13 +787,12 @@ export default function SiteHeader() {
                               pl-4
                             "
                           >
-                            {group.children.map(
-                              (child) => (
-                                <Link
-                                  key={child.label}
-                                  href={child.href}
-                                  onClick={closeMenu}
-                                  className="
+                            {group.children.map((child) => (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                onClick={closeMenu}
+                                className="
                                     footer-nav-item
                                     !py-2.5
                                     !text-white
@@ -912,30 +800,22 @@ export default function SiteHeader() {
                                     duration-300
                                     hover:!text-white
                                   "
-                                >
-                                  {child.label}
-                                </Link>
-                              )
-                            )}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
                           </div>
                         </div>
-
                       </div>
                     ))}
                   </div>
                 </div>
               )}
-
             </div>
           ))}
-
         </nav>
 
-
-        <div
-          className="mobile-menu__footer"
-          onClick={closeMenu}
-        >
+        <div className="mobile-menu__footer" onClick={closeMenu}>
           <BaseButton
             title="Talk to an Advisor"
             link
@@ -943,8 +823,11 @@ export default function SiteHeader() {
             style="primary mobile-menu__base-button"
           />
         </div>
-
       </aside>
+      <CallbackModal
+  open={isCallbackOpen}
+  onClose={() => setIsCallbackOpen(false)}
+/>
     </>
   );
 }

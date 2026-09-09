@@ -14,7 +14,7 @@ export default function Banner() {
               </h1>
               <p className="text-gray-500 !mb-8 lg:!mb-12">Phoenix Business Advisory has helped entrepreneurs, investors, founders, and business owners confidently establish and expand their businesses in the USA, Australia, and other global markets. From business setup to immigration strategy, our experts guide you through every step.</p>
               <BaseButton
-              title="Get a Call in 55 Second"
+              title="Contact Us"
               link
               toLink="/contact"
               style="secondary"

@@ -136,7 +136,7 @@ export default function BusinessOpportunities() {
                 </div>
 
                 {/* Arrow */}
-                <div className="absolute right-10 bottom-[30px]">
+                <a className="absolute right-10 bottom-[30px]" href="/contact">
                   <div
                     className="
       absolute
@@ -166,7 +166,7 @@ export default function BusinessOpportunities() {
                   >
                     <ArrowUpRight size={32} strokeWidth={2.5} />
                   </span>
-                </div>
+                </a>
               </div>
             </div>
           </div>

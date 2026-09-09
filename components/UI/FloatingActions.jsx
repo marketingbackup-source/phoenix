@@ -24,13 +24,13 @@ const actions = [
     href: "https://api.whatsapp.com/send?phone=+917698940001&text=Hello,+I+came+across+your+services+and+would+like+to+know+more+details+about+your+services.+Please+share+the+information.+Thank+you.",
     className: "bg-[#1f8f3a] !text-white",
   },
-  {
-    id: "call",
-    title: "Get a Call in 55 Second",
-    icon: Phone,
-    type: "button",
-    className: "bg-[var(--color-red-1)] !text-white",
-  },
+  // {
+  //   id: "call",
+  //   title: "Get a Call in 55 Second",
+  //   icon: Phone,
+  //   type: "button",
+  //   className: "bg-[var(--color-red-1)] !text-white",
+  // },
 ];
 
 export default function FloatingActions() {

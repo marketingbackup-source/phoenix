@@ -70,7 +70,7 @@ export default function IndustryPartners() {
     <section className="py-80-30 overflow-hidden bg-[#050505]">
       <div className="container-main">
         <div className="text-center !mb-12">
-          <h2 className="fs-52-32 uppercase font-normal leading-[1] text-white">
+          <h2 className="fs-52-32 uppercase font-normal leading-[1] !text-white">
             <span className="text-[var(--color-red-1)]">Success Stories</span>{" "}
             Across Industries
           </h2>

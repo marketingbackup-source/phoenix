@@ -154,7 +154,7 @@ export default function WhyPhoenix() {
             <BaseButton
               title="Looking For Best Advisor?"
               link
-              toLink="https://wa.me/919601377611?text=Hello%20Phoenix%20Business%20Advisory,%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+              toLink="/contact"
               style="primary w-fit"
             >
               <ArrowRight size={20}/>

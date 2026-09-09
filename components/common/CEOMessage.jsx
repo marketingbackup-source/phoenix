@@ -71,7 +71,7 @@ export default function CEOMessage() {
               <BaseButton
                 title="Book 1:1 Call With The CEO - $99"
                 link
-                toLink="/contact"
+                toLink="https://advice.mpsinggh.com/"
                 style="primary w-fit"
               >
                 <ArrowRight size={20}/>

@@ -18,7 +18,7 @@ const VISA_DESTINATIONS = [
     ],
     image:
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/usa.webp",
-    link: "/usa-business-visa",
+    link: "/visa-programs/us-green-card-by-investment",
   },
 
   {
@@ -37,7 +37,7 @@ const VISA_DESTINATIONS = [
     ],
     image:
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/aus.webp",
-    link: "/australia-business-visa",
+    link: "/visa-programs/niv",
   },
 
   {
@@ -56,7 +56,7 @@ const VISA_DESTINATIONS = [
     ],
     image:
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/nz.webp",
-    link: "/new-zealand-investor-work-visa",
+    link: "/visa-programs/european-union",
   },
 
   {
@@ -75,7 +75,7 @@ const VISA_DESTINATIONS = [
     ],
     image:
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/eu.webp",
-    link: "/european-union-citizenship-by-investment",
+    link: "/visa-programs/new-zealand-investor-work-visa",
   },
 ];
 
