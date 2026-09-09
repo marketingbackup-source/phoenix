@@ -66,7 +66,7 @@ function createLeadSquaredPayload(data, tracking) {
       Value: data.city,
     },
     {
-      Attribute: "Company",
+      Attribute: "mx_Company_Name",
       Value: data.companyName,
     },
     {
