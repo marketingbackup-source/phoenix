@@ -9,6 +9,7 @@ import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
 import useFormSubmission from "@/hooks/useFormSubmission";
 
+
 const formSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name"),
 
@@ -44,50 +45,27 @@ const formSchema = z.object({
     .max(1000, "Comment cannot exceed 1000 characters"),
 });
 
+
 const annualTurnoverOptions = [
-  {
-    value: "1 Cr",
-    label: "1 Cr",
-  },
-  {
-    value: "2 Cr",
-    label: "2 Cr",
-  },
-  {
-    value: "3 Cr+",
-    label: "3 Cr+",
-  },
+  { value: "1 Cr", label: "1 Cr" },
+  { value: "2 Cr", label: "2 Cr" },
+  { value: "3 Cr+", label: "3 Cr+" },
 ];
+
 
 const businessAgeOptions = [
-  {
-    value: "2 - 3",
-    label: "2 - 3",
-  },
-  {
-    value: "4 - 5",
-    label: "4 - 5",
-  },
-  {
-    value: "5+",
-    label: "5+",
-  },
+  { value: "2 - 3", label: "2 - 3" },
+  { value: "4 - 5", label: "4 - 5" },
+  { value: "5+", label: "5+" },
 ];
 
+
 const employeeOptions = [
-  {
-    value: "2 - 3",
-    label: "2 - 3",
-  },
-  {
-    value: "4 - 5",
-    label: "4 - 5",
-  },
-  {
-    value: "5+",
-    label: "5+",
-  },
+  { value: "2 - 3", label: "2 - 3" },
+  { value: "4 - 5", label: "4 - 5" },
+  { value: "5+", label: "5+" },
 ];
+
 
 const inquiryPurposeOptions = [
   {
@@ -124,18 +102,41 @@ const inquiryPurposeOptions = [
   },
 ];
 
-const inputClass =
-  "w-full border border-gray-200 bg-white px-5 py-4 text-black outline-none transition focus:border-[var(--color-red-1)]";
 
-const errorClass = "mt-2 text-sm text-[var(--color-red-1)]";
+const inputClass =
+  `
+  w-full
+  rounded-lg
+  border
+  border-gray-200
+  bg-white
+  px-5
+  py-4
+  text-black
+  outline-none
+  transition-all
+  duration-300
+  placeholder:text-gray-400
+  focus:border-[var(--color-red-1)]
+  focus:ring-2
+  focus:ring-[var(--color-red-1)]/10
+  `;
+
+
+const errorClass =
+  "mt-2 text-sm text-[var(--color-red-1)]";
+
 
 export default function ContactForm() {
+
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
+
     resolver: zodResolver(formSchema),
 
     defaultValues: {
@@ -150,7 +151,10 @@ export default function ContactForm() {
       inquiryPurpose: "",
       comment: "",
     },
+
   });
+
+
 
   const {
     submitForm: submitContactForm,
@@ -162,8 +166,10 @@ export default function ContactForm() {
     endpoint: "/api/contact",
   });
 
+
+
   async function submitForm(data) {
-    
+
     clearSubmissionState();
 
     const result = await submitContactForm(data);
@@ -171,15 +177,32 @@ export default function ContactForm() {
     if (result.success) {
       reset();
     }
+
   }
 
+
+
   return (
+
     <form
       onSubmit={handleSubmit(submitForm)}
       noValidate
-      className="grid gap-5 rounded-xl border-2 border-gray-200 px-4 py-6 md:grid-cols-2"
+      className="
+      grid
+      gap-5
+      rounded-2xl
+      border
+      border-gray-100
+      bg-white
+      p-6
+      md:grid-cols-2
+      shadow-[0_15px_40px_rgba(0,0,0,0.06)]
+      "
     >
+
+
       <div>
+
         <input
           type="text"
           placeholder="Name"
@@ -189,11 +212,17 @@ export default function ContactForm() {
         />
 
         {errors.name && (
-          <p className={errorClass}>{errors.name.message}</p>
+          <p className={errorClass}>
+            {errors.name.message}
+          </p>
         )}
+
       </div>
 
+
+
       <div>
+
         <input
           type="tel"
           placeholder="Phone"
@@ -203,11 +232,17 @@ export default function ContactForm() {
         />
 
         {errors.phone && (
-          <p className={errorClass}>{errors.phone.message}</p>
+          <p className={errorClass}>
+            {errors.phone.message}
+          </p>
         )}
+
       </div>
 
+
+
       <div>
+
         <input
           type="email"
           placeholder="Email"
@@ -217,11 +252,17 @@ export default function ContactForm() {
         />
 
         {errors.email && (
-          <p className={errorClass}>{errors.email.message}</p>
+          <p className={errorClass}>
+            {errors.email.message}
+          </p>
         )}
+
       </div>
 
+
+
       <div>
+
         <input
           type="text"
           placeholder="City"
@@ -231,11 +272,17 @@ export default function ContactForm() {
         />
 
         {errors.city && (
-          <p className={errorClass}>{errors.city.message}</p>
+          <p className={errorClass}>
+            {errors.city.message}
+          </p>
         )}
+
       </div>
 
+
+
       <div>
+
         <input
           type="text"
           placeholder="Company Name"
@@ -245,9 +292,14 @@ export default function ContactForm() {
         />
 
         {errors.companyName && (
-          <p className={errorClass}>{errors.companyName.message}</p>
+          <p className={errorClass}>
+            {errors.companyName.message}
+          </p>
         )}
+
       </div>
+
+
 
       <BaseSelect
         name="annualTurnover"
@@ -257,6 +309,8 @@ export default function ContactForm() {
         error={errors.annualTurnover}
       />
 
+
+
       <BaseSelect
         name="businessAge"
         placeholder="Business Age"
@@ -264,6 +318,8 @@ export default function ContactForm() {
         register={register}
         error={errors.businessAge}
       />
+
+
 
       <BaseSelect
         name="employees"
@@ -273,7 +329,10 @@ export default function ContactForm() {
         error={errors.employees}
       />
 
+
+
       <div className="md:col-span-2">
+
         <BaseSelect
           name="inquiryPurpose"
           placeholder="Purpose of Inquiry"
@@ -281,11 +340,15 @@ export default function ContactForm() {
           register={register}
           error={errors.inquiryPurpose}
         />
+
       </div>
 
+
+
       <div className="md:col-span-2">
+
         <textarea
-          rows={2}
+          rows={3}
           placeholder="Comment"
           aria-label="Comment"
           className={`${inputClass} resize-none`}
@@ -293,45 +356,93 @@ export default function ContactForm() {
         />
 
         {errors.comment && (
-          <p className={errorClass}>{errors.comment.message}</p>
+          <p className={errorClass}>
+            {errors.comment.message}
+          </p>
         )}
+
       </div>
 
+
+
       {submissionError && (
+
         <div className="md:col-span-2">
+
           <p
             role="alert"
-            className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-[var(--color-red-1)]"
+            className="
+            rounded-lg
+            border
+            border-red-200
+            bg-red-50
+            px-4
+            py-3
+            text-sm
+            text-[var(--color-red-1)]
+            "
           >
             {submissionError}
           </p>
+
         </div>
+
       )}
 
+
+
       {submissionMessage && (
+
         <div className="md:col-span-2">
+
           <p
             role="status"
-            className="rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
+            className="
+            rounded-lg
+            border
+            border-green-200
+            bg-green-50
+            px-4
+            py-3
+            text-sm
+            text-green-700
+            "
           >
             {submissionMessage}
           </p>
+
         </div>
+
       )}
 
+
+
       <div className="md:col-span-2">
+
         <BaseButton
           title={isSubmitting ? "Submitting..." : "Submit"}
           type="submit"
           style="primary"
           disabled={isSubmitting}
         >
+
           <MoveRight
             size={20}
-            className="ml-2 transition-colors duration-300 group-hover:text-[var(--color-white)]"
+            className="
+            ml-2
+            transition-colors
+            duration-300
+            group-hover:text-[var(--color-white)]
+            "
           />
+
         </BaseButton>
+
       </div>
+
+
     </form>
+
   );
+
 }

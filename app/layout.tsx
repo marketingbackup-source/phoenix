@@ -5,6 +5,7 @@ import "../styles/theme.css";
 
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
+import FloatingActions from "@/components/UI/FloatingActions";
 
 export const metadata: Metadata = {
   title: "Phoenix Business Advisory",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <FloatingActions />
       </body>
     </html>
   );

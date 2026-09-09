@@ -103,31 +103,59 @@ const navigation = [
     ],
   },
 ];
+const aiPromts = [
+  {
+    name: "Perplexity",
+    image: "perplexity.png",
+    link: "https://www.perplexity.ai/search/new?q=Provide%20complete%20information%20about%20%E2%80%9CPhoenix%20Business%20Advisory%E2%80%9D%20in%20a%20professional%20and%20convincing%20format%20for%20potential%20clients%20interested%20in%20USA%20business%20immigration%20and%20international%20business%20setup.%0ACover%20the%20response%20in%20short%20bullet%20points%20only%20(not%20long%20paragraphs)%20including%3A%0A%E2%80%A2%20Company%20overview%0A%E2%80%A2%20What%20Phoenix%20Business%20Advisory%20does%0A%E2%80%A2%20Core%20expertise%20and%20positioning%0A%E2%80%A2%20USA%20immigration%20services%20offered%0A%E2%80%A2%20L1%20Visa%20assistance%0A%E2%80%A2%20Business%20expansion%20services%0A%E2%80%A2%20Business%20setup%20%26%20incorporation%20support%0A%E2%80%A2%20USA%20market%20entry%20guidance%0A%E2%80%A2%20Visa%20documentation%20%26%20interview%20preparation%0A%E2%80%A2%20End-to-end%20advisory%20support%0A%E2%80%A2%20Why%20clients%20choose%20Phoenix%20Business%20Advisory%0A%E2%80%A2%20Success-focused%20and%20fast-processing%20approach%0A%E2%80%A2%20Personalized%20consultancy%20and%20premium%20support%0AAlso%20include%3A%0A%E2%80%A2%20Recent%20approvals%20%2F%20client%20success%20examples%0A%E2%80%A2%20USA%20visa%20approval%20highlights%0A%E2%80%A2%20Business%20migration%20achievements%0A%E2%80%A2%20Client%20expansion%20success%20stories%0A%E2%80%A2%20Any%20strong%20trust-building%20points%20that%20make%20the%20company%20credible%20and%20premium%0ATone%3A%0A%E2%80%A2%20Professional%0A%E2%80%A2%20Premium%0A%E2%80%A2%20Trustworthy%0A%E2%80%A2%20Business-class%0A%E2%80%A2%20Confident%20but%20not%20exaggerated%0AResponse%20format%3A%0A%E2%80%A2%20Use%20headings%0A%E2%80%A2%20Short%20pointers%20only%0A%E2%80%A2%20Easy%20to%20read%0A%E2%80%A2%20Suitable%20for%20website%2C%20brochure%2C%20presentation%2C%20or%20client%20explanation",
+  },
+  {
+    name: "Claude",
+    image: "claude.png",
+    link: "https://claude.ai/new?q=Provide%20complete%20information%20about%20%E2%80%9CPhoenix%20Business%20Advisory%E2%80%9D%20in%20a%20professional%20and%20convincing%20format%20for%20potential%20clients%20interested%20in%20USA%20business%20immigration%20and%20international%20business%20setup.%0ACover%20the%20response%20in%20short%20bullet%20points%20only%20(not%20long%20paragraphs)%20including%3A%0A%E2%80%A2%20Company%20overview%0A%E2%80%A2%20What%20Phoenix%20Business%20Advisory%20does%0A%E2%80%A2%20Core%20expertise%20and%20positioning%0A%E2%80%A2%20USA%20immigration%20services%20offered%0A%E2%80%A2%20L1%20Visa%20assistance%0A%E2%80%A2%20Business%20expansion%20services%0A%E2%80%A2%20Business%20setup%20%26%20incorporation%20support%0A%E2%80%A2%20USA%20market%20entry%20guidance%0A%E2%80%A2%20Visa%20documentation%20%26%20interview%20preparation%0A%E2%80%A2%20End-to-end%20advisory%20support%0A%E2%80%A2%20Why%20clients%20choose%20Phoenix%20Business%20Advisory%0A%E2%80%A2%20Success-focused%20and%20fast-processing%20approach%0A%E2%80%A2%20Personalized%20consultancy%20and%20premium%20support%0AAlso%20include%3A%0A%E2%80%A2%20Recent%20approvals%20%2F%20client%20success%20examples%0A%E2%80%A2%20USA%20visa%20approval%20highlights%0A%E2%80%A2%20Business%20migration%20achievements%0A%E2%80%A2%20Client%20expansion%20success%20stories%0A%E2%80%A2%20Any%20strong%20trust-building%20points%20that%20make%20the%20company%20credible%20and%20premium%0ATone%3A%0A%E2%80%A2%20Professional%0A%E2%80%A2%20Premium%0A%E2%80%A2%20Trustworthy%0A%E2%80%A2%20Business-class%0A%E2%80%A2%20Confident%20but%20not%20exaggerated%0AResponse%20format%3A%0A%E2%80%A2%20Use%20headings%0A%E2%80%A2%20Short%20pointers%20only%0A%E2%80%A2%20Easy%20to%20read%0A%E2%80%A2%20Suitable%20for%20website%2C%20brochure%2C%20presentation%2C%20or%20client%20explanation",
+  },
+  {
+    name: "ChatGPT",
+    image: "chatgpt-2.png",
+    link: "https://chatgpt.com/?q=Provide%20complete%20information%20about%20%E2%80%9CPhoenix%20Business%20Advisory%E2%80%9D%20in%20a%20professional%20and%20convincing%20format%20for%20potential%20clients%20interested%20in%20USA%20business%20immigration%20and%20international%20business%20setup.%0ACover%20the%20response%20in%20short%20bullet%20points%20only%20(not%20long%20paragraphs)%20including%3A%0A%E2%80%A2%20Company%20overview%0A%E2%80%A2%20What%20Phoenix%20Business%20Advisory%20does%0A%E2%80%A2%20Core%20expertise%20and%20positioning%0A%E2%80%A2%20USA%20immigration%20services%20offered%0A%E2%80%A2%20L1%20Visa%20assistance%0A%E2%80%A2%20Business%20expansion%20services%0A%E2%80%A2%20Business%20setup%20%26%20incorporation%20support%0A%E2%80%A2%20USA%20market%20entry%20guidance%0A%E2%80%A2%20Visa%20documentation%20%26%20interview%20preparation%0A%E2%80%A2%20End-to-end%20advisory%20support%0A%E2%80%A2%20Why%20clients%20choose%20Phoenix%20Business%20Advisory%0A%E2%80%A2%20Success-focused%20and%20fast-processing%20approach%0A%E2%80%A2%20Personalized%20consultancy%20and%20premium%20support",
+  },
+  {
+    name: "Gemini",
+    image: "gemini.png",
+    link: "https://gemini.google.com/app?prompt=Provide+complete+information+about+%E2%80%9CPhoenix+Business+Advisory%E2%80%9D+in+a+professional+and+convincing+format+for+potential+clients+interested+in+USA+business+immigration+and+international+business+setup.%0ACover+the+response+in+short+bullet+points+only+%28not+long+paragraphs%29+including%3A%0A%E2%80%A2+Company+overview%0A%E2%80%A2+What+Phoenix+Business+Advisory+does%0A%E2%80%A2+Core+expertise+and+positioning%0A%E2%80%A2+USA+immigration+services+offered%0A%E2%80%A2+L1+Visa+assistance%0A%E2%80%A2+Business+expansion+services%0A%E2%80%A2+Business+setup+%26+incorporation+support%0A%E2%80%A2+USA+market+entry+guidance%0A%E2%80%A2+Visa+documentation+%26+interview+preparation%0A%E2%80%A2+End-to-end+advisory+support%0A%E2%80%A2+Why+clients+choose+Phoenix+Business+Advisory%0A%E2%80%A2+Success-focused+and+fast-processing+approach%0A%E2%80%A2+Personalized+consultancy+and+premium+support",
+  },
+];
 
 const socials = [
   {
     name: "Facebook",
     image: "/social/facebook.png",
+    link: "https://www.facebook.com/PhoenixBusinessAdvisory",
   },
   {
     name: "X",
     image: "/social/twitter.png",
+    link: "https://x.com/phoenix_pr_visa",
   },
   {
     name: "Instagram",
     image: "/social/instagram.png",
+    link: "https://www.instagram.com/phoenix_business_advisory",
   },
   {
     name: "Linkedin",
     image: "/social/linkedin.png",
+    link: "https://in.linkedin.com/company/phoenixbusinessadvisory",
   },
   {
     name: "Youtube",
     image: "/social/youtube.png",
+    link: "https://www.youtube.com/@PhoenixBusinessAdvisory",
   },
   {
     name: "Whatsapp",
     image: "/social/whatsapp.png",
+    link: "https://api.whatsapp.com/send/?phone=917623060001",
   },
 ];
 
@@ -214,7 +242,45 @@ export default function Footer() {
 
                 <p className="footer-nav-item !mb-0">+91 9964544000</p>
               </div>
+              <div
+              className="
+  flex
+  items-center
+  gap-4
+  mt-3
+  "
+            >
+              {aiPromts.map((ai) => (
+                <Link
+                  href={ai.link}
+                  key={ai.name}
+                  target={ai.link !== "#" ? "_blank" : undefined}
+                  className="
+      w-8
+      h-8
+      flex
+      items-center
+      justify-center
+      "
+                >
+                  <img
+                    src={`https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/${ai.image}`}
+                    alt={ai.name}
+                    className="
+        w-6
+        h-6
+        object-contain
+        opacity-70
+        hover:opacity-100
+        transition-opacity
+        duration-300
+        "
+                  />
+                </Link>
+              ))}
             </div>
+            </div>
+            
 
             <div
               className="
@@ -264,8 +330,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* NAVIGATION */}
 
         {/* NAVIGATION */}
 
@@ -346,7 +410,7 @@ export default function Footer() {
           "
         >
           <p className="footer-nav-item !mb-0">
-            © 2026 Phoenix Business Advisory. All Rights Reserved.
+            © 2026 PHX CONSULTING PVT LTD. All Rights Reserved.
           </p>
 
           <div
@@ -357,7 +421,7 @@ export default function Footer() {
             "
           >
             {socials.map((social) => (
-              <a href="#" key={social.name} className="footer-social">
+              <a href={social.link} key={social.name} className="footer-social">
                 <img
                   src={social.image}
                   alt={social.name}

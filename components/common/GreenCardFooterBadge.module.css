@@ -70,24 +70,14 @@
       rgba(255, 255, 255, 0.025) 0 2px,
       transparent 2px 6px
     ),
-    linear-gradient(
-      150deg,
-      #232323 0%,
-      #1a1a1a 55%,
-      #141414 100%
-    );
+    linear-gradient(150deg, #232323 0%, #1a1a1a 55%, #141414 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .gcfb-topbar {
   height: 7px;
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    #064423,
-    #16a34a 45%,
-    #0f7a3d 100%
-  );
+  background: linear-gradient(90deg, #064423, #16a34a 45%, #0f7a3d 100%);
 }
 
 .gcfb-body {
@@ -115,12 +105,7 @@
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.01em;
-  background: linear-gradient(
-    180deg,
-    #ffffff,
-    #b9b9b9 60%,
-    #808080
-  );
+  background: linear-gradient(180deg, #ffffff, #b9b9b9 60%, #808080);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -152,11 +137,7 @@
   height: 70px;
   border-radius: 6px;
   flex-shrink: 0;
-  background: linear-gradient(
-    160deg,
-    #3a3a3a,
-    #1c1c1c
-  );
+  background: linear-gradient(160deg, #3a3a3a, #1c1c1c);
   border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
@@ -197,11 +178,7 @@
   font-size: 10.5px;
   color: #f2f2f2;
   font-weight: 600;
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .gcfb-emblem {
@@ -221,11 +198,7 @@
 }
 
 .gcfb-cardnum {
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px;
   letter-spacing: 0.12em;
   color: #d8d8d8;
@@ -305,9 +278,8 @@
   }
 }
 
-
 @media (max-width: 767px) {
-    .gcfb-wrap {
-  margin-left: 0%;
-}
+  .gcfb-wrap {
+    margin-left: 0%;
+  }
 }

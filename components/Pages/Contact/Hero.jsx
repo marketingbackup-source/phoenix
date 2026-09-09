@@ -1,22 +1,25 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 
-import BaseBadge from "@/components/UI/BaseBadge";
 import ContactForm from "@/components/Pages/Contact/ContactForm";
 
 
 const contactItems = [
   {
     icon: Mail,
-    title: "Mail us",
+    title: "Email Address",
     content: "info@pcba.com.au",
   },
   {
     icon: Phone,
-    title: "Call us",
+    title: "Phone Number",
     content: (
       <>
-        <span><strong>India</strong>: +91 99645 44000</span>
-        <span><strong>UAE</strong>: +97 154 584 6501</span>
+        <span>
+          <strong>India:</strong> +91 99645 44000
+        </span>
+        <span>
+          <strong>UAE:</strong> +97 154 584 6501
+        </span>
       </>
     ),
   },
@@ -24,13 +27,11 @@ const contactItems = [
     icon: MapPin,
     title: "Management Office",
     content: (
-      <>
-        <span>
-          A-812, Wing A, Mondeal Heights, Ramdev Nagar,
-          <br />
-          Ahmedabad, Gujarat 380015, India
-        </span>
-      </>
+      <span>
+        A-812, Wing A, Mondeal Heights, Ramdev Nagar,
+        <br />
+        Ahmedabad, Gujarat 380015, India
+      </span>
     ),
   },
 ];
@@ -42,7 +43,6 @@ export default function ContactHero() {
 
       <div className="container-main">
 
-
         <div
           className="
           flex
@@ -52,7 +52,6 @@ export default function ContactHero() {
           "
         >
 
-
           <div
             className="
             w-full
@@ -60,20 +59,17 @@ export default function ContactHero() {
             "
           >
 
-
-
             <h3
               className="
               fs-36-24
               mt-40-15
               uppercase
               text-[var(--color-gray-1)]
-              !mb-8
+              !mb-6
               "
             >
               Let's discuss your global business goals
             </h3>
-
 
 
             <p
@@ -82,7 +78,7 @@ export default function ContactHero() {
               text-gray-500
               leading-[1.7]
               max-w-2xl
-              !mb-8
+              !mb-10
               "
             >
               Connect with our team for guidance on international business,
@@ -91,8 +87,13 @@ export default function ContactHero() {
 
 
 
-
-            <div>
+            <div
+              className="
+              flex
+              flex-col
+              gap-5
+              "
+            >
 
               {contactItems.map((item) => {
 
@@ -104,27 +105,37 @@ export default function ContactHero() {
                     key={item.title}
                     className="
                     flex
-                    w-full
-                    mb-4
+                    items-start
+                    gap-5
+                    p-5
                     rounded-xl
-                    overflow-hidden
+                    border
+                    border-gray-100
+                    shadow-sm
+                    hover:shadow-md
+                    transition-all
+                    duration-300
                     "
                   >
+
 
                     <div
                       className="
                       flex
                       items-center
                       justify-center
-                      p-4
-                      bg-[var(--color-red-1)]
+                      w-12
+                      h-12
+                      rounded-full
+                      bg-[var(--color-red-1)]/10
+                      shrink-0
                       "
                     >
 
                       <Icon
-                        size={25}
+                        size={23}
                         strokeWidth={1.8}
-                        color="white"
+                        className="text-[var(--color-red-1)]"
                       />
 
                     </div>
@@ -135,16 +146,27 @@ export default function ContactHero() {
                       className="
                       flex
                       flex-col
-                      justify-center
-                      bg-gray-200
-                      px-5
-                      py-3
+                      gap-1
                       "
                     >
 
+                      <h4
+                        className="
+                        text-sm
+                        font-semibold
+                        uppercase
+                        tracking-wide
+                        text-gray-700
+                        !mb-1
+                        "
+                      >
+                        {item.title}
+                      </h4>
+
+
                       <p
                         className="
-                        text-gray-2
+                        text-gray-500
                         leading-[1.7]
                         !mb-0
                         flex
@@ -158,6 +180,7 @@ export default function ContactHero() {
                         {item.content}
 
                       </p>
+
 
                     </div>
 
@@ -177,7 +200,6 @@ export default function ContactHero() {
 
 
 
-
           <div
             className="
             w-full
@@ -188,7 +210,6 @@ export default function ContactHero() {
             <ContactForm />
 
           </div>
-
 
 
         </div>
