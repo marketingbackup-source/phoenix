@@ -53,9 +53,15 @@ function createLeadSquaredPayload(data, tracking) {
       Attribute: "FirstName",
       Value: data.name,
     },
+
     {
       Attribute: "Phone",
       Value: data.phone,
+    },
+
+    {
+      Attribute: "SearchBy",
+      Value: "Phone",
     },
   ];
 
@@ -120,7 +126,6 @@ function createLeadSquaredPayload(data, tracking) {
     Value: tracking.utmSource || "Website",
   });
 
-
   if (tracking.utmCampaign) {
     payload.push({
       Attribute: "SourceCampaign",
@@ -128,14 +133,12 @@ function createLeadSquaredPayload(data, tracking) {
     });
   }
 
-
   if (tracking.utmContent) {
     payload.push({
       Attribute: "SourceContent",
       Value: tracking.utmContent,
     });
   }
-
 
   return payload;
 }
@@ -156,8 +159,7 @@ function getLeadSquaredError(responseData) {
 
   if (responseData.ExceptionType || responseData.ExceptionMessage) {
     return (
-      responseData.ExceptionMessage ||
-      "LeadSquared rejected the submission."
+      responseData.ExceptionMessage || "LeadSquared rejected the submission."
     );
   }
 
@@ -170,27 +172,16 @@ export async function POST(request) {
     const secretKey = process.env.LSQ_SECRET_KEY;
     const endpoint = process.env.LSQ_ENDPOINT;
 
-    console.log("===== LeadSquared ENV TEST =====");
-    console.log({
-      endpoint,
-      accessKeyLength: accessKey?.length,
-      secretKeyLength: secretKey?.length,
-      accessKeyStart: accessKey?.slice(0, 2),
-      secretKeyStart: secretKey?.slice(0, 2),
-    });
-    console.log("================================");
-
     if (!accessKey || !secretKey || !endpoint) {
-      console.error("LeadSquared environment variables are missing.");
-
       return NextResponse.json(
         {
           success: false,
           message: "Server configuration is incomplete.",
         },
+
         {
           status: 500,
-        }
+        },
       );
     }
 
@@ -204,9 +195,10 @@ export async function POST(request) {
           success: false,
           message: "Invalid request body.",
         },
+
         {
           status: 400,
-        }
+        },
       );
     }
 
@@ -219,9 +211,10 @@ export async function POST(request) {
           message: "Please check the submitted form details.",
           errors: validationResult.error.flatten().fieldErrors,
         },
+
         {
           status: 400,
-        }
+        },
       );
     }
 
@@ -229,7 +222,9 @@ export async function POST(request) {
 
     const tracking = {
       utmSource: request.cookies.get("utm_source")?.value || "",
+
       utmCampaign: request.cookies.get("utm_campaign")?.value || "",
+
       utmContent: request.cookies.get("utm_content")?.value || "",
     };
 
@@ -237,17 +232,23 @@ export async function POST(request) {
 
     const leadSquaredUrl = new URL(endpoint);
 
-    leadSquaredUrl.searchParams.set("postUpdatedLead", "false");
+    leadSquaredUrl.searchParams.set("postUpdatedLead", "true");
+
     leadSquaredUrl.searchParams.set("accessKey", accessKey);
+
     leadSquaredUrl.searchParams.set("secretKey", secretKey);
 
     const leadSquaredResponse = await fetch(leadSquaredUrl.toString(), {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify(leadSquaredPayload),
+
       cache: "no-store",
+
       signal: AbortSignal.timeout(30000),
     });
 
@@ -259,93 +260,66 @@ export async function POST(request) {
       try {
         responseData = JSON.parse(responseText);
       } catch {
-        console.error(
-          "LeadSquared returned a non-JSON response:",
-          responseText
-        );
+        console.error("LeadSquared returned non JSON response:", responseText);
       }
     }
 
     if (!leadSquaredResponse.ok) {
-      console.error("LeadSquared HTTP error:", {
-        status: leadSquaredResponse.status,
-        response: responseData || responseText,
-      });
-
       return NextResponse.json(
         {
           success: false,
+
           message:
             getLeadSquaredError(responseData) ||
             "Unable to submit your details at this time.",
         },
+
         {
           status: 502,
-        }
+        },
       );
     }
 
     const leadSquaredError = getLeadSquaredError(responseData);
 
     if (leadSquaredError) {
-      console.error("LeadSquared submission error:", responseData);
-
       return NextResponse.json(
         {
           success: false,
+
           message: leadSquaredError,
         },
+
         {
           status: 400,
-        }
+        },
       );
     }
-
-    console.log("LeadSquared submission successful:", {
-      leadId:
-        responseData?.Message?.Id ||
-        responseData?.Id ||
-        responseData?.LeadId ||
-        null,
-    });
 
     return NextResponse.json(
       {
         success: true,
+
         message: "Your details have been submitted successfully.",
       },
+
       {
         status: 200,
-      }
+      },
     );
   } catch (error) {
-    if (
-      error?.name === "TimeoutError" ||
-      error?.name === "AbortError"
-    ) {
-      console.error("LeadSquared request timed out.");
-
-      return NextResponse.json(
-        {
-          success: false,
-          message: "The submission request timed out. Please try again.",
-        },
-        {
-          status: 504,
-        }
-      );
-    }
-
     console.error("Contact form API error:", error);
 
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong while submitting the form.",
+
+        message: "Something went wrong while submitting your details.",
       },
+
       {
         status: 500,
-      }
+      },
     );
   }
 }
