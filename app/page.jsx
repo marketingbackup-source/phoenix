@@ -1,4 +1,4 @@
-import Banner from '@/components/Pages/Home/Banner';
+import Banner from '@/components/Pages/Home/Banner2';
 
 import TrustAuthority from '@/components/Pages/Home/TrustAuthority';
 import Proof from '@/components/Pages/Home/Proof';
