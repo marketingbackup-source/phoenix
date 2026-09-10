@@ -74,9 +74,9 @@ export default function PostCard({
 
         <h3
           className="
-          text-xl
+          text-lg!
+          font-medium!
           uppercase
-          text-black
           leading-[1.3]
           !mb-6
           "

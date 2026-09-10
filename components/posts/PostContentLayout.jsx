@@ -60,7 +60,7 @@ export default function PostContentLayout({ content, image }) {
       bg-white
       "
     >
-      <div className="container-main">
+      <div className="container-main posts-grid">
         <div
           className="
           grid

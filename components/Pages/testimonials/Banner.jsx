@@ -1,6 +1,6 @@
 "use client";
 
-import { Quote } from "lucide-react";
+import { Quote, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -8,34 +8,45 @@ import "swiper/css";
 
 const testimonials = [
   {
-    image: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Vijay-Parmar.png",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Vijay-Parmar.png",
     name: "Vijay Kumar",
+    from: "Gujarat",
+    to: "USA",
     content:
       "Thank you so much for all your support and cooperation throughout this journey. A very special thank to the entire Phoenix team. This would not have been possible without persistence, dedication, and relentless efforts. I truly appreciate everything you have done to make this possible.",
   },
 
   {
-    image: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Sandip-Patel.png",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Sandip-Patel.png",
     name: "Sandip Patel",
+    from: "Gujarat",
+    to: "USA",
     content:
       "Thank you to the entire Phoenix Business Advisory team for your support throughout my L1 visa approval journey. A special thanks to the Global Immigration Department and the Operations team for their guidance and the valuable mock interview sessions, which greatly improved my confidence and preparation. I truly appreciate everyone's efforts, professionalism, and commitment. Thank you for making the process smooth and for being a part of this important milestone in my journey.",
   },
 
   {
-    image: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Hiren-Patel.png",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Hiren-Patel.png",
     name: "Hiren Patel",
+    from: "Gujarat",
+    to: "USA",
     content:
       "I would like to share my appreciation for the post-L1 petition support provided by your team. The mock interview sessions and training guidance were extremely helpful and gave me a clear understanding of the process. I would especially like to thank the Global Immigration Department for their prompt support, coordination, and continuous follow-ups, which ensured a smooth experience throughout. Overall, I truly appreciate the team's professionalism and guidance. It was a valuable experience, and I would gladly recommend your services to others. Wishing you continued success.",
   },
 
   {
-    image: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Brijesh-Patel.png",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Brijesh-Patel.png",
     name: "Brijesh Patel",
+    from: "Gujarat",
+    to: "USA",
     content:
       "The team at Phoenix Business Advisory played a crucial role in my L1 visa preparation. Their guidance and mock interview sessions helped me confidently present my expertise and improve my interview readiness. Special thanks to the Global Immigration Department and the entire team for their dedication, insights, and continuous support throughout the process. Thanks to their preparation, my interview went smoothly, and my L1 visa was approved successfully.",
   },
 ];
-
 export default function TestimonialsBanner() {
   return (
     <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
@@ -177,7 +188,7 @@ export default function TestimonialsBanner() {
 
                     <p
                       className="
-                      fs-20-16
+                      !text-lg
                       !text-gray-600
                       leading-[1.8]
                       !mb-10
@@ -187,36 +198,73 @@ export default function TestimonialsBanner() {
                     </p>
 
                     <div
-                      className="
+  className="
   flex
   items-center
   gap-4
   "
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="
-    h-22
-    w-22
+>
+  <img
+    src={item.image}
+    alt={item.name}
+    className="
+    h-24
+    w-24
     rounded-full
     object-cover
     border
     border-gray-200
     "
-                      />
+  />
 
-                      <h3
-                        className="
-    uppercase
-    text-black
-    text-xl
-    !mb-0
-    "
-                      >
-                        {item.name}
-                      </h3>
-                    </div>
+  <div>
+
+    <h3
+      className="
+      uppercase
+      text-black
+      text-xl
+      !mb-2
+      "
+    >
+      {item.name}
+    </h3>
+
+
+    <div
+      className="
+      flex
+      items-center
+      gap-2
+      text-shadow-md
+      font-medium
+      text-gray-500
+      "
+    >
+
+      <span>
+        {item.from}
+      </span>
+
+
+      <ArrowRight
+        size={18}
+        strokeWidth={1.8}
+        className="
+        text-[var(--color-red-1)]
+        "
+      />
+
+
+      <span>
+        {item.to}
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
                   </div>
                 </SwiperSlide>
               ))}
