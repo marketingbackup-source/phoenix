@@ -16,7 +16,8 @@ const allowedOrigins = [
   "https://phoenixbusinessadvisory.com",
   "https://l1visausa.com",
   "https://www.l1visausa.com",
-  "http://localhost:3000",
+  "https://cornflowerblue-cod-866086.hostingersite.com",
+  "http://localhost:3000"
 ];
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(100),
@@ -178,10 +179,7 @@ export async function POST(request) {
   try {
     const origin = request.headers.get("origin");
 
-    if (
-      !origin &&
-      !allowedOrigins.includes(origin)
-    ) {
+    if (!origin || !allowedOrigins.includes(origin)) {
       return NextResponse.json(
         {
           success: false,
