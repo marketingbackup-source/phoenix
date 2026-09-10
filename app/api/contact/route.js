@@ -10,6 +10,14 @@ dotenv.config({
   override: true,
 });
 
+
+const allowedOrigins = [
+  "https://www.phoenixbusinessadvisory.com",
+  "https://phoenixbusinessadvisory.com",
+  "https://l1visausa.com",
+  "https://www.l1visausa.com",
+  "http://localhost:3000",
+];
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(100),
 
@@ -168,6 +176,22 @@ function getLeadSquaredError(responseData) {
 
 export async function POST(request) {
   try {
+    const origin = request.headers.get("origin");
+
+    if (
+      !origin &&
+      !allowedOrigins.includes(origin)
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Unauthorized request.",
+        },
+        {
+          status: 403,
+        },
+      );
+    }
     const accessKey = process.env.LSQ_ACCESS_KEY;
     const secretKey = process.env.LSQ_SECRET_KEY;
     const endpoint = process.env.LSQ_ENDPOINT;
