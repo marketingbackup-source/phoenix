@@ -20,21 +20,21 @@ const contactSchema = z.object({
     .max(20)
     .regex(/^[0-9+\-\s()]+$/),
 
-  email: z.string().trim().email().max(150),
+  email: z.string().trim().email().max(150).optional(),
 
-  city: z.string().trim().min(2).max(100),
+  city: z.string().trim().max(100).optional(),
 
-  companyName: z.string().trim().min(2).max(150),
+  companyName: z.string().trim().max(150).optional(),
 
   annualTurnover: z.string().trim().min(1).max(100),
 
-  businessAge: z.string().trim().min(1).max(50),
+  businessAge: z.string().trim().max(50).optional(),
 
-  employees: z.string().trim().min(1).max(50),
+  employees: z.string().trim().max(50).optional(),
 
   inquiryPurpose: z.string().trim().min(1).max(250),
 
-  comment: z.string().trim().min(10).max(1000),
+  comment: z.string().trim().max(1000).optional(),
 });
 
 function getHighestNumber(value) {
@@ -57,43 +57,69 @@ function createLeadSquaredPayload(data, tracking) {
       Attribute: "Phone",
       Value: data.phone,
     },
-    {
+  ];
+
+  if (data.email) {
+    payload.push({
       Attribute: "EmailAddress",
       Value: data.email,
-    },
-    {
+    });
+  }
+
+  if (data.city) {
+    payload.push({
       Attribute: "mx_City",
       Value: data.city,
-    },
-    {
+    });
+  }
+
+  if (data.companyName) {
+    payload.push({
       Attribute: "mx_Company_Name",
       Value: data.companyName,
-    },
-    {
+    });
+  }
+
+  if (data.annualTurnover) {
+    payload.push({
       Attribute: "mx_Lead_Annual_Turnover",
       Value: data.annualTurnover,
-    },
-    {
+    });
+  }
+
+  if (data.businessAge) {
+    payload.push({
       Attribute: "mx_Client_Business_Age",
       Value: getHighestNumber(data.businessAge),
-    },
-    {
+    });
+  }
+
+  if (data.employees) {
+    payload.push({
       Attribute: "mx_Current_Employees",
       Value: getHighestNumber(data.employees),
-    },
-    {
+    });
+  }
+
+  if (data.inquiryPurpose) {
+    payload.push({
       Attribute: "mx_Purpose_of_Inquiry",
       Value: data.inquiryPurpose,
-    },
-    {
+    });
+  }
+
+  if (data.comment) {
+    payload.push({
       Attribute: "mx_Remarks",
       Value: data.comment,
-    },
-    {
-      Attribute: "Source",
-      Value: tracking.utmSource || "Website",
-    },
-  ];
+    });
+  }
+
+  payload.push({
+    Attribute: "Source",
+    Value: tracking.utmSource || "Website",
+  });
+
 
   if (tracking.utmCampaign) {
     payload.push({
@@ -102,12 +128,14 @@ function createLeadSquaredPayload(data, tracking) {
     });
   }
 
+
   if (tracking.utmContent) {
     payload.push({
       Attribute: "SourceContent",
       Value: tracking.utmContent,
     });
   }
+
 
   return payload;
 }
