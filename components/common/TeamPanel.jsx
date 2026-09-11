@@ -5,56 +5,81 @@ import {
   Link,
 } from "lucide-react";
 
+
 const teamMembers = [
   {
     name: "Becks Edeh",
     role: "Legal Advisor",
+    email: "Bekuechi@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a8866f872dfb02f5d4cae64_advocate.jpg-p-500.jpeg",
   },
+
   {
     name: "Mariya Shaikh",
     role: "VP - Ops & Compliance",
+    email: "mariya@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/69df286bcf8be68257efa358_mariya-shekh.jpeg",
   },
+
   {
     name: "Tanuj Mansharamani",
     role: "Vice President Sales",
+    email: "tanuj@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6969dfdb6981939f2f1698cf_tanuj-mansharamani.jpg",
   },
+
   {
     name: "Deepika Shukla",
     role: "Vice President Sales",
+    email: "deepika@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a05ccbede53eeea697facf4_deepika-sukla.jpg",
   },
+
   {
     name: "Waleed Sadiq",
     role: "Vice President Marketing & Ops",
+    email: "Waleed@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6969dfdd4e381abd300427c1_waleed-sadiq.jpg",
   },
+
   {
     name: "Girish Singh",
     role: "Head Of Marketing",
+    email: "girish@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a758fbe7f4e6f91828fa103_website%20image_..jpg-p-500.jpeg",
   },
+
   {
     name: "Pooja Thakkar",
     role: "Assistant Operations Manager",
+    email: "Pooja.thakkar@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a75c422d8015a210cb259e6_website%20image%20..jpg%20(2)-p-500.jpeg",
   },
+
   {
     name: "Santosh Iyer",
     role: "Operations Manager",
+    email: "santosh@pcba.com.au",
+    linkedin: "https://in.linkedin.com/company/phoenixbusinessadvisory",
     image:
       "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a758fbe2f4f9d447eaa088b_website%20image_%3B%3B.jpg-p-500.jpeg",
   },
 ];
+
 
 export default function CoreTeam() {
   return (
@@ -75,6 +100,7 @@ export default function CoreTeam() {
         "
       />
 
+
       <div className="container-main relative">
 
         <div className="text-center !mb-12">
@@ -87,13 +113,16 @@ export default function CoreTeam() {
             leading-[1]
             "
           >
+
             <span className="text-[var(--color-red-1)]">
               Core
             </span>{" "}
             Team
+
           </h2>
 
         </div>
+
 
 
         <div
@@ -140,6 +169,7 @@ export default function CoreTeam() {
               </div>
 
 
+
               <div
                 className="
                 absolute
@@ -156,6 +186,7 @@ export default function CoreTeam() {
               >
 
                 <div className="flex items-center justify-between gap-4">
+
 
                   <div>
 
@@ -184,12 +215,16 @@ export default function CoreTeam() {
                       {member.role}
                     </p>
 
+
                   </div>
+
 
 
                   <div className="flex flex-col gap-2">
 
-                    <span
+
+                    <a
+                      href={`mailto:${member.email}`}
                       className="
                       flex
                       items-center
@@ -200,16 +235,24 @@ export default function CoreTeam() {
                       bg-white/20
                       border
                       border-white/20
+                      hover:bg-white/40
+                      transition
                       "
                     >
+
                       <Mail
                         size={14}
                         className="text-white"
                       />
-                    </span>
+
+                    </a>
 
 
-                    <span
+
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="
                       flex
                       items-center
@@ -220,27 +263,37 @@ export default function CoreTeam() {
                       bg-white/20
                       border
                       border-white/20
+                      hover:bg-white/40
+                      transition
                       "
                     >
+
                       <Link
                         size={14}
                         className="text-white"
                       />
-                    </span>
+
+                    </a>
+
 
                   </div>
+
 
                 </div>
 
               </div>
 
+
             </div>
 
           ))}
 
+
         </div>
 
+
       </div>
+
 
     </section>
   );

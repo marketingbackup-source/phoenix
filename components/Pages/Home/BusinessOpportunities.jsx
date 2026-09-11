@@ -73,13 +73,13 @@ export default function BusinessOpportunities() {
   return (
     <section className="py-80-30 overflow-hidden bg-white">
       <div className="container-main">
-        <div className="text-center !mb-12">
+        <div className="text-center !mb-2">
           <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3">
             Business Opportunities
           </p>
 
-          <h2 className="fs-52-32 uppercase font-normal leading-[1]">
-            Buy A <span className="text-[var(--color-red-1)]">Business</span> In
+          <h2 className="fs-52-32 uppercase font-normal leading-[1] ">
+            Acquire a <span className="text-[var(--color-red-1)]">Business</span> In
             USA
           </h2>
         </div>
@@ -111,12 +111,12 @@ export default function BusinessOpportunities() {
             {/* Content */}
             <div className="relative pt-6 pb-4">
               {/* Business Name */}
-              <h3 className="font-[var(--font-heading)] text-2xl lg:text-4xl uppercase !font-medium leading-[0.95] text-black !mb-5">
+              <h3 className="font-[var(--font-heading)] text-xl lg:text-3xl uppercase !font-medium leading-[0.95] text-black !mb-5">
                 {business.title}
               </h3>
 
               {/* Investment */}
-              <p className="leading-[1] !text-light !text-3xl  !mb-6">
+              <p className="leading-[1] !text-light text-xl lg:text-2xl !mb-6">
                 {business.investment}
               </p>
 
@@ -136,37 +136,46 @@ export default function BusinessOpportunities() {
                 </div>
 
                 {/* Arrow */}
-                <a className="absolute right-10 bottom-[30px]" href="/contact">
-                  <div
-                    className="
-      absolute
-      inset-[-10px]
-      rounded-full
-      bg-[var(--color-red-1)]
-      opacity-20
-      blur-[25px]
+<a className="absolute right-10 bottom-[30px]" href="/contact">
+  <div
+    className="
+    absolute
+    inset-[-10px]
+    rounded-full
+    bg-[var(--color-red-1)]
+    opacity-20
+    blur-[25px]
     "
-                  />
+  />
 
-                  <span
-                    className="
-      relative
-      flex
-      items-center
-      justify-center
-      w-13
-      h-13
-      rounded-full
-      bg-[var(--color-red-1)]
-      text-white
+  <span
+    className="
+    relative
+    flex
+    items-center
+    justify-center
+    w-13
+    h-13
+    rounded-full
+    bg-[var(--color-red-1)]
+    text-white
+    transition-transform
+    duration-500
+    group-hover:scale-110
+    "
+  >
+    <ArrowUpRight
+      size={32}
+      strokeWidth={2.5}
+      className="
+      rotate-0
       transition-transform
       duration-500
-      group-hover:scale-110
-    "
-                  >
-                    <ArrowUpRight size={32} strokeWidth={2.5} />
-                  </span>
-                </a>
+      group-hover:rotate-45
+      "
+    />
+  </span>
+</a>
               </div>
             </div>
           </div>

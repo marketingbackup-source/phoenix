@@ -1,4 +1,4 @@
-import Banner from '@/components/Pages/Home/Banner';
+import Banner from '@/components/Pages/Home/Banner3';
 
 import TrustAuthority from '@/components/Pages/Home/TrustAuthority';
 import Proof from '@/components/Pages/Home/Proof';
@@ -8,6 +8,7 @@ import DocumentVault from '@/components/Pages/Home/DocumentVault';
 import VisaDestinations from '@/components/Pages/Home/VisaDestinations';
 import GlobalCountries from '@/components/Pages/Home/GlobalCountries';
 import BusinessOpportunities from '@/components/Pages/Home/BusinessOpportunities';
+import GreenCardAchiever from '@/components/Pages/Home/GreenCardAchiever';
 import CEOMessage from '@/components/common/CEOMessage';
 import Team from '@/components/Pages/Home/Team';
 import SuccessStories from '@/components/Pages/Home/SuccessStories';
@@ -15,29 +16,24 @@ import Featured from '@/components/Pages/Home/Featured';
 import Youtube from '@/components/Pages/Home/Youtube';
 const faqs = [
   {
-    question: "Who should attend these webinars?",
+    question: "Comprehensive Business Migration Services",
     answer:
-      "These webinars are designed for business owners, investors, entrepreneurs, and professionals exploring international business, investment, and migration opportunities.",
+      "We provide tailored business migration solutions to help you expand your business into the USA, Australia, European Union and the UAE.",
   },
   {
-    question: "Are the webinars free to attend?",
+    question: "Business Acquisition Support – At No Extra Cost",
     answer:
-      "Yes. Registration is free unless a specific webinar clearly mentions a participation fee.",
+      "Our experts help you find and acquire the best business opportunities, all at no extra cost to you.",
   },
   {
-    question: "How will I receive the webinar joining link?",
+    question: "Professional Network Assistance – At No Extra Cost",
     answer:
-      "After completing your registration, the joining details will be sent to your registered email address.",
+      "We connect you with top accountants, lawyers, and tax consultants to support your business endeavors, free of charge.",
   },
   {
-    question: "Can I watch the webinar after the live session?",
+    question: "Family Support Services – At No Extra Cost",
     answer:
-      "Selected webinar recordings may be made available after the event, depending on the session and speaker permissions.",
-  },
-  {
-    question: "Can I ask questions during the webinar?",
-    answer:
-      "Yes. Most live sessions include a dedicated question-and-answer segment where participants can submit their questions.",
+      "We help you find the best schools, healthcare facilities, and insurance options for your family, ensuring peace of mind without extra fees.",
   },
 ];
 export default async function HomePage() {
@@ -49,6 +45,7 @@ export default async function HomePage() {
       <MigrationJourney></MigrationJourney>
       <DocumentVault></DocumentVault>
       {/* <GlobalCountries></GlobalCountries> */}
+      <GreenCardAchiever></GreenCardAchiever>
       <BusinessOpportunities></BusinessOpportunities>
       <VisaDestinations></VisaDestinations>
       <CEOMessage></CEOMessage>

@@ -84,9 +84,9 @@ export default function FaqSection({
             >
 
               <span className="text-[var(--color-red-1)]">
-                Frequently
+                What We Do
               </span>{" "}
-              Asked Questions
+              for Our Clients?
 
             </h2>
 

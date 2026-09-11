@@ -1,19 +1,14 @@
 "use client";
 
-import YoutubeCard from "@/components/UI/YoutubeCard";
 
 const howItWorks = [
   {
     title: "L1 Visa Explained",
-    url: "https://youtu.be/5ELPl8wYSks?si=j0IArQac0GMcVvkI",
-    thumbnail:
-      "https://img.youtube.com/vi/5ELPl8wYSks/maxresdefault.jpg",
+    id: "5ELPl8wYSks",
   },
   {
     title: "Move Your Business To USA",
-    url: "https://youtu.be/ziWltiVKW3w?si=NAGb0VO_bgvOJnks",
-    thumbnail:
-      "https://img.youtube.com/vi/ziWltiVKW3w/maxresdefault.jpg",
+    id: "ziWltiVKW3w",
   },
 ];
 
@@ -21,21 +16,15 @@ const howItWorks = [
 const testimonials = [
   {
     title: "L1 Visa Success Story",
-    url: "https://youtu.be/pR6cUYSzjVQ?si=eb4fLFtWjGL6eAIW",
-    thumbnail:
-      "https://img.youtube.com/vi/pR6cUYSzjVQ/maxresdefault.jpg",
+    id: "pR6cUYSzjVQ",
   },
   {
     title: "Client Success Story",
-    url: "https://youtu.be/xjWF-BqoGKw?si=oDFaTa2QXxl8cXEW",
-    thumbnail:
-      "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/66f6acc89209b52107666c39_Youtube-02-p-1080.jpg",
+    id: "xjWF-BqoGKw",
   },
   {
     title: "Business Migration Experience",
-    url: "https://youtu.be/Ni67ARzYBDQ?si=aAsC7jekMbajpY-d",
-    thumbnail:
-      "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/66f6acc869fd39c1e307888e_Youtube-01-p-1080.jpg",
+    id: "Ni67ARzYBDQ",
   },
 ];
 
@@ -43,21 +32,92 @@ const testimonials = [
 const clientStories = [
   {
     title: "Client Testimonial",
-    url: "https://youtu.be/_UseCx9-6K0?si=bf8y8Fn1CFCBkI3K",
-    thumbnail:
-      "https://img.youtube.com/vi/_UseCx9-6K0/maxresdefault.jpg",
+    id: "_UseCx9-6K0",
   },
   {
     title: "Visa Journey",
-    url: "https://youtu.be/X54FB7cMnOY?si=UwJFI1w6wEgpEIPk",
-    thumbnail:
-      "https://img.youtube.com/vi/X54FB7cMnOY/maxresdefault.jpg",
+    id: "X54FB7cMnOY",
   },
 ];
 
 
-export default function Youtube() {
+
+function YoutubeEmbed({ video }) {
   return (
+    <div
+      className="
+      overflow-hidden
+      rounded-4xl
+      bg-white
+      border
+      border-gray-200
+      shadow-[0_20px_50px_rgba(0,0,0,0.08)]
+      "
+    >
+
+      <div
+        className="
+        aspect-video
+        w-full
+        overflow-hidden
+        "
+      >
+
+        <iframe
+          src={`https://www.youtube.com/embed/${video.id}`}
+          title={video.title}
+          className="
+          h-full
+          w-full
+          "
+          allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+          web-share
+          "
+          allowFullScreen
+        />
+
+      </div>
+
+
+      <div
+        className="
+        bg-white
+        px-6
+        py-5
+        "
+      >
+
+        <h3
+          className="
+          text-lg
+          font-medium
+          uppercase
+          text-black
+          !mb-0
+          "
+        >
+          {video.title}
+        </h3>
+
+      </div>
+
+
+    </div>
+  );
+}
+
+
+
+export default function Youtube() {
+
+  return (
+
     <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
 
 
@@ -77,12 +137,15 @@ export default function Youtube() {
       />
 
 
+
       <div className="container-main relative">
+
 
 
         {/* HOW IT WORKS */}
 
         <div className="!mb-20">
+
 
           <h2
             className="
@@ -102,6 +165,7 @@ export default function Youtube() {
           </h2>
 
 
+
           <div
             className="
             grid
@@ -111,25 +175,29 @@ export default function Youtube() {
             "
           >
 
-            {howItWorks.map((video) => (
+            {howItWorks.map((video)=>(
 
-              <YoutubeCard
+              <YoutubeEmbed
                 key={video.title}
-                {...video}
-                className="aspect-video"
+                video={video}
               />
 
             ))}
 
+
           </div>
+
 
         </div>
 
 
 
+
         {/* CLIENT STORIES */}
 
+
         <div className="!mb-8">
+
 
           <h2
             className="
@@ -149,6 +217,7 @@ export default function Youtube() {
           </h2>
 
 
+
           <div
             className="
             grid
@@ -158,25 +227,30 @@ export default function Youtube() {
             "
           >
 
-            {testimonials.map((video) => (
+            {testimonials.map((video)=>(
 
-              <YoutubeCard
+              <YoutubeEmbed
                 key={video.title}
-                {...video}
-                className="aspect-video"
+                video={video}
               />
 
             ))}
 
+
           </div>
+
 
         </div>
 
 
 
+
+
         {/* MORE VIDEOS */}
 
+
         <div>
+
 
           <div
             className="
@@ -188,24 +262,28 @@ export default function Youtube() {
             "
           >
 
-            {clientStories.map((video) => (
+            {clientStories.map((video)=>(
 
-              <YoutubeCard
+              <YoutubeEmbed
                 key={video.title}
-                {...video}
-                className="aspect-video"
+                video={video}
               />
 
             ))}
 
+
           </div>
 
+
         </div>
+
 
 
       </div>
 
 
     </section>
+
   );
+
 }
