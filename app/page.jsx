@@ -10,6 +10,7 @@ import GlobalCountries from '@/components/Pages/Home/GlobalCountries';
 import BusinessOpportunities from '@/components/Pages/Home/BusinessOpportunities';
 import GreenCardAchiever from '@/components/Pages/Home/GreenCardAchiever';
 import CEOMessage from '@/components/common/CEOMessage';
+import LatestUpdate from '@/components/common/LatestUpdate';
 import Team from '@/components/Pages/Home/Team';
 import SuccessStories from '@/components/Pages/Home/SuccessStories';
 import Featured from '@/components/Pages/Home/Featured';
@@ -53,6 +54,7 @@ export default async function HomePage() {
       <SuccessStories></SuccessStories>
       <Featured></Featured>
       <Youtube></Youtube>
+      <LatestUpdate></LatestUpdate>
       <Faq badge="Frequently Asked Questions"
         title="Everything you need to know before joining"
         description="Find answers to common questions about registration, attendance, webinar access, and session recordings."
