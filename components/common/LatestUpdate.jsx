@@ -48,6 +48,7 @@ export default function LatestUpdates() {
             font-normal
             leading-none
             "
+            data-reveal
           >
             <span className="text-[var(--color-red-1)]">
               Latest
@@ -152,6 +153,7 @@ export default function LatestUpdates() {
                   duration-300
                   group-hover:text-[var(--color-red-1)]
                   "
+                  data-reveal
                 >
 
                   {item.title}

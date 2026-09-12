@@ -63,6 +63,7 @@ export default function Featured() {
             font-normal
             leading-[1]
             "
+            data-reveal
           >
 
             <span className="text-[var(--color-red-1)]">
@@ -137,6 +138,7 @@ export default function Featured() {
                 text-center
                 !mb-8
                 "
+                data-reveal
               >
                 "{item.quote}"
               </p>

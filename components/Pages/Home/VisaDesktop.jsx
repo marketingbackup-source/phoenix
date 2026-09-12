@@ -143,11 +143,11 @@ export default function VisaDesktop({ destinations }) {
       <div className="min-h-screen flex items-center">
         <div className="container-main w-full">
           <div className="!mb-12">
-            <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3">
+            <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3" data-reveal>
               Global Visa Options
             </p>
 
-            <h2 className="fs-52-32 font-normal leading-[1] uppercase">
+            <h2 className="fs-52-32 font-normal leading-[1] uppercase" data-reveal>
               Choose Your{" "}
               <span className="text-[var(--color-red-1)]">Destination</span>
             </h2>
@@ -169,7 +169,7 @@ export default function VisaDesktop({ destinations }) {
                 </span>
               </div>
 
-              <h3 className="fs-52-32 uppercase font-normal leading-[1] !mb-5">
+              <h3 className="fs-52-32 uppercase font-normal leading-[1] !mb-5" >
                 {visa.title}
               </h3>
 

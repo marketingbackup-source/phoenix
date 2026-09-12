@@ -39,7 +39,7 @@ export default function DocumentVault() {
 
           <div className="w-full lg:w-6/12">
 
-            <h2 className="fs-52-32 font-normal leading-[1] uppercase !mb-8">
+            <h2 className="fs-52-32 font-normal leading-[1] uppercase !mb-8" data-reveal>
               Your Documents,
               <br />
               <span className="text-[var(--color-red-1)]">
@@ -48,7 +48,7 @@ export default function DocumentVault() {
             </h2>
 
 
-            <p className="text-gray-500 fs-18-16 leading-[1.5] !mb-10">
+            <p className="text-gray-500 fs-18-16 leading-[1.5] !mb-10" data-reveal>
               Every petition, approval, and visa document — encrypted,
               organized, and available the moment you need it.
             </p>
@@ -60,6 +60,7 @@ export default function DocumentVault() {
                 <div
                   key={point}
                   className="flex items-start gap-4"
+                  data-reveal
                 >
 
                   <span className="flex items-center justify-center w-6 h-6 rounded-full border border-green-600 text-green-600 text-sm shrink-0">

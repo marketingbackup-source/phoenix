@@ -47,6 +47,9 @@ body {
 .fs-52-32{
     font-size: clamp(2rem, 1.1685rem + 1.7346vw, 3.25rem);
 }
+.fs-48-28{
+    font-size: clamp(1.75rem, 0.9185rem + 1.7346vw, 3rem);
+}
 .fs-36-24{
     font-size: clamp(1.5rem, 0.8359rem + 1.4284vw, 2.25rem);
 }

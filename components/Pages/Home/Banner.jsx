@@ -49,6 +49,7 @@ export default function Banner() {
               uppercase
               !mb-8
               "
+              data-reveal
             >
               Acquire Business in USA Get{" "}
               <span className="text-green-700">
@@ -64,6 +65,7 @@ export default function Banner() {
               !mb-8
               lg:!mb-10
               "
+              data-reveal
             >
               Phoenix Business Advisory has helped entrepreneurs, investors,
               founders, and business owners confidently establish and expand

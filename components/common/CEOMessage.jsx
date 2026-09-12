@@ -14,12 +14,12 @@ export default function CEOMessage() {
 
           <div className="w-full lg:w-7/12">
 
-            <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-5">
+            <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-5" data-reveal>
               Leadership Message
             </p>
 
 
-            <h2 className="fs-52-32 uppercase font-normal leading-[1] !mb-8">
+            <h2 className="fs-52-32 uppercase font-normal leading-[1] !mb-8" data-reveal>
               <span className="text-[var(--color-red-1)]">
                 CEO'S
               </span>{" "}
@@ -27,7 +27,7 @@ export default function CEOMessage() {
             </h2>
 
 
-            <p className="text-gray-500 fs-18-16 leading-[1.7] !mb-8">
+            <p className="text-gray-500 fs-18-16 leading-[1.7] !mb-8" data-reveal>
               Welcome to Phoenix Business Advisory. Our mission is to empower
               entrepreneurs and businesses to expand globally with confidence.
               I am passionate about helping people achieve the life they dream
@@ -44,7 +44,7 @@ export default function CEOMessage() {
               <div className="absolute left-0 top-0 h-full w-1 bg-[var(--color-red-1)]" />
 
 
-              <p className="uppercase tracking-[2px] text-lg leading-[1.6] font-medium !mb-0">
+              <p className="uppercase tracking-[2px] text-lg leading-[1.6] font-medium !mb-0" data-reveal>
 
                 <span className="text-[var(--color-red-1)]">
                   We are committed

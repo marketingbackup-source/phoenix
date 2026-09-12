@@ -123,6 +123,7 @@ export default function WhyPhoenix() {
               text-black
               !mb-8
               "
+              data-reveal
             >
 
               <span className="text-[var(--color-red-1)]">
@@ -142,6 +143,7 @@ export default function WhyPhoenix() {
               leading-[1.7]
               !mb-8
               "
+              data-reveal
             >
               We empower businesses and entrepreneurs to expand globally with
               confidence. From helping Indian businesses enter the USA,
@@ -230,6 +232,7 @@ export default function WhyPhoenix() {
                     uppercase
                     !mb-3
                     "
+                    data-reveal
                   >
                     {item.value}
                   </h3>
@@ -244,6 +247,7 @@ export default function WhyPhoenix() {
                     leading-[1.6]
                     !mb-0
                     "
+                    data-reveal
                   >
                     {item.title}
                   </p>

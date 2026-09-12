@@ -84,7 +84,7 @@ export default function BlogBanner({ title, date }) {
 
             <h1
               className="
-              fs-60-32
+              fs-36-24
               uppercase
               text-black
               leading-[1.2]

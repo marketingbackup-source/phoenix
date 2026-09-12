@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/main.css";
 import "../styles/theme.css";
+import RevealProvider from "@/components/animations/RevealProvider";
 
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
@@ -34,10 +35,12 @@ export default function RootLayout({
       </head>
 
       <body className="min-h-full flex flex-col">
+        <RevealProvider>
         <Header />
         {children}
         <Footer />
         <FloatingActions />
+        </RevealProvider>
       </body>
     </html>
   );

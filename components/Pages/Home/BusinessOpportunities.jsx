@@ -74,11 +74,11 @@ export default function BusinessOpportunities() {
     <section className="py-80-30 overflow-hidden bg-white">
       <div className="container-main">
         <div className="text-center !mb-2">
-          <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3">
+          <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3" data-reveal>
             Business Opportunities
           </p>
 
-          <h2 className="fs-52-32 uppercase font-normal leading-[1] ">
+          <h2 className="fs-52-32 uppercase font-normal leading-[1] " data-reveal>
             Acquire a <span className="text-[var(--color-red-1)]">Business</span> In
             USA
           </h2>
@@ -111,12 +111,12 @@ export default function BusinessOpportunities() {
             {/* Content */}
             <div className="relative pt-6 pb-4">
               {/* Business Name */}
-              <h3 className="font-[var(--font-heading)] text-xl lg:text-3xl uppercase !font-medium leading-[0.95] text-black !mb-5">
+              <h3 className="font-[var(--font-heading)] text-xl lg:text-3xl uppercase !font-medium leading-[0.95] text-black !mb-5" data-reveal>
                 {business.title}
               </h3>
 
               {/* Investment */}
-              <p className="leading-[1] !text-light text-xl lg:text-2xl !mb-6">
+              <p className="leading-[1] !text-light text-xl lg:text-2xl !mb-6" data-reveal>
                 {business.investment}
               </p>
 
@@ -130,7 +130,7 @@ export default function BusinessOpportunities() {
                     className="text-[var(--color-red-1)] shrink-0"
                   />
 
-                  <span className="text-xl uppercase font-thin leading-[1] text-[var(--color-gray-2)]">
+                  <span className="text-xl uppercase font-thin leading-[1] text-[var(--color-gray-2)]" data-reveal>
                     {business.location}
                   </span>
                 </div>

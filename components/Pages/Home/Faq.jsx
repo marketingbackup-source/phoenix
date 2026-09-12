@@ -81,6 +81,7 @@ export default function FaqSection({
               text-black
               !mb-6
               "
+              data-reveal
             >
 
               <span className="text-[var(--color-red-1)]">
@@ -98,6 +99,7 @@ export default function FaqSection({
               leading-[1.7]
               max-w-xl
               "
+              data-reveal
             >
               Find answers to common questions about business migration,
               visa pathways, investment opportunities, and the support
