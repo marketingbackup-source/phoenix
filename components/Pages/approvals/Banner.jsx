@@ -85,6 +85,7 @@ export default function ApprovalBanner() {
               text-[var(--color-red-1)]
               !mb-5
               "
+              data-reveal
             >
               Our Approvals
             </p>
@@ -98,6 +99,7 @@ export default function ApprovalBanner() {
               text-black
               !mb-8
               "
+              data-reveal
             >
 
               Proven Success Through{" "}
@@ -117,6 +119,7 @@ export default function ApprovalBanner() {
               max-w-xl
               !mb-8
               "
+              data-reveal
             >
 
               Phoenix Business Advisory has successfully assisted clients in

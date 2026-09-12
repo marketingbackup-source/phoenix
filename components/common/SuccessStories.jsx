@@ -53,6 +53,7 @@ export default function SuccessStories() {
             uppercase
             text-black
             "
+            data-reveal
           >
 
             Our{" "}

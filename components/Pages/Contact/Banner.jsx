@@ -86,6 +86,7 @@ export default function ContactBanner() {
               text-[var(--color-red-1)]
               !mb-5
               "
+              data-reveal
             >
               Contact Phoenix
             </p>
@@ -99,6 +100,7 @@ export default function ContactBanner() {
               text-black
               !mb-8
               "
+              data-reveal
             >
 
               Let's Build Your{" "}
@@ -118,6 +120,7 @@ export default function ContactBanner() {
               max-w-xl
               !mb-8
               "
+              data-reveal
             >
 
               Connect with Phoenix Business Advisory for expert guidance on

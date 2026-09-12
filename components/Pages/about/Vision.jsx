@@ -108,6 +108,7 @@ export default function MissionVision() {
                     text-black
                     !mb-0
                     "
+                    data-reveal
                   >
 
                     {item.first}{" "}
@@ -152,6 +153,7 @@ export default function MissionVision() {
                   leading-[1.7]
                   !mb-0
                   "
+                  data-reveal
                 >
                   {item.content}
                 </p>

@@ -89,6 +89,7 @@ export default function AustraliaVisaGrantLetters() {
               text-[var(--color-red-1)]
               !mb-5
               "
+              data-reveal
             >
               Australia Approvals
             </p>
@@ -100,6 +101,7 @@ export default function AustraliaVisaGrantLetters() {
               text-black
               !mb-8
               "
+              data-reveal
             >
               Australia{" "}
               <span className="text-[var(--color-red-1)]">Visa Grant</span>{" "}
@@ -114,6 +116,7 @@ export default function AustraliaVisaGrantLetters() {
               max-w-xl
               !mb-8
               "
+              data-reveal
             >
               Our successful visa grant letters demonstrate Phoenix Business
               Advisory's expertise in delivering strategic immigration

@@ -93,6 +93,7 @@ export default function Achievements() {
             text-black
             max-w-xl
             "
+            data-reveal
           >
 
             <span className="text-[var(--color-red-1)]">
@@ -176,6 +177,7 @@ export default function Achievements() {
                   leading-[1.5]
                   !mb-0
                   "
+                  data-reveal
                 >
                   {item.title}
                 </p>

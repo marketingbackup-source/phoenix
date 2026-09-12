@@ -81,6 +81,7 @@ export default function AboutBanner() {
               text-[var(--color-red-1)]
               !mb-5
               "
+              data-reveal
             >
               About Phoenix
             </p>
@@ -93,6 +94,7 @@ export default function AboutBanner() {
               text-black
               !mb-8
               "
+              data-reveal
             >
               Building Global Success Through
               <span className="text-[var(--color-red-1)]">
@@ -109,6 +111,7 @@ export default function AboutBanner() {
               max-w-xl
               !mb-8
               "
+              data-reveal
             >
               Phoenix Business Advisory helps entrepreneurs and businesses
               achieve international growth through expert immigration,

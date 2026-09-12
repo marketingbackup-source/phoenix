@@ -91,6 +91,7 @@ export default function LocationsBanner() {
               text-[var(--color-red-1)]
               !mb-5
               "
+              data-reveal
             >
               Our Presence
             </p>
@@ -105,6 +106,7 @@ export default function LocationsBanner() {
               text-black
               !mb-8
               "
+              data-reveal
             >
 
               Connecting Businesses Across{" "}
@@ -125,7 +127,9 @@ export default function LocationsBanner() {
               max-w-xl
               !mb-8
               "
+              data-reveal
             >
+              
 
               Phoenix Business Advisory supports entrepreneurs, investors, and
               businesses across key international markets through strategic

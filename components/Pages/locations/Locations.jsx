@@ -1,23 +1,23 @@
 "use client";
 
-import {
-  MapPin,
-  Phone,
-  Mail,
-} from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin } from "lucide-react";
 
+const FLAG_BASE =
+  "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/";
 
 const indiaLocations = [
   {
     city: "Ahmedabad",
+    icon: `${FLAG_BASE}india.webp`,
     address:
       "A-812, Wing A, Mondeal Heights, Ramdev Nagar, Ahmedabad, Gujarat- 380015, India",
     phone: "+91 99645 44000",
     email: "info@pcba.com.au",
-    map: true,
   },
   {
     city: "Pune",
+    icon: `${FLAG_BASE}india.webp`,
     address:
       "WeWork, Futura, Magarpatta Rd, Kirtane Baugh, Pune, Maharashtra 411028",
     phone: "+91 99645 44000",
@@ -25,22 +25,23 @@ const indiaLocations = [
   },
   {
     city: "Ludhiana",
+    icon: `${FLAG_BASE}india.webp`,
     address:
       "Shop No. 07 & 08 Second Floor of Wave Mall, Ferozepur Road, Ludhiana, Punjab 141012",
     phone: "+91 99645 44000",
     email: "info@pcba.com.au",
-    map: true,
   },
   {
     city: "Surat",
+    icon: `${FLAG_BASE}india.webp`,
     address:
       "A-wing, 202-203 Union Heights Rahul Raj Mall Lane Maharana Pratap Rd, Vesu Surat, Gujarat 395007.",
     phone: "+91 99645 44000",
     email: "info@pcba.com.au",
-    map: true,
   },
   {
     city: "Hyderabad",
+    icon: `${FLAG_BASE}india.webp`,
     address:
       "Midtown Building, Road no. 1 Banjara Hills, Opp Jalgam Vengal Rao Park, Hyderabad, Telangana 500034",
     phone: "+91 99645 44000",
@@ -53,33 +54,48 @@ const globalLocations = [
   {
     country: "Australia",
     city: "Sydney",
+    icon: `${FLAG_BASE}aus-1.webp`,
     label: "Global Headquarters",
     address:
       "Suite 14.02, 100 William Street, Woolloomooloo Sydney, NSW, Australia 2011",
     phone: "+61 29 357 6843",
     email: "info@pcba.com.au",
-    map: true,
   },
+
   {
     country: "USA",
     city: "Houston",
+    icon: `${FLAG_BASE}usa-1.webp`,
     address:
       "Suite 1000, 5718 Westheimer Road, Houston, Texas, 77057, USA.",
     phone: "+1 713 588 4437",
     email: "info@pcba.com.au",
   },
+
+  {
+    country: "USA",
+    city: "Dallas",
+    icon: `${FLAG_BASE}usa-1.webp`,
+    address:
+      "5 Cowboys Way Suite 300 Frisco, TX 75034",
+    phone: "+1 310 409 6898",
+    email: "info@pcba.com.au",
+  },
+
   {
     country: "UAE",
     city: "Dubai",
+    icon: `${FLAG_BASE}UAE.webp`,
     address:
       "Building 4WA, Office #708, Dubai Airport Free Zone, Dubai U.A.E.",
     phone: "+971 545 846 501",
     email: "info@pcba.com.au",
-    map: true,
   },
+
   {
     country: "UK",
     city: "London",
+    icon: `${FLAG_BASE}UK.webp`,
     address:
       "107-111 Fleet Street, London, Greater London EC4A 2AB",
     email: "info@pcba.com.au",
@@ -87,120 +103,146 @@ const globalLocations = [
 ];
 
 
-function LocationCard({location}) {
-
+function LocationCard({ location, showImage = false }) {
   return (
-
     <div
       className="
+      flex
+      flex-col
+      sm:flex-row
+      gap-5
       bg-white/[0.35]
       backdrop-blur-2xl
       border
       border-white/40
       rounded-3xl
-      p-6
-      shadow-[0_20px_50px_rgba(0,0,0,0.06)]
+      p-5
       transition-all
       duration-500
       hover:-translate-y-2
+      overflow-hidden
       "
     >
 
+      {/* Country Image Only For International */}
+      {showImage && location.icon && (
+        <div
+          className="
+          shrink-0
+          flex
+          items-center
+          justify-center
+          "
+        >
+          <Image
+            src={location.icon}
+            alt={location.city}
+            width={220}
+            height={220}
+            className="
+            h-[180px]
+            sm:h-[220px]
+            w-auto
+            object-contain
+            "
+          />
+        </div>
+      )}
 
-      <div className="flex-between !mb-5">
+
+      {/* Content */}
+      <div className="flex flex-col justify-center">
+
 
         <h4
           className="
           uppercase
           text-black
           text-xl
+          !mb-5
           "
         >
           {location.city}
         </h4>
 
 
-        <div
+        <p
           className="
-          flex-center
-          w-10
-          h-10
-          rounded-full
-          bg-[var(--color-red-1)]/10
+          text-gray-500
+          !text-sm
+          leading-[1.7]
+          !mb-5
           "
         >
-
-          <MapPin
-            size={20}
-            className="text-[var(--color-red-1)]"
-          />
-
-        </div>
+          {location.address}
+        </p>
 
 
-      </div>
+        <div className="flex flex-col gap-3">
 
-
-
-      <p
-        className="
-        text-gray-500
-        !text-sm
-        leading-[1.7]
-        !mb-5
-        "
-      >
-        {location.address}
-      </p>
-
-
-
-      <div className="flex flex-col gap-2">
-
-
-        {location.map && (
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-
-            <MapPin size={16}/>
+          <div
+            className="
+            flex
+            items-center
+            gap-3
+            text-sm
+            text-gray-600
+            "
+          >
+            <MapPin
+              size={16}
+              className="text-[var(--color-red-1)]"
+            />
 
             Google Location
-
           </div>
-        )}
 
 
+          {location.phone && (
+            <div
+              className="
+              flex
+              items-center
+              gap-3
+              text-sm
+              text-gray-600
+              "
+            >
+              <Phone
+                size={16}
+                className="text-[var(--color-red-1)]"
+              />
 
-        {location.phone && (
-          <div className="flex items-center gap-2 text-sm text-gray-600">
+              {location.phone}
+            </div>
+          )}
 
-            <Phone size={16}/>
 
-            {location.phone}
+          <div
+            className="
+            flex
+            items-center
+            gap-3
+            text-sm
+            text-gray-600
+            "
+          >
+            <Mail
+              size={16}
+              className="text-[var(--color-red-1)]"
+            />
 
+            {location.email}
           </div>
-        )}
 
-
-
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-
-          <Mail size={16}/>
-
-          {location.email}
 
         </div>
 
-
       </div>
 
-
     </div>
-
   );
-
 }
-
-
 
 export default function GlobalPresence() {
 
@@ -210,7 +252,6 @@ export default function GlobalPresence() {
 
 
       <div className="absolute inset-0">
-
 
         <div
           className="
@@ -241,7 +282,6 @@ export default function GlobalPresence() {
           "
         />
 
-
       </div>
 
 
@@ -251,7 +291,6 @@ export default function GlobalPresence() {
 
         <div className="text-center !mb-12">
 
-
           <h2
             className="
             fs-52-32
@@ -259,13 +298,11 @@ export default function GlobalPresence() {
             text-black
             "
           >
-
             Our{" "}
             <span className="text-[var(--color-red-1)]">
               Global
             </span>{" "}
             Presence
-
           </h2>
 
 
@@ -278,25 +315,45 @@ export default function GlobalPresence() {
             !mt-5
             "
           >
-            With strategic locations across key international markets, Phoenix
-            Business Advisory supports entrepreneurs, investors, and businesses
-            with trusted guidance for their global expansion journey.
-
+            With strategic locations across key international markets,
+            Phoenix Business Advisory supports entrepreneurs, investors,
+            and businesses with trusted guidance for their global expansion journey.
           </p>
-
 
         </div>
 
 
 
-        <h3
+        <h3 className="fs-36-24 uppercase text-black !mb-12">
+          International Presence
+        </h3>
+
+
+
+        <div
           className="
-          fs-36-24
-          uppercase
-          text-black
-          !mb-6
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          gap-30-10
+          !mb-20
           "
         >
+
+          {globalLocations.map((location)=>(
+  <LocationCard
+    key={location.city}
+    location={location}
+    showImage={true}
+  />
+))}
+
+        </div>
+
+
+
+        <h3 className="fs-36-24 uppercase text-black !mb-6">
           India
         </h3>
 
@@ -309,7 +366,6 @@ export default function GlobalPresence() {
           md:grid-cols-2
           lg:grid-cols-3
           gap-30-10
-          !mb-20
           "
         >
 
@@ -324,46 +380,9 @@ export default function GlobalPresence() {
 
 
 
-
-        <h3
-          className="
-          fs-36-24
-          uppercase
-          text-black
-          !mb-6
-          "
-        >
-          International Presence
-        </h3>
-
-
-
-        <div
-          className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-4
-          gap-30-10
-          "
-        >
-
-          {globalLocations.map((location)=>(
-            <LocationCard
-              key={location.country}
-              location={location}
-            />
-          ))}
-
-        </div>
-
-
-
       </div>
-
 
     </section>
 
   );
-
 }

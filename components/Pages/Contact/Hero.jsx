@@ -67,6 +67,7 @@ export default function ContactHero() {
               text-[var(--color-gray-1)]
               !mb-6
               "
+              data-reveal
             >
               Let's discuss your global business goals
             </h3>
@@ -80,6 +81,7 @@ export default function ContactHero() {
               max-w-2xl
               !mb-10
               "
+              data-reveal
             >
               Connect with our team for guidance on international business,
               investment, migration, and expansion opportunities.
