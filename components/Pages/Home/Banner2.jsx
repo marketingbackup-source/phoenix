@@ -26,24 +26,36 @@ function LibertyModel(props) {
     // whatever units/scale the model was exported at — this is what was
     // missing before, and why the model wasn't visible
     useEffect(() => {
-        if (!inner.current) return;
+    if (!inner.current) return;
 
-        const box = new THREE.Box3().setFromObject(inner.current);
-        const size = new THREE.Vector3();
-        box.getSize(size);
+    const box = new THREE.Box3().setFromObject(inner.current);
 
-        const targetHeight = 4.2;
-        const scale = targetHeight / size.y;
-        inner.current.scale.setScalar(scale);
+    const size = new THREE.Vector3();
+    box.getSize(size);
 
-        const scaledBox = new THREE.Box3().setFromObject(inner.current);
-        const scaledCenter = new THREE.Vector3();
-        scaledBox.getCenter(scaledCenter);
+    const targetHeight = 4.2;
 
-        inner.current.position.x -= scaledCenter.x;
-        inner.current.position.z -= scaledCenter.z;
-        inner.current.position.y -= scaledBox.min.y; // base sits at local y = 0
-    }, [scene]);
+    const scale = targetHeight / size.y;
+
+    inner.current.scale.setScalar(scale);
+
+
+    // Recalculate after scaling
+    const scaledBox = new THREE.Box3().setFromObject(inner.current);
+
+    const center = new THREE.Vector3();
+    scaledBox.getCenter(center);
+
+
+    // Keep base fixed at rotation point
+    inner.current.position.x -= center.x;
+    inner.current.position.z -= center.z;
+
+    // Put bottom exactly at y = 0
+    inner.current.position.y -= scaledBox.min.y;
+
+
+}, [scene]);
 
     useFrame((_, delta) => {
         if (group.current) group.current.rotation.y += delta * 0.12;
@@ -95,10 +107,10 @@ export default function Banner() {
                     </div>
 
                     <div className="w-full lg:w-5/12">
-                        <div className="relative mx-auto h-[640px] w-full max-w-[460px] overflow-hidden rounded-[2rem] bg-gradient-to-br from-green-50 via-white to-red-50">
+                        <div className="relative mx-auto h-[640px] w-full max-w-[460px] overflow-hidden ">
                             <Canvas
                                 camera={{
-                                    position: [40, 6, 35],
+                                    position: [46, 6, 35],
                                     fov: 55,
                                 }}
                                 shadows
@@ -127,12 +139,15 @@ export default function Banner() {
                                 />
 
                                 <OrbitControls
-                                    enablePan={false}
-                                    enableZoom={false}
-                                    minPolarAngle={Math.PI / 3}
-                                    maxPolarAngle={Math.PI / 1.8}
-                                    target={[0, -3, 0]}
-                                />
+    enablePan={false}
+    enableZoom={false}
+
+    // Allow only horizontal rotation
+    minPolarAngle={Math.PI / 2}
+    maxPolarAngle={Math.PI / 2}
+
+    target={[0, -3, 0]}
+ />
                             </Canvas>
                             <p className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-gray-400">
                                 Drag to rotate

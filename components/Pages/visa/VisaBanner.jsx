@@ -96,10 +96,11 @@ export default function VisaBanner({ title, excerpt, image }) {
                 <Image
                   src={image}
                   alt={title}
-                  width={700}
-                  height={700}
+                  width={600}
+                  height={600}
                   className="
                   w-full
+                  max-w-[500px]
                   object-contain
                   
                   "
