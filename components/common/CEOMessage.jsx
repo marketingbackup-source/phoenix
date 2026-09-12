@@ -65,6 +65,7 @@ export default function CEOMessage() {
                 src="https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6651e4b27b190374f71726ab_Mp%20singh%20signature%20black-p-1080.png"
                 alt="MP Singh Signature"
                 className="w-[160px]"
+                data-reveal="left"
               />
 
 
@@ -98,6 +99,7 @@ export default function CEOMessage() {
                   alt="MP Singh Founder and CEO"
                   priority
                   className="w-full h-auto object-cover"
+                  data-reveal="right"
                 />
 
 
