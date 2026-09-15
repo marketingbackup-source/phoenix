@@ -1,33 +1,14 @@
-"use client";
-
-const updates = [
-  {
-    title:
-      "Top Benefits of a US Green Card by Investment Program",
-    image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/blog-image_green-card.jpg-300x169.jpeg",
-    link: "/blogs/us-green-card-by-investment-benefits",
-  },
-
-  {
-    title:
-      "L1 Visa to Green Card: The Fastest Route for Indian Business Owners and Indian Professionals",
-    image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/6a857cdd6e24603c8713ec99_WhatsApp-Image-2026-08-19-at-13.54.16.jpeg",
-    link: "/blogs/l1-visa-to-green-card-the-fastest-route-for-indian-business-owners",
-  },
-
-  {
-    title:
-      "Green Card USA: Complete Guide to Eligibility, Process, Benefits and Requirements",
-    image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/6a795d13990004e5de237179_Green-Card-Blog.jpg-1.jpeg",
-    link: "/blogs/green-card-usa-complete-guide",
-  },
-];
+import { getLatestUpdates } from "@/services/cms/latest-updates/get-latest-updates";
 
 
-export default function LatestUpdates() {
+export default async function LatestUpdates() {
+
+  const updates =
+    await getLatestUpdates({
+      perPage: 3,
+    });
+
+
   return (
     <section
       className="
@@ -59,7 +40,6 @@ export default function LatestUpdates() {
         </div>
 
 
-
         <div
           className="
           grid
@@ -69,10 +49,10 @@ export default function LatestUpdates() {
           "
         >
 
-          {updates.map((item,index)=>(
+          {updates.map((item) => (
 
             <a
-              key={index}
+              key={item.id}
               href={item.link}
               className="
               group
@@ -132,8 +112,6 @@ export default function LatestUpdates() {
               </div>
 
 
-
-
               {/* Content */}
 
               <div
@@ -145,10 +123,9 @@ export default function LatestUpdates() {
 
                 <h3
                   className="
-                  text-xl
-                  lg:text-2xl
+                  text-xl!
                   leading-[1.35]
-                  !font-normal
+                  font-semibold!
                   transition-colors
                   duration-300
                   group-hover:text-[var(--color-red-1)]
@@ -172,7 +149,6 @@ export default function LatestUpdates() {
                   group-hover:w-20
                   "
                 />
-
 
               </div>
 

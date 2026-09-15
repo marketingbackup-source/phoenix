@@ -7,9 +7,11 @@ import {
   AccordionTrigger,
 } from "@/components/UI/accordion";
 
+
 export default function FaqSection({
   faqs = [],
 }) {
+
   return (
     <section
       className="
@@ -33,6 +35,7 @@ export default function FaqSection({
         blur-[160px]
         "
       />
+
 
       <div
         className="
@@ -129,11 +132,11 @@ export default function FaqSection({
               "
             >
 
-              {faqs.map((faq,index)=>(
+              {faqs.map((faq, index) => (
 
                 <AccordionItem
-                  key={faq.question}
-                  value={`faq-${index}`}
+                  key={faq.id}
+                  value={`faq-${faq.id}`}
                   className="
                   rounded-3xl
                   bg-white/70
@@ -196,7 +199,11 @@ export default function FaqSection({
                     "
                   >
 
-                    {faq.answer}
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: faq.answer,
+                      }}
+                    />
 
                   </AccordionContent>
 

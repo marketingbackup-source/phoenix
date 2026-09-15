@@ -1,3 +1,6 @@
+
+export const dynamic = "force-dynamic";
+
 import Banner from '@/components/Pages/Home/Banner3';
 
 import TrustAuthority from '@/components/Pages/Home/TrustAuthority';
@@ -15,28 +18,10 @@ import Team from '@/components/Pages/Home/Team';
 import SuccessStories from '@/components/Pages/Home/SuccessStories';
 import Featured from '@/components/Pages/Home/Featured';
 import Youtube from '@/components/Pages/Home/Youtube';
-const faqs = [
-  {
-    question: "Comprehensive Business Migration Services",
-    answer:
-      "We provide tailored business migration solutions to help you expand your business into the USA, Australia, European Union and the UAE.",
-  },
-  {
-    question: "Business Acquisition Support – At No Extra Cost",
-    answer:
-      "Our experts help you find and acquire the best business opportunities, all at no extra cost to you.",
-  },
-  {
-    question: "Professional Network Assistance – At No Extra Cost",
-    answer:
-      "We connect you with top accountants, lawyers, and tax consultants to support your business endeavors, free of charge.",
-  },
-  {
-    question: "Family Support Services – At No Extra Cost",
-    answer:
-      "We help you find the best schools, healthcare facilities, and insurance options for your family, ensuring peace of mind without extra fees.",
-  },
-];
+
+
+import { getFAQs } from "@/services/cms/faqs/get-faqs";
+const faqs = await getFAQs("Homepage");
 export default async function HomePage() {
   return (
     <main className="">
@@ -55,10 +40,7 @@ export default async function HomePage() {
       <Featured></Featured>
       <Youtube></Youtube>
       <LatestUpdate></LatestUpdate>
-      <Faq badge="Frequently Asked Questions"
-        title="Everything you need to know before joining"
-        description="Find answers to common questions about registration, attendance, webinar access, and session recordings."
-        faqs={faqs}></Faq>
+      <Faq faqs={faqs}></Faq>
     </main>
   );
 }
