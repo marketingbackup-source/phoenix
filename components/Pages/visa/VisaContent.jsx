@@ -12,6 +12,7 @@ export default function VisaContent({
       visa-content
       text-gray-600
       leading-[1.8]
+       overflow-x-hidden
       "
       dangerouslySetInnerHTML={{
         __html: content,

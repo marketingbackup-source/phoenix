@@ -2,27 +2,52 @@ import { getPosts } from "@/services/cms/posts/get-posts";
 import { getCategoryId } from "@/services/cms/categories/get-category-id";
 
 import PostGrid from "@/components/posts/PostGrid";
+import Pagination from "@/components/posts/Pagination";
 
 
-export default async function PressReleasePage(){
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
+
+export default async function PressReleasePage({
+  searchParams,
+}) {
 
   const categoryId =
     await getCategoryId("press-release");
 
 
+  const resolvedSearchParams =
+    await searchParams;
 
-  const posts =
-    await getPosts({
 
-      category:categoryId,
+  const pageParam =
+    resolvedSearchParams?.page;
 
-      perPage:12,
 
-      embed:true,
+  const currentPage =
+    Math.max(
+      1,
+      parseInt(pageParam, 10) || 1
+    );
 
-    });
 
+  const {
+    posts,
+    totalPosts,
+    totalPages,
+    perPage,
+  } = await getPosts({
+
+    category: categoryId,
+
+    page: currentPage,
+
+    perPage: 12,
+
+    embed: true,
+
+  });
 
 
   return (
@@ -52,7 +77,9 @@ export default async function PressReleasePage(){
             "
           >
 
-            Press <span className="text-[var(--color-red-1)]">
+            Press{" "}
+
+            <span className="text-[var(--color-red-1)]">
               Release
             </span>
 
@@ -64,6 +91,13 @@ export default async function PressReleasePage(){
 
         <PostGrid
           posts={posts}
+          basePath="/press-release"
+        />
+
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
           basePath="/press-release"
         />
 

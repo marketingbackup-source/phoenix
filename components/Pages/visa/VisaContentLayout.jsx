@@ -74,7 +74,7 @@ export default function VisaContentLayout({ content }) {
 
   return (
     <section className="py-80-30 bg-white">
-      <div className="container-main">
+      <div className="container-main ">
         <div
           className="
           grid
@@ -109,7 +109,7 @@ export default function VisaContentLayout({ content }) {
               <VisaTOC headings={headings} />
             </div>
 
-            <VisaContent content={updatedContent} />
+            <VisaContent  content={updatedContent} />
           </div>
 
           <aside

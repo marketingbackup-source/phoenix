@@ -14,7 +14,7 @@ export default function VisaBanner({ title, excerpt, image }) {
         <div
           className="
           flex
-          flex-col
+          flex-col-reverse
           lg:flex-row
           items-center
           gap-60-20
@@ -101,6 +101,7 @@ export default function VisaBanner({ title, excerpt, image }) {
                   className="
                   w-full
                   max-w-[500px]
+
                   object-contain
                   
                   "

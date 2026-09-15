@@ -375,3 +375,9 @@ table {
     px-[clamp(20px,4vw,60px)];
 
 }
+
+/* Table Wrapper */
+.table-of-wrapper{
+    width:100%;
+    overflow-x:auto;
+}

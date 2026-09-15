@@ -61,7 +61,7 @@ export default function PostCard({
       </div>
 
       <div className="p-6">
-        <p className="text-gray-400 text-sm !mb-4">
+        <p className="text-gray-400 !text-lg !mb-4">
           {new Date(post.publishedAt).toLocaleDateString(
             "en-US",
             {
@@ -76,7 +76,6 @@ export default function PostCard({
           className="
           text-lg!
           font-medium!
-          uppercase
           leading-[1.3]
           !mb-6
           "
