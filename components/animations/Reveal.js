@@ -16,29 +16,44 @@ export function initRevealAnimations() {
     const type = element.dataset.reveal || "default";
 
 
-    // Avoid duplicate ScrollTriggers
-    if (ScrollTrigger.getById(element)) return;
+    // Avoid duplicate animations
+    if (element.dataset.revealInitialized === "true") {
+      return;
+    }
 
+
+    element.dataset.revealInitialized = "true";
+
+
+    /*
+     * STAGGER
+     */
 
     if (type === "stagger") {
 
       gsap.fromTo(
         element.children,
+
         {
           opacity: 0,
           y: 30,
         },
+
         {
           opacity: 1,
           y: 0,
+
           duration: 0.7,
+
           stagger: 0.15,
+
           ease: "power3.out",
 
           scrollTrigger: {
-            id: element,
             trigger: element,
-            start: "top 85%",
+
+            start: "top 50%",
+
             once: true,
           },
         }
@@ -48,6 +63,10 @@ export function initRevealAnimations() {
       return;
     }
 
+
+    /*
+     * REVEAL TYPES
+     */
 
     const animations = {
 
@@ -78,15 +97,19 @@ export function initRevealAnimations() {
     };
 
 
+    /*
+     * CREATE REVEAL
+     */
+
     gsap.fromTo(
 
       element,
 
       animations[type] || animations.default,
 
-
       {
         opacity: 1,
+
         x: 0,
         y: 0,
         scale: 1,
@@ -95,14 +118,11 @@ export function initRevealAnimations() {
 
         ease: "power3.out",
 
-
         scrollTrigger: {
-
-          id: element,
 
           trigger: element,
 
-          start: "top 85%",
+          start: "top 50%",
 
           once: true,
 
@@ -112,8 +132,13 @@ export function initRevealAnimations() {
 
     );
 
-
   });
 
+
+  /*
+   * Recalculate ScrollTrigger positions
+   */
+
+  ScrollTrigger.refresh();
 
 }
