@@ -52,7 +52,7 @@ export function initRevealAnimations() {
           scrollTrigger: {
             trigger: element,
 
-            start: "top 50%",
+            start: "top 65%",
 
             once: true,
           },
@@ -122,7 +122,7 @@ export function initRevealAnimations() {
 
           trigger: element,
 
-          start: "top 50%",
+          start: "top 65%",
 
           once: true,
 
