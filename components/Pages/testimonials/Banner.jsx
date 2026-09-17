@@ -47,53 +47,47 @@ const testimonials = [
       "The team at Phoenix Business Advisory played a crucial role in my L1 visa preparation. Their guidance and mock interview sessions helped me confidently present my expertise and improve my interview readiness. Special thanks to the Global Immigration Department and the entire team for their dedication, insights, and continuous support throughout the process. Thanks to their preparation, my interview went smoothly, and my L1 visa was approved successfully.",
   },
 ];
+
 export default function TestimonialsBanner() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7] min-h-[100vh] flex items-center">
-      <div className="absolute inset-0">
-        <div
-          className="
-          absolute
-          -top-40
-          right-1/3
-          w-[300px]
-          h-[300px]
-          rounded-full
-          bg-[var(--color-red-1)]
-          opacity-5
-          blur-[160px]
-          "
-        />
+    <section
+      className="
+      relative
+      py-80-30
+      overflow-hidden
+      min-h-[100vh]
+      flex
+      items-center
+      "
+    >
 
-        <div
-          className="
-          absolute
-          bottom-[-200px]
-          left-[-100px]
-          w-[600px]
-          h-[600px]
-          rounded-full
-          bg-gray-300
-          opacity-40
-          blur-[180px]
-          "
-        />
+      {/* Background Video */}
 
-        <div
-          className="
-          absolute
-          inset-0
-          opacity-[0.03]
-          "
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg,#000 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
+      <video
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        "
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source
+          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-2.mp4"
+          type="video/mp4"
         />
-      </div>
+      </video>
 
-      <div className="container-main relative">
+
+      {/* Content */}
+
+      <div className="container-main relative z-10">
+
         <div
           className="
           flex
@@ -103,12 +97,16 @@ export default function TestimonialsBanner() {
           gap-60-20
           "
         >
+
+          {/* Left Content */}
+
           <div
             className="
             w-full
             lg:w-5/12
             "
           >
+
             <p
               className="
               uppercase
@@ -120,6 +118,7 @@ export default function TestimonialsBanner() {
               Testimonials
             </p>
 
+
             <h1
               className="
               fs-60-32
@@ -128,9 +127,13 @@ export default function TestimonialsBanner() {
               !mb-8
               "
             >
-              Our <span className="text-[var(--color-red-1)]">Success</span>{" "}
+              Our{" "}
+              <span className="text-[var(--color-red-1)]">
+                Success
+              </span>{" "}
               Stories
             </h1>
+
 
             <p
               className="
@@ -145,7 +148,11 @@ export default function TestimonialsBanner() {
               families who achieved their global aspirations with Phoenix
               Business Advisory's strategic guidance and expertise.
             </p>
+
           </div>
+
+
+          {/* Testimonials Slider */}
 
           <div
             className="
@@ -153,6 +160,7 @@ export default function TestimonialsBanner() {
             lg:w-7/12
             "
           >
+
             <Swiper
               modules={[Autoplay]}
               slidesPerView={1}
@@ -164,8 +172,11 @@ export default function TestimonialsBanner() {
                 disableOnInteraction: false,
               }}
             >
+
               {testimonials.map((item, index) => (
+
                 <SwiperSlide key={index}>
+
                   <div
                     className="
                     relative
@@ -177,6 +188,7 @@ export default function TestimonialsBanner() {
                     p-40-15
                     "
                   >
+
                     <Quote
                       size={70}
                       className="
@@ -185,6 +197,7 @@ export default function TestimonialsBanner() {
                       !mb-8
                       "
                     />
+
 
                     <p
                       className="
@@ -197,81 +210,92 @@ export default function TestimonialsBanner() {
                       {item.content}
                     </p>
 
+
                     <div
-  className="
-  flex
-  items-center
-  gap-4
-  "
->
-  <img
-    src={item.image}
-    alt={item.name}
-    className="
-    h-24
-    w-24
-    rounded-full
-    object-cover
-    border
-    border-gray-200
-    "
-  />
+                      className="
+                      flex
+                      items-center
+                      gap-4
+                      "
+                    >
 
-  <div>
-
-    <h3
-      className="
-      uppercase
-      text-black
-      text-xl
-      !mb-2
-      "
-    >
-      {item.name}
-    </h3>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="
+                        h-24
+                        w-24
+                        rounded-full
+                        object-cover
+                        border
+                        border-gray-200
+                        "
+                      />
 
 
-    <div
-      className="
-      flex
-      items-center
-      gap-2
-      text-shadow-md
-      font-medium
-      text-gray-500
-      "
-    >
+                      <div>
 
-      <span>
-        {item.from}
-      </span>
+                        <h3
+                          className="
+                          uppercase
+                          text-black
+                          text-xl
+                          !mb-2
+                          "
+                        >
+                          {item.name}
+                        </h3>
 
 
-      <ArrowRight
-        size={18}
-        strokeWidth={1.8}
-        className="
-        text-[var(--color-red-1)]
-        "
-      />
+                        <div
+                          className="
+                          flex
+                          items-center
+                          gap-2
+                          text-shadow-md
+                          font-medium
+                          text-gray-500
+                          "
+                        >
+
+                          <span>
+                            {item.from}
+                          </span>
 
 
-      <span>
-        {item.to}
-      </span>
+                          <ArrowRight
+                            size={18}
+                            strokeWidth={1.8}
+                            className="
+                            text-[var(--color-red-1)]
+                            "
+                          />
 
-    </div>
 
-  </div>
+                          <span>
+                            {item.to}
+                          </span>
 
-</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
                   </div>
+
                 </SwiperSlide>
+
               ))}
+
             </Swiper>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }

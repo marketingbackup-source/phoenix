@@ -14,23 +14,23 @@ const flagBaseUrl =
 
 const countries = [
   {
-    image: `${flagBaseUrl}us-flag.png`,
+    image: `${flagBaseUrl}usa.png`,
     label: "United States",
   },
   {
-    image: `${flagBaseUrl}nz-flag.png`,
+    image: `${flagBaseUrl}new-zealand.png`,
     label: "New Zealand",
   },
   {
-    image: `${flagBaseUrl}uae.png`,
+    image: `${flagBaseUrl}flag-2.png`,
     label: "UAE",
   },
   {
-    image: `${flagBaseUrl}eu-flag.png`,
+    image: `${flagBaseUrl}european-union.png`,
     label: "Europe",
   },
   {
-    image: `${flagBaseUrl}aus-flag.png`,
+    image: `${flagBaseUrl}australia.png`,
     label: "Australia",
   },
 ];
@@ -208,7 +208,7 @@ export default function Banner() {
                     className="
                     flex
                     items-center
-                    gap-5
+                    gap-8
                     whitespace-nowrap
                     "
                   >

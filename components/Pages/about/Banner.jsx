@@ -1,62 +1,47 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import BaseButton from "@/components/UI/BaseButton";
 
 export default function AboutBanner() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7] min-h-[100vh] flex
-      items-center">
+    <section
+      className="
+      relative
+      min-h-[100vh]
+      overflow-hidden
+      flex
+      items-center
+      "
+    >
 
-      <div className="absolute inset-0">
+      {/* Background Video */}
 
-        <div
-          className="
-          absolute
-          -top-40
-          right-1/3
-          w-[500px]
-          h-[500px]
-          rounded-full
-          bg-[var(--color-red-1)]
-          opacity-10
-          blur-[160px]
-          "
+      <video
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        "
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source
+          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-1.mp4"
+          type="video/mp4"
         />
-
-        <div
-          className="
-          absolute
-          bottom-[-200px]
-          left-[-100px]
-          w-[600px]
-          h-[600px]
-          rounded-full
-          bg-gray-300
-          opacity-40
-          blur-[180px]
-          "
-        />
-
-        <div
-          className="
-          absolute
-          inset-0
-          opacity-[0.03]
-          "
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg,#000 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-      </div>
+      </video>
 
 
-      <div className="container-main relative">
+      {/* Content */}
+
+      <div className="container-main relative z-10">
 
         <div
           className="
@@ -67,6 +52,8 @@ export default function AboutBanner() {
           gap-60-20
           "
         >
+
+          {/* Left Content */}
 
           <div
             className="
@@ -126,13 +113,13 @@ export default function AboutBanner() {
               toLink="/contact-us"
               style="primary w-fit"
             >
-              <ArrowRight size={20}/>
+              <ArrowRight size={20} />
             </BaseButton>
-
 
           </div>
 
 
+          {/* Right Image */}
 
           <div
             className="
@@ -150,7 +137,7 @@ export default function AboutBanner() {
               "
             >
 
-              <Image
+              <img
                 src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/about-us-1-e1788429693609-1.webp"
                 alt="Phoenix Business Advisory"
                 width={700}
@@ -160,13 +147,12 @@ export default function AboutBanner() {
                 object-contain
                 mix-blend-multiply
                 "
-                priority
+                loading="eager"
               />
 
             </div>
 
           </div>
-
 
         </div>
 

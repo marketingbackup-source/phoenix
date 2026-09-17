@@ -529,7 +529,7 @@ export default function SiteHeader() {
               title="Get a Call in 55 Second"
               type="button"
               onClick={() => setIsCallbackOpen(true)}
-              style="gray"
+              style="gray nav-shine"
             >
               <Headset
                 size={20}

@@ -7,57 +7,43 @@ import BaseButton from "@/components/UI/BaseButton";
 
 export default function ContactBanner() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7] min-h-[100vh] flex items-center">
+    <section
+      className="
+      relative
+      py-80-30
+      overflow-hidden
+      min-h-[100vh]
+      flex
+      items-center
+      "
+    >
 
-      <div className="absolute inset-0">
+      {/* Background Video */}
 
-        <div
-          className="
-          absolute
-          -top-40
-          right-1/3
-          w-[500px]
-          h-[500px]
-          rounded-full
-          bg-[var(--color-red-1)]
-          opacity-10
-          blur-[160px]
-          "
+      <video
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        "
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source
+          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-katko.mp4"
+          type="video/mp4"
         />
-
-        <div
-          className="
-          absolute
-          bottom-[-200px]
-          left-[-100px]
-          w-[600px]
-          h-[600px]
-          rounded-full
-          bg-gray-300
-          opacity-40
-          blur-[180px]
-          "
-        />
-
-        <div
-          className="
-          absolute
-          inset-0
-          opacity-[0.03]
-          "
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg,#000 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-      </div>
+      </video>
 
 
+      {/* Content */}
 
-      <div className="container-main relative">
-
+      <div className="container-main relative z-10">
 
         <div
           className="
@@ -69,7 +55,7 @@ export default function ContactBanner() {
           "
         >
 
-
+          {/* Left Content */}
 
           <div
             className="
@@ -77,7 +63,6 @@ export default function ContactBanner() {
             lg:w-6/12
             "
           >
-
 
             <p
               className="
@@ -92,7 +77,6 @@ export default function ContactBanner() {
             </p>
 
 
-
             <h1
               className="
               fs-60-32
@@ -102,14 +86,11 @@ export default function ContactBanner() {
               "
               data-reveal
             >
-
               Let's Build Your{" "}
               <span className="text-[var(--color-red-1)]">
                 Global Future
               </span>
-
             </h1>
-
 
 
             <p
@@ -122,15 +103,12 @@ export default function ContactBanner() {
               "
               data-reveal
             >
-
               Connect with Phoenix Business Advisory for expert guidance on
               business migration, investment opportunities, and global
               expansion strategies. Our experienced team is ready to understand
               your goals and provide personalised solutions for your
               international journey.
-
             </p>
-
 
 
             <BaseButton
@@ -139,14 +117,13 @@ export default function ContactBanner() {
               toLink="/contact-us"
               style="primary w-fit"
             >
-              <ArrowRight size={20}/>
+              <ArrowRight size={20} />
             </BaseButton>
-
 
           </div>
 
 
-
+          {/* Right Image */}
 
           <div
             className="
@@ -156,7 +133,6 @@ export default function ContactBanner() {
             "
           >
 
-
             <div
               className="
               relative
@@ -165,9 +141,8 @@ export default function ContactBanner() {
               "
             >
 
-
               <Image
-                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/about-us-2.webp"
+                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/contact-us.webp"
                 alt="Contact Phoenix Business Advisory"
                 width={700}
                 height={700}
@@ -180,19 +155,13 @@ export default function ContactBanner() {
                 priority
               />
 
-
             </div>
-
 
           </div>
 
-
-
         </div>
 
-
       </div>
-
 
     </section>
   );

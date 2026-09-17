@@ -85,24 +85,88 @@ body {
 ======================================== */
 
 .site-header__desktop-nav {
-  @apply hidden items-center gap-8 lg:flex;
+  @apply hidden items-center gap-[12px] lg:flex;
 }
+
 
 .site-header__nav-link {
-  @apply relative text-sm !font-semibold text-[var(--color-gray-1)]!
-  transition-colors duration-300
-  hover:text-black;
+  @apply relative
+  2xl:text-[14px]!
+  xl:text-[13px]!
+  !font-semibold
+  !text-[var(--color-gray-1)]
+  px-3
+  py-2
+  rounded-lg
+  transition-all
+  duration-500
+  ease-out;
 }
 
-.site-header__nav-link::after {
+/* ========================================
+   Desktop Header CTA Shine
+======================================== */
+
+.nav-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+
+/* Moving white shine */
+
+.nav-shine::after {
   content: "";
-  @apply absolute -bottom-2 left-0 h-[3px] w-0
-  bg-[var(--color-red-1)]
-  transition-all duration-300;
+  position: absolute;
+
+  top: -20%;
+  left: -80%;
+
+  width: 35%;
+  height: 140%;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    transparent 100%
+  );
+
+  transform: skewX(-20deg);
+
+  pointer-events: none;
+
+  animation: navButtonShine 3s ease-in-out infinite;
+
+  z-index: 5;
 }
 
-.site-header__nav-link:hover::after {
-  @apply w-full;
+
+@keyframes navButtonShine {
+
+  0% {
+    left: -80%;
+  }
+
+  35% {
+    left: 130%;
+  }
+
+  100% {
+    left: 130%;
+  }
+
+}
+
+
+/* Desktop Hover */
+
+.site-header__nav-link:hover {
+  @apply bg-[var(--color-gray-1)]
+  !text-white;
 }
 
 /* ========================================

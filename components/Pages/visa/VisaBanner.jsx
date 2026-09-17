@@ -7,10 +7,44 @@ import BaseButton from "@/components/UI/BaseButton";
 
 export default function VisaBanner({ title, excerpt, image }) {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
-     
+    <section
+      className="
+      relative
+      py-80-30
+      overflow-hidden
+      min-h-[100vh]
+      flex
+      items-center
+      "
+    >
 
-      <div className="container-main relative">
+      {/* Background Video */}
+
+      <video
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        "
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source
+          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-katko.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+
+      {/* Content */}
+
+      <div className="container-main relative z-10">
+
         <div
           className="
           flex
@@ -20,12 +54,16 @@ export default function VisaBanner({ title, excerpt, image }) {
           gap-60-20
           "
         >
+
+          {/* Left Content */}
+
           <div
             className="
             w-full
             lg:w-6/12
             "
           >
+
             <p
               className="
               uppercase
@@ -36,6 +74,7 @@ export default function VisaBanner({ title, excerpt, image }) {
             >
               Immigration Program
             </p>
+
 
             <h1
               className="
@@ -48,6 +87,7 @@ export default function VisaBanner({ title, excerpt, image }) {
                 __html: title,
               }}
             />
+
 
             <div
               className="
@@ -62,6 +102,7 @@ export default function VisaBanner({ title, excerpt, image }) {
               }}
             />
 
+
             <BaseButton
               title="Speak With Expert"
               link
@@ -70,7 +111,11 @@ export default function VisaBanner({ title, excerpt, image }) {
             >
               <ArrowRight size={20} />
             </BaseButton>
+
           </div>
+
+
+          {/* Right Image */}
 
           <div
             className="
@@ -79,6 +124,7 @@ export default function VisaBanner({ title, excerpt, image }) {
             flex-center
             "
           >
+
             <div
               className="
               relative
@@ -86,13 +132,13 @@ export default function VisaBanner({ title, excerpt, image }) {
               max-w-[600px]
               "
             >
-            
 
               <div
                 className="
                 relative
                 "
               >
+
                 <Image
                   src={image}
                   alt={title}
@@ -101,17 +147,21 @@ export default function VisaBanner({ title, excerpt, image }) {
                   className="
                   w-full
                   max-w-[500px]
-
                   object-contain
-                  
                   "
                   priority
                 />
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }
