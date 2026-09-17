@@ -7,7 +7,7 @@ import BaseButton from "@/components/UI/BaseButton";
 
 export default function ContactBanner() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
+    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7] min-h-[100vh] flex items-center">
 
       <div className="absolute inset-0">
 
@@ -172,6 +172,7 @@ export default function ContactBanner() {
                 width={700}
                 height={700}
                 className="
+                max-w-[500px]
                 w-full
                 object-contain
                 mix-blend-multiply

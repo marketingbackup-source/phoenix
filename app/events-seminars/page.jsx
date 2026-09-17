@@ -289,7 +289,6 @@ export default function EventsSeminarsPage() {
                     border
                     text-xs
                     sm:text-sm
-                    uppercase
                     tracking-[1.5px]
                     transition-all
                     duration-300
@@ -345,6 +344,7 @@ export default function EventsSeminarsPage() {
               <div
                 key={`${selectedEvent.id}-${index}`}
                 className="overflow-hidden rounded-2xl bg-gray-100"
+                data-reveal="bottom"
               >
                 <Image
                   src={image}

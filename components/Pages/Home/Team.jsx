@@ -96,7 +96,7 @@ export default function OurTeam() {
         >
 
           <img
-            src="https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a46058c0e8cdd3fcca09844_faa49bed4109e8ea444d45dd2a9dc015_team-photo2-p-1080.jpg"
+            src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/group-photo-2-scaled.webp"
             alt="Phoenix Business Advisory Team"
             className="
             w-full

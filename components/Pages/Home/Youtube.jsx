@@ -53,6 +53,7 @@ function YoutubeEmbed({ video }) {
       border-gray-200
       shadow-[0_20px_50px_rgba(0,0,0,0.08)]
       "
+      data-reveal="bottom"
     >
 
       <div

@@ -253,7 +253,74 @@
 }
 
 
+/* ==========================
+   GRAY BUTTON
+========================== */
 
+
+.base-button.gray {
+
+    @apply bg-[var(--color-gray-1)]
+    border-[var(--color-gray-1)]
+    text-white;
+
+}
+
+
+/* Text wipe */
+
+.base-button.gray > span:first-child::before {
+
+    @apply bg-white;
+
+}
+
+
+.base-button.gray:hover > span:first-child::before {
+
+    transform:scaleX(1);
+
+}
+
+
+.base-button.gray:hover > span:first-child {
+
+    color:var(--color-gray-1);
+
+}
+
+
+
+/* Icon wipe */
+
+.base-button.gray > span:last-child {
+
+    @apply bg-white;
+
+    color:var(--color-gray-1);
+
+}
+
+
+.base-button.gray > span:last-child::before {
+
+    @apply bg-[var(--color-gray-1)];
+
+}
+
+
+.base-button.gray:hover > span:last-child::before {
+
+    transform:scaleX(1);
+
+}
+
+
+.base-button.gray:hover > span:last-child {
+
+    color:white;
+
+}
 
 
 

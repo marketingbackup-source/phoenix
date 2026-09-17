@@ -84,6 +84,7 @@ export default function ClientTestimonials() {
               duration-500
               hover:-translate-y-2
               "
+              data-reveal="bottom"
             >
 
 

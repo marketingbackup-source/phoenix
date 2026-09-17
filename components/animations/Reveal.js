@@ -31,13 +31,19 @@ export function initRevealAnimations() {
 
     if (type === "stagger") {
 
-      gsap.fromTo(
-        element.children,
-
-        {
+      const animation = {
+        start: "top 65%",
+        from: {
           opacity: 0,
           y: 30,
         },
+      };
+
+
+      gsap.fromTo(
+        element.children,
+
+        animation.from,
 
         {
           opacity: 1,
@@ -52,7 +58,7 @@ export function initRevealAnimations() {
           scrollTrigger: {
             trigger: element,
 
-            start: "top 65%",
+            start: animation.start,
 
             once: true,
           },
@@ -71,30 +77,72 @@ export function initRevealAnimations() {
     const animations = {
 
       default: {
-        opacity: 0,
-        y: -40,
+        start: "top 65%",
+
+        from: {
+          opacity: 0,
+          y: -40,
+        },
       },
 
 
       scale: {
-        opacity: 0,
-        y: 20,
-        scale: 0.95,
+        start: "top 65%",
+
+        from: {
+          opacity: 0,
+          y: 40,
+          scale: 0.95,
+        },
       },
 
 
       left: {
-        opacity: 0,
-        x: -50,
+        start: "top 65%",
+
+        from: {
+          opacity: 0,
+          x: -70,
+          rotation: -4,
+        },
       },
 
 
       right: {
-        opacity: 0,
-        x: 50,
+        start: "top 85%",
+
+        from: {
+          opacity: 0,
+          x: 40,
+          rotation: 4,
+        },
+      },
+
+
+      top: {
+        start: "top 65%",
+
+        from: {
+          opacity: 0,
+          y: -70,
+        },
+      },
+
+
+      bottom: {
+        start: "top 80%",
+
+        from: {
+          opacity: 0,
+          y: 50,
+        },
       },
 
     };
+
+
+    const animation =
+      animations[type] || animations.default;
 
 
     /*
@@ -105,16 +153,19 @@ export function initRevealAnimations() {
 
       element,
 
-      animations[type] || animations.default,
+      animation.from,
 
       {
         opacity: 1,
 
         x: 0,
         y: 0,
+
         scale: 1,
 
-        duration: 0.8,
+        rotation: 0,
+
+        duration: 0.9,
 
         ease: "power3.out",
 
@@ -122,7 +173,7 @@ export function initRevealAnimations() {
 
           trigger: element,
 
-          start: "top 65%",
+          start: animation.start,
 
           once: true,
 

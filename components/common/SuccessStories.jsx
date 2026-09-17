@@ -98,6 +98,7 @@ export default function SuccessStories() {
                 : "lg:col-span-4"
               }
               `}
+              data-reveal="bottom"
             >
 
 

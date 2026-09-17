@@ -49,7 +49,7 @@ const testimonials = [
 ];
 export default function TestimonialsBanner() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
+    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7] min-h-[100vh] flex items-center">
       <div className="absolute inset-0">
         <div
           className="

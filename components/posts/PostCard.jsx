@@ -76,6 +76,7 @@ export default function PostCard({
           className="
           text-lg!
           font-semibold!
+          text-[#615d5d]!
           leading-[1.3]
           !mb-6
           "
@@ -87,7 +88,7 @@ export default function PostCard({
           <span
             className="
             text-sm
-            uppercase
+            font-semibold!
             tracking-[1px]
             text-[var(--color-red-1)]
             "

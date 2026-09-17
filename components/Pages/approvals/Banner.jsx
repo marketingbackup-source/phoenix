@@ -7,7 +7,7 @@ import BaseButton from "@/components/UI/BaseButton";
 
 export default function ApprovalBanner() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
+    <section className="relative py-80-30 min-h-[100vh] overflow-hidden bg-[#f7f7f7] flex flex-col items-center justify-center">
 
       <div className="absolute inset-0">
 
@@ -75,6 +75,7 @@ export default function ApprovalBanner() {
             w-full
             lg:w-6/12
             "
+            data-reveal
           >
 
 
@@ -85,7 +86,6 @@ export default function ApprovalBanner() {
               text-[var(--color-red-1)]
               !mb-5
               "
-              data-reveal
             >
               Our Approvals
             </p>
@@ -99,7 +99,6 @@ export default function ApprovalBanner() {
               text-black
               !mb-8
               "
-              data-reveal
             >
 
               Proven Success Through{" "}
@@ -119,7 +118,6 @@ export default function ApprovalBanner() {
               max-w-xl
               !mb-8
               "
-              data-reveal
             >
 
               Phoenix Business Advisory has successfully assisted clients in
@@ -166,16 +164,18 @@ export default function ApprovalBanner() {
 
 
               <Image
-                src="/images/approvals/approvals.png"
+                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Approvals-scaled.webp"
                 alt="Phoenix Business Advisory Approvals"
                 width={700}
                 height={700}
                 className="
                 w-full
                 object-contain
+                max-w-[500px]
                 mix-blend-multiply
                 "
                 priority
+                data-reveal="right"
               />
 
 

@@ -10,7 +10,7 @@ const actions = [
   {
     id: "consultation",
     title: "Schedule A Consultation",
-    icon: CalendarDays,
+    image: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/calendar.png",
     type: "link",
     href: "https://calendly.com/deepika-wj1x/usa-business-migration-consulting?preview_source=et_card&month=2024-10",
     className: "bg-white !text-black border border-gray-200",
@@ -141,7 +141,7 @@ export default function FloatingActions() {
               overflow-hidden
               whitespace-nowrap
               text-sm
-              font-medium
+              font-medium!
               transition-all
               duration-500
               ease-in-out

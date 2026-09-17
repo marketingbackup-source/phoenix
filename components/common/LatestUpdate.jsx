@@ -67,6 +67,7 @@ export default async function LatestUpdates() {
               hover:-translate-y-3
               hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)]
               "
+              data-reveal="bottom"
             >
 
 

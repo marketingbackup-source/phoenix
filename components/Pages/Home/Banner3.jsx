@@ -5,7 +5,7 @@ import BaseButton from "@/components/UI/BaseButton";
 import { Headset } from "lucide-react";
 
 const videoUrl =
-  "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/webpage-3.mp4";
+  "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/webpage-3-_-new.mp4";
 
 
 const flagBaseUrl =
@@ -46,9 +46,10 @@ export default function Banner() {
       relative
       overflow-hidden
       bg-black
-      min-h-[85vh]
+      min-h-[93vh]
       flex
       items-center
+      pt-20
       "
     >
 

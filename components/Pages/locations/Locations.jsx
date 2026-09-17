@@ -116,6 +116,7 @@ function LocationCard({ location, showImage = false }) {
       hover:-translate-y-2
       overflow-hidden
       "
+      data-reveal="bottom"
     >
       {/* Country Image Only For International */}
       {showImage && location.icon && (
