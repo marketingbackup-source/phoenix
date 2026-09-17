@@ -35,7 +35,7 @@ export default function LocationsBanner() {
         preload="auto"
       >
         <source
-          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-3.mp4"
+          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/webpage-3_2.mp4"
           type="video/mp4"
         />
       </video>
