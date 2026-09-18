@@ -12,7 +12,7 @@ export default async function LatestUpdates() {
   return (
     <section
       className="
-      py-80-30
+      py-80-40
       bg-white
       "
     >
@@ -20,7 +20,7 @@ export default async function LatestUpdates() {
       <div className="container-main">
 
 
-        <div className="!mb-12">
+        <div className="mb-6! lg:mb-12!">
 
           <h2
             className="

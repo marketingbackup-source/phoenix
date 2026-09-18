@@ -10,7 +10,7 @@ const journeySteps = [
 
 export default function USJourney() {
   return (
-    <section className="py-80-30">
+    <section className="py-80-40">
       <div className="container-main">
 
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">

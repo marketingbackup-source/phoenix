@@ -6,11 +6,11 @@ import BaseButton from "@/components/UI/BaseButton";
 
 export default function CEOMessage() {
   return (
-    <section className="py-80-30 overflow-hidden">
+    <section className="py-80-40 overflow-hidden">
 
       <div className="container-main">
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
 
           <div className="w-full lg:w-7/12">
 

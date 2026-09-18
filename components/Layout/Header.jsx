@@ -820,7 +820,7 @@ export default function SiteHeader() {
             title="Talk to an Advisor"
             link
             toLink="/contact"
-            style="primary mobile-menu__base-button"
+            style="primary mobile-menu__base-button !w-fit"
           />
         </div>
       </aside>

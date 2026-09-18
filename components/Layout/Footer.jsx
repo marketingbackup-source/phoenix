@@ -449,7 +449,7 @@ export default function Footer() {
           <img
             src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/BLACK-e1788156161191.png"
             alt="Phoenix Logo bleeded"
-            className="w-auto h-[250px] mb-[-2%]"
+            className="w-auto h-[140px] md:h-[250px] mb-[-2%]"
           />
         </div>
       </div>

@@ -137,7 +137,7 @@ const Proof60Days = () => {
       </div>
 
       {/* Slider */}
-      <div className="w-full mt-20 overflow-hidden">
+      <div className="w-full mt-0 lg:mt-20 overflow-hidden">
         <Swiper
           modules={[Autoplay]}
           centeredSlides={true}

@@ -71,7 +71,7 @@ const businesses = [
 
 export default function BusinessOpportunities() {
   return (
-    <section className="py-80-30 overflow-hidden bg-white">
+    <section className="py-80-40 overflow-hidden bg-white">
       <div className="container-main">
         <div className="text-center !mb-2">
           <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3" data-reveal>
@@ -89,7 +89,7 @@ export default function BusinessOpportunities() {
         items={businesses}
         speed="55s"
         gap="gap-8"
-        className="py-15"
+        className="py-8 lg:py-15"
         renderItem={(business) => (
           <div className="group relative w-[330px] sm:w-[420px] lg:w-[480px] bg-white p-4 shadow-2xl rounded-2xl">
             {/* Image */}

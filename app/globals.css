@@ -734,3 +734,13 @@ body {
     p-4
     leading-[1.4];
 }
+
+
+
+
+
+@media (max-width: 767px) {
+  .proof60DaysSwiper.swiper {
+  height: 52vh;
+}
+}

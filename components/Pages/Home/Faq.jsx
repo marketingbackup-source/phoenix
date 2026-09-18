@@ -18,7 +18,7 @@ export default function FaqSection({
       relative
       overflow-hidden
       bg-[#f7f7f7]
-      py-80-30
+      py-80-40
       "
     >
 
@@ -59,7 +59,7 @@ export default function FaqSection({
           flex
           flex-col
           lg:flex-row
-          gap-12
+          gap-4
           lg:gap-16
           items-start
           "

@@ -4,38 +4,38 @@ const featuredNews = [
   {
     quote:
       "Phoenix Business Advisory—Most trusted name in HNI business migration to Australia",
-    logo: "/images/partners/forbes.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/week.png",
   },
   {
     quote:
       "Australia Business Immigration leader Phoenix Business Advisory charts extensive plan for Ultra HNI & HNI migration",
-    logo: "/images/partners/week.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/forbes.png",
   },
   {
     quote:
       "Phoenix Business Advisory provides hassle-free and simplified business migration services for your dream PR in Australia",
-    logo: "/images/partners/times of india.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/times-of-india.png",
   },
   {
     quote:
       "Phoenix Business Advisory has provided a detailed understanding of the plethora of advantages for India's business community in Australia.",
-    logo: "/images/partners/yahoo.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/yahoo.png",
   },
   {
     quote:
       "Phoenix Business Advisory is the premier Indian homegrown brand specializing in providing HNIs with seamless business migration services to the US and Australia",
-    logo: "/images/partners/Khaleej_Times.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Khaleej_Times.png",
   },
   {
     quote:
       "Phoenix Business Advisory – Revolution in business migration",
-    logo: "/images/partners/Hindustan_Times_logo.svg.png",
+    logo: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Hindustan_Times_logo.svg_.png",
   },
 ];
 
 export default function Featured() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
+    <section className="relative py-80-40 overflow-hidden bg-[#f7f7f7]">
 
       <div
         className="

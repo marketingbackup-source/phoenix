@@ -28,7 +28,6 @@ export default function VisaMobile({ destinations }) {
 
       </div>
 
-
       <Swiper
         modules={[Pagination]}
         pagination={{
@@ -44,25 +43,19 @@ export default function VisaMobile({ destinations }) {
 
             <div>
 
-              {/* Video */}
+              {/* Destination Image */}
 
-              <div className="overflow-hidden rounded-4xl h-[320px] !mb-8">
+              <div className="relative overflow-hidden rounded-4xl h-[320px] !mb-8">
 
-                <video
-                  className="w-full h-full object-contain"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                >
-                  <source
-                    src="https://l1visausa.com/wp-content/uploads/2026/08/EU-2-1.mp4"
-                    type="video/mp4"
-                  />
-                </video>
+                <Image
+                  src={destination.image}
+                  alt={`${destination.country} visa destination`}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                />
 
               </div>
-
 
               {/* Content */}
 
@@ -83,27 +76,17 @@ export default function VisaMobile({ destinations }) {
 
                 </div>
 
-
                 <h3 className="fs-40-28 font-normal uppercase leading-[1] !mb-5">
-
                   {destination.title}
-
                 </h3>
 
-
                 <p className="text-[var(--color-red-1)] fs-20-16 !mb-4">
-
                   {destination.subtitle}
-
                 </p>
-
 
                 <p className="text-gray-500 fs-18-16 leading-[1.5] !mb-6">
-
                   {destination.description}
-
                 </p>
-
 
                 <div className="flex flex-col gap-3 !mb-8">
 
@@ -126,19 +109,16 @@ export default function VisaMobile({ destinations }) {
 
                 </div>
 
-
                 <BaseButton
                   title="Explore Visa"
                   link
                   toLink={destination.link}
                   style="primary"
                 >
-                  <ArrowRight size={20}/>
+                  <ArrowRight size={20} />
                 </BaseButton>
 
-
               </div>
-
 
             </div>
 

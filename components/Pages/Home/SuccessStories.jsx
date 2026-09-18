@@ -67,7 +67,7 @@ const partners = [
 
 export default function IndustryPartners() {
   return (
-    <section className="py-80-30 overflow-hidden bg-[#050505]">
+    <section className="py-80-40 overflow-hidden bg-[#050505]">
       <div className="container-main">
         <div className="text-center !mb-12">
           <h2 className="fs-52-32 uppercase font-normal leading-[1] !text-white">
@@ -100,17 +100,18 @@ export default function IndustryPartners() {
               "
             >
               <img
-                src={item.logo}
-                alt={item.name}
-                loading="lazy"
-                className="
-                h-[70px]
-                w-auto
-                object-contain
-                transition-all
-                duration-500
-                "
-              />
+  src={item.logo}
+  alt={item.name}
+  loading="lazy"
+  className="
+    h-[70px]
+    w-auto
+    object-contain
+    opacity-70
+    transition-all
+    duration-500
+  "
+/>
             </div>
           )}
         />
@@ -137,17 +138,18 @@ export default function IndustryPartners() {
   "
             >
               <img
-                src={item.logo}
-                alt={item.name}
-                loading="lazy"
-                className="
-                h-[70px]
-                w-auto
-                object-contain
-                transition-all
-                duration-500
-                "
-              />
+  src={item.logo}
+  alt={item.name}
+  loading="lazy"
+  className="
+    h-[70px]
+    w-auto
+    object-contain
+    opacity-70
+    transition-all
+    duration-500
+  "
+/>
             </div>
           )}
         />
