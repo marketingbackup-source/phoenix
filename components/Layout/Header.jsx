@@ -190,74 +190,75 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header
-        className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}
-      >
-        <div className="site-header__container">
-          <Link
-            href="/"
-            className="site-header__brand"
-            aria-label="Phoenix Business Advisory home"
-          >
-            <Image
-              src="/logos/Red.png"
-              alt="Phoenix Business Advisory"
-              width={220}
-              height={55}
-              priority
-              className="site-header__brand-image"
-            />
-          </Link>
+      <div className="w-full flex flex-col items-center">
+        <header
+          className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}
+        >
+          <div className="site-header__container">
+            <Link
+              href="/"
+              className="site-header__brand"
+              aria-label="Phoenix Business Advisory home"
+            >
+              <Image
+                src="/logos/Red.png"
+                alt="Phoenix Business Advisory"
+                width={220}
+                height={55}
+                priority
+                className="site-header__brand-image"
+              />
+            </Link>
 
-          {/* Desktop Navigation */}
+            {/* Desktop Navigation */}
 
-          <nav
-            className="site-header__desktop-nav"
-            aria-label="Primary navigation"
-          >
-            {navigationItems.map((item) => (
-              <div
-                key={item.label}
-                className="group relative"
-                onMouseEnter={() => {
-                  if (item.megaMenu) {
-                    setActiveDesktopGroup("USA");
-                  }
-                }}
-              >
-                {item.href ? (
-                  <Link href={item.href} className="site-header__nav-link">
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className="
+            <nav
+              className="site-header__desktop-nav"
+              aria-label="Primary navigation"
+            >
+              {navigationItems.map((item) => (
+                <div
+                  key={item.label}
+                  className="group relative"
+                  onMouseEnter={() => {
+                    if (item.megaMenu) {
+                      setActiveDesktopGroup("USA");
+                    }
+                  }}
+                >
+                  {item.href ? (
+                    <Link href={item.href} className="site-header__nav-link">
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      className="
                       site-header__nav-link
                       flex
                       items-center
                       gap-1
                     "
-                  >
-                    {item.label}
+                    >
+                      {item.label}
 
-                    <ChevronDown
-                      size={13}
-                      strokeWidth={1.8}
-                      className="
+                      <ChevronDown
+                        size={13}
+                        strokeWidth={1.8}
+                        className="
                         transition-transform
                         duration-300
                         group-hover:rotate-180
                       "
-                    />
-                  </button>
-                )}
+                      />
+                    </button>
+                  )}
 
-                {/* Standard Desktop Dropdown */}
+                  {/* Standard Desktop Dropdown */}
 
-                {item.children && !item.megaMenu && (
-                  <div
-                    className="
+                  {item.children && !item.megaMenu && (
+                    <div
+                      className="
                       invisible
                       absolute
                       left-0
@@ -273,9 +274,9 @@ export default function SiteHeader() {
                       group-hover:translate-y-0
                       group-hover:opacity-100
                     "
-                  >
-                    <div
-                      className="
+                    >
+                      <div
+                        className="
                         rounded-xl
                         border
                         border-gray-100
@@ -283,12 +284,12 @@ export default function SiteHeader() {
                         p-3
                         shadow-[0_12px_35px_rgba(0,0,0,0.10)]
                       "
-                    >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="
+                      >
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className="
                             footer-nav-item
                             block
                             rounded-lg
@@ -300,19 +301,19 @@ export default function SiteHeader() {
                             hover:bg-gray-50
                             hover:!text-[var(--color-red-1)]
                           "
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* Desktop Program Offered Mega Menu */}
+                  {/* Desktop Program Offered Mega Menu */}
 
-                {item.megaMenu && (
-                  <div
-                    className="
+                  {item.megaMenu && (
+                    <div
+                      className="
                       invisible
                       fixed
                       left-1/2
@@ -329,9 +330,9 @@ export default function SiteHeader() {
                       group-hover:translate-y-0
                       group-hover:opacity-100
                     "
-                  >
-                    <div
-                      className="
+                    >
+                      <div
+                        className="
                         flex
                         min-h-[400px]
                         overflow-hidden
@@ -341,11 +342,11 @@ export default function SiteHeader() {
                         bg-white
                         shadow-[0_12px_35px_rgba(0,0,0,0.10)]
                       "
-                    >
-                      {/* Country Tabs */}
+                      >
+                        {/* Country Tabs */}
 
-                      <div
-                        className="
+                        <div
+                          className="
                           w-[250px]
                           shrink-0
                           border-r
@@ -353,19 +354,20 @@ export default function SiteHeader() {
                           bg-gray-50/70
                           p-4
                         "
-                      >
-                        <div className="flex flex-col gap-2">
-                          {item.groups.map((group) => {
-                            const isActive = activeDesktopGroup === group.label;
+                        >
+                          <div className="flex flex-col gap-2">
+                            {item.groups.map((group) => {
+                              const isActive =
+                                activeDesktopGroup === group.label;
 
-                            return (
-                              <button
-                                key={group.label}
-                                type="button"
-                                onMouseEnter={() =>
-                                  setActiveDesktopGroup(group.label)
-                                }
-                                className={`
+                              return (
+                                <button
+                                  key={group.label}
+                                  type="button"
+                                  onMouseEnter={() =>
+                                    setActiveDesktopGroup(group.label)
+                                  }
+                                  className={`
                                   flex
                                   w-full
                                   items-center
@@ -394,15 +396,15 @@ export default function SiteHeader() {
                                       `
                                   }
                                 `}
-                              >
-                                <span className="!text-sm !text-bold">
-                                  {group.label}
-                                </span>
+                                >
+                                  <span className="!text-sm !text-bold">
+                                    {group.label}
+                                  </span>
 
-                                <ArrowRight
-                                  size={16}
-                                  strokeWidth={1.8}
-                                  className={`
+                                  <ArrowRight
+                                    size={16}
+                                    strokeWidth={1.8}
+                                    className={`
                                     shrink-0
                                     transition-transform
                                     duration-300
@@ -412,66 +414,66 @@ export default function SiteHeader() {
                                         : ""
                                     }
                                   `}
-                                />
-                              </button>
-                            );
-                          })}
+                                  />
+                                </button>
+                              );
+                            })}
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Program Links */}
+                        {/* Program Links */}
 
-                      <div className="flex-1 p-8">
-                        {item.groups.map((group) => {
-                          const isActive = activeDesktopGroup === group.label;
+                        <div className="flex-1 p-8">
+                          {item.groups.map((group) => {
+                            const isActive = activeDesktopGroup === group.label;
 
-                          if (!isActive) {
-                            return null;
-                          }
+                            if (!isActive) {
+                              return null;
+                            }
 
-                          return (
-                            <div
-                              key={group.label}
-                              className="
+                            return (
+                              <div
+                                key={group.label}
+                                className="
                                 h-full
                                 animate-[fadeIn_0.25s_ease-out]
                               "
-                            >
-                              <div className="!mb-6">
-                                <p
-                                  className="
+                              >
+                                <div className="!mb-6">
+                                  <p
+                                    className="
                                     footer-nav-heading
                                     !mb-1
                                     !text-[var(--color-red-1)]
                                   "
-                                >
-                                  {group.label}
-                                </p>
+                                  >
+                                    {group.label}
+                                  </p>
 
-                                <div
-                                  className="
+                                  <div
+                                    className="
                                     h-[2px]
                                     w-10
                                     bg-[var(--color-red-1)]
                                   "
-                                />
-                              </div>
+                                  />
+                                </div>
 
-                              {/* Always Two Columns */}
+                                {/* Always Two Columns */}
 
-                              <div
-                                className="
+                                <div
+                                  className="
                                   grid
                                   grid-cols-2
                                   gap-x-5
                                   gap-y-3
                                 "
-                              >
-                                {group.children.map((child) => (
-                                  <Link
-                                    key={child.label}
-                                    href={child.href}
-                                    className="
+                                >
+                                  {group.children.map((child) => (
+                                    <Link
+                                      key={child.label}
+                                      href={child.href}
+                                      className="
                                       group/link
                                       flex
                                       min-h-[54px]
@@ -491,13 +493,15 @@ export default function SiteHeader() {
                                       hover:shadow-[0_6px_20px_rgba(0,0,0,0.07)]
                                       hover:!text-[var(--color-red-1)]
                                     "
-                                  >
-                                    <span className="pr-3">{child.label}</span>
+                                    >
+                                      <span className="pr-3">
+                                        {child.label}
+                                      </span>
 
-                                    <ArrowRight
-                                      size={16}
-                                      strokeWidth={1.8}
-                                      className="
+                                      <ArrowRight
+                                        size={16}
+                                        strokeWidth={1.8}
+                                        className="
                                         shrink-0
                                         opacity-0
                                         transition-all
@@ -505,52 +509,53 @@ export default function SiteHeader() {
                                         group-hover/link:translate-x-1
                                         group-hover/link:opacity-100
                                       "
-                                    />
-                                  </Link>
-                                ))}
+                                      />
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
-                            </div>
-                          );
-                        })}
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
+                  )}
+                </div>
+              ))}
+            </nav>
 
-          <div className="site-header__desktop-cta">
-            <BaseButton
-              title="Get a Call in 55 Second"
-              type="button"
-              onClick={() => setIsCallbackOpen(true)}
-              style="gray nav-shine"
-            >
-              <Headset
-                size={20}
-                className="
+            <div className="site-header__desktop-cta">
+              <BaseButton
+                title="Get a Call in 55 Second"
+                type="button"
+                onClick={() => setIsCallbackOpen(true)}
+                style="gray nav-shine"
+              >
+                <Headset
+                  size={20}
+                  className="
       ml-2
       transition-colors
       duration-300
       group-hover:text-[var(--color-white)]
       "
-              />
-            </BaseButton>
-          </div>
+                />
+              </BaseButton>
+            </div>
 
-          <button
-            type="button"
-            className="site-header__menu-button"
-            onClick={openMenu}
-            aria-label="Open navigation menu"
-            aria-controls="mobile-navigation"
-            aria-expanded={isMenuOpen}
-          >
-            <Menu size={26} strokeWidth={1.8} aria-hidden="true" />
-          </button>
-        </div>
-      </header>
+            <button
+              type="button"
+              className="site-header__menu-button"
+              onClick={openMenu}
+              aria-label="Open navigation menu"
+              aria-controls="mobile-navigation"
+              aria-expanded={isMenuOpen}
+            >
+              <Menu size={26} strokeWidth={1.8} aria-hidden="true" />
+            </button>
+          </div>
+        </header>
+      </div>
 
       {/* Mobile Overlay */}
 
@@ -821,9 +826,9 @@ export default function SiteHeader() {
         </div>
       </aside>
       <CallbackModal
-  open={isCallbackOpen}
-  onClose={() => setIsCallbackOpen(false)}
-/>
+        open={isCallbackOpen}
+        onClose={() => setIsCallbackOpen(false)}
+      />
     </>
   );
 }

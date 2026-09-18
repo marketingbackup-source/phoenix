@@ -34,7 +34,7 @@ export default function RootLayout({
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401&display=swap" rel="stylesheet"/>
       </head>
 
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col ">
         <RevealProvider>
         <Header />
         {children}
