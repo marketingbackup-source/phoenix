@@ -29,7 +29,7 @@ export default async function HomePage() {
       <TrustAuthority></TrustAuthority>
       <Proof></Proof>
       <MigrationJourney></MigrationJourney>
-      <DocumentVault></DocumentVault>
+      {/* <DocumentVault></DocumentVault> */}
       {/* <GlobalCountries></GlobalCountries> */}
       <GreenCardAchiever></GreenCardAchiever>
       <BusinessOpportunities></BusinessOpportunities>

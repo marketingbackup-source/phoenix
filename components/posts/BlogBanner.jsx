@@ -9,53 +9,39 @@ export default function BlogBanner({ title, date }) {
       relative
       py-80-30
       overflow-hidden
-      bg-[#f7f7f7]
+      min-h-[80vh]
+      flex
+      items-center
       "
     >
-      <div className="absolute inset-0">
-        <div
-          className="
-          absolute
-          -top-40
-          right-1/3
-          w-[500px]
-          h-[500px]
-          rounded-full
-          bg-[var(--color-red-1)]
-          opacity-10
-          blur-[160px]
-          "
-        />
 
-        <div
-          className="
-          absolute
-          bottom-[-200px]
-          left-[-100px]
-          w-[600px]
-          h-[600px]
-          rounded-full
-          bg-gray-300
-          opacity-40
-          blur-[180px]
-          "
-        />
+      {/* Background Video */}
 
-        <div
-          className="
-          absolute
-          inset-0
-          opacity-[0.03]
-          "
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg,#000 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
+      <video
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        "
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source
+          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-katko.mp4"
+          type="video/mp4"
         />
-      </div>
+      </video>
 
-      <div className="container-main relative">
+
+      {/* Content */}
+
+      <div className="container-main relative z-10">
+
         <div
           className="
           flex
@@ -65,12 +51,16 @@ export default function BlogBanner({ title, date }) {
           gap-60-20
           "
         >
+
+          {/* Left Content */}
+
           <div
             className="
             w-full
             lg:w-6/12
             "
           >
+
             <p
               className="
               uppercase
@@ -81,6 +71,7 @@ export default function BlogBanner({ title, date }) {
             >
               Phoenix Insights
             </p>
+
 
             <h1
               className="
@@ -93,6 +84,7 @@ export default function BlogBanner({ title, date }) {
             >
               {title}
             </h1>
+
 
             <p
               className="
@@ -107,7 +99,11 @@ export default function BlogBanner({ title, date }) {
                 year: "numeric",
               })}
             </p>
+
           </div>
+
+
+          {/* Right Image */}
 
           <div
             className="
@@ -116,6 +112,7 @@ export default function BlogBanner({ title, date }) {
             flex-center
             "
           >
+
             <div
               className="
               relative
@@ -123,11 +120,6 @@ export default function BlogBanner({ title, date }) {
               max-w-[600px]
               "
             >
-              <div
-                className="
-                
-                "
-              />
 
               <Image
                 src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/blog-banner.webp"
@@ -135,15 +127,20 @@ export default function BlogBanner({ title, date }) {
                 width={700}
                 height={700}
                 className="
-                  w-full
-                  object-contain
-                  "
+                w-full
+                object-contain
+                "
                 priority
               />
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }
