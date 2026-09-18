@@ -52,24 +52,22 @@ export default function TestimonialsBanner() {
   return (
     <section
       className="
-      relative
-      py-80-30
-      overflow-hidden
-      min-h-[100vh]
-      flex
-      items-center
+        relative
+        py-80-30
+        overflow-hidden
+        min-h-[100vh]
+        flex
+        items-center
       "
     >
-
       {/* Background Video */}
-
       <video
         className="
-        absolute
-        inset-0
-        w-full
-        h-full
-        object-cover
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
         "
         autoPlay
         muted
@@ -83,48 +81,45 @@ export default function TestimonialsBanner() {
         />
       </video>
 
-
       {/* Content */}
-
       <div className="container-main relative z-10">
-
         <div
           className="
-          flex
-          flex-col
-          lg:flex-row
-          items-center
-          gap-60-20
+            flex
+            flex-col
+            lg:flex-row
+            items-center
+            gap-60-20
           "
         >
-
           {/* Left Content */}
-
           <div
             className="
-            w-full
-            lg:w-5/12
+              w-full
+              lg:w-5/12
             "
           >
-
             <p
               className="
-              uppercase
-              tracking-[2px]
-              text-[var(--color-red-1)]
-              !mb-5
+                uppercase
+                tracking-[2px]
+                text-xs
+                lg:text-base
+                text-[var(--color-red-1)]
+                !mb-3
+                lg:!mb-5
               "
             >
               Testimonials
             </p>
 
-
             <h1
               className="
-              fs-60-32
-              uppercase
-              text-black
-              !mb-8
+                fs-52-32
+                uppercase
+                text-black
+                !mb-4
+                lg:!mb-8
               "
             >
               Our{" "}
@@ -134,33 +129,30 @@ export default function TestimonialsBanner() {
               Stories
             </h1>
 
-
             <p
               className="
-              text-gray-500
-              fs-20-16
-              leading-[1.7]
-              max-w-xl
-              !mb-0
+                text-gray-500
+                text-sm
+                lg:fs-20-16
+                leading-[1.6]
+                lg:leading-[1.7]
+                max-w-xl
+                !mb-0
               "
             >
               Discover inspiring journeys of entrepreneurs, investors, and
               families who achieved their global aspirations with Phoenix
               Business Advisory's strategic guidance and expertise.
             </p>
-
           </div>
 
-
           {/* Testimonials Slider */}
-
           <div
             className="
-            w-full
-            lg:w-7/12
+              w-full
+              lg:w-7/12
             "
           >
-
             <Swiper
               modules={[Autoplay]}
               slidesPerView={1}
@@ -172,130 +164,119 @@ export default function TestimonialsBanner() {
                 disableOnInteraction: false,
               }}
             >
-
               {testimonials.map((item, index) => (
-
                 <SwiperSlide key={index}>
-
                   <div
                     className="
-                    relative
-                    bg-white/[0.35]
-                    backdrop-blur-2xl
-                    border
-                    border-gray-300/60
-                    rounded-4xl
-                    p-40-15
+                      relative
+                      bg-white/[0.35]
+                      backdrop-blur-2xl
+                      border
+                      border-gray-300/60
+                      rounded-2xl
+                      lg:rounded-4xl
+                      p-40-15
                     "
                   >
-
                     <Quote
-                      size={70}
+                      size={36}
                       className="
-                      text-[var(--color-red-1)]
-                      opacity-30
-                      !mb-8
+                        lg:w-[70px]
+                        lg:h-[70px]
+                        text-[var(--color-red-1)]
+                        opacity-30
+                        !mb-4
+                        lg:!mb-8
                       "
                     />
 
-
                     <p
                       className="
-                      !text-lg
-                      !text-gray-600
-                      leading-[1.8]
-                      !mb-10
+                        text-[11px]!
+                        lg:text-lg!
+                        !text-gray-600
+                        leading-[1.6]
+                        lg:leading-[1.8]
+                        !mb-5
+                        lg:!mb-10
                       "
                     >
                       {item.content}
                     </p>
 
-
                     <div
                       className="
-                      flex
-                      items-center
-                      gap-4
+                        flex
+                        items-center
+                        gap-2
+                        lg:gap-4
                       "
                     >
-
                       <img
                         src={item.image}
                         alt={item.name}
                         className="
-                        h-24
-                        w-24
-                        rounded-full
-                        object-cover
-                        border
-                        border-gray-200
+                          h-12
+                          w-12
+                          lg:h-24
+                          lg:w-24
+                          rounded-full
+                          object-cover
+                          border
+                          border-gray-200
                         "
                       />
 
-
                       <div>
-
                         <h3
                           className="
-                          uppercase
-                          text-black
-                          text-xl
-                          !mb-2
+                            uppercase
+                            text-black
+                            text-sm
+                            lg:text-xl
+                            !mb-1
+                            lg:!mb-2
                           "
                         >
                           {item.name}
                         </h3>
 
-
                         <div
                           className="
-                          flex
-                          items-center
-                          gap-2
-                          text-shadow-md
-                          font-medium
-                          text-gray-500
+                            flex
+                            items-center
+                            gap-1
+                            lg:gap-2
+                            text-[11px]
+                            lg:text-base
+                            text-shadow-md
+                            font-medium
+                            text-gray-500
                           "
                         >
-
-                          <span>
-                            {item.from}
-                          </span>
-
+                          <span>{item.from}</span>
 
                           <ArrowRight
-                            size={18}
+                            size={12}
                             strokeWidth={1.8}
                             className="
-                            text-[var(--color-red-1)]
+                              lg:w-[18px]
+                              lg:h-[18px]
+                              text-[var(--color-red-1)]
                             "
                           />
 
-
-                          <span>
-                            {item.to}
-                          </span>
-
+                          <span>{item.to}</span>
                         </div>
-
                       </div>
-
                     </div>
-
                   </div>
-
                 </SwiperSlide>
-
               ))}
-
             </Swiper>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

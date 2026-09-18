@@ -134,7 +134,7 @@ export default function NewsCoverageGrid() {
 
   return (
 
-    <section className="py-80-30 bg-white">
+    <section className="py-80-40 bg-white">
 
       <div className="container-main">
 

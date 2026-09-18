@@ -65,6 +65,7 @@ export default async function PressReleasePage({
         <div
           className="
           text-center
+          mt-18 lg:mt-12
           !mb-12
           "
         >

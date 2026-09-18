@@ -37,6 +37,7 @@ export default async function BlogsPage({ searchParams }) {
         <div
           className="
           text-center
+          mt-18 lg:mt-12
           !mb-12
           "
         >

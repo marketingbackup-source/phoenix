@@ -120,28 +120,51 @@ function LocationCard({ location, showImage = false }) {
     >
       {/* Country Image Only For International */}
       {showImage && location.icon && (
-        <div
-          className="
-          shrink-0
-          flex
-          items-center
-          justify-center
-          "
-        >
-          <Image
-            src={location.icon}
-            alt={location.city}
-            width={220}
-            height={220}
-            className="
-            h-[180px]
-            sm:h-[220px]
-            w-auto
-            object-contain
-            "
-          />
-        </div>
-      )}
+  <div
+    className="
+      relative
+      shrink-0
+      flex
+      items-start
+      justify-start
+    "
+  >
+    <div
+      className="
+        relative
+        h-[180px]
+        sm:h-[220px]
+        w-[120px]
+        sm:w-[145px]
+      "
+    >
+      <Image
+        src={location.icon}
+        alt={location.city}
+        fill
+        className="
+          object-contain
+          [mask-image:linear-gradient(to_right,transparent_0%,black_14%,black_86%,transparent_100%)]
+          [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_14%,black_86%,transparent_100%)]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          h-[35%]
+          bg-gradient-to-t
+          from-white
+          via-white/70
+          to-transparent
+        "
+      />
+    </div>
+  </div>
+)}
 
       {/* Content */}
       <div className="flex flex-col justify-center">
@@ -218,7 +241,7 @@ function LocationCard({ location, showImage = false }) {
 
 export default function GlobalPresence() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7]">
+    <section className="relative py-80-40 overflow-hidden bg-[#f7f7f7]">
       <div className="absolute inset-0">
         <div
           className="

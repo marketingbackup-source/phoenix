@@ -10,7 +10,7 @@ export default function ContactBanner() {
     <section
       className="
       relative
-      py-80-30
+      py-80-40
       overflow-hidden
       min-h-[100vh]
       flex
@@ -48,7 +48,7 @@ export default function ContactBanner() {
         <div
           className="
           flex
-          flex-col
+          flex-col-reverse
           lg:flex-row
           items-center
           gap-60-20
@@ -130,6 +130,7 @@ export default function ContactBanner() {
             w-full
             lg:w-6/12
             flex-center
+            mt-15 lg:mt-0
             "
           >
 

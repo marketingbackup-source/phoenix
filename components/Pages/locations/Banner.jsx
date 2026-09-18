@@ -10,7 +10,7 @@ export default function LocationsBanner() {
     <section
       className="
       relative
-      py-80-30
+      py-80-40
       overflow-hidden
       min-h-[100vh]
       flex
@@ -48,7 +48,7 @@ export default function LocationsBanner() {
         <div
           className="
           flex
-          flex-col
+          flex-col-reverse
           lg:flex-row
           items-center
           gap-60-20
@@ -79,7 +79,7 @@ export default function LocationsBanner() {
 
             <h1
               className="
-              fs-60-32
+              fs-52-32
               uppercase
               text-black
               !mb-8
@@ -151,6 +151,7 @@ export default function LocationsBanner() {
                 w-full
                 object-contain
                 mix-blend-multiply
+                mt-8 lg:mt-0
                 "
                 priority
               />

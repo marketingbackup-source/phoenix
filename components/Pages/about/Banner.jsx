@@ -13,6 +13,7 @@ export default function AboutBanner() {
       overflow-hidden
       flex
       items-center
+      py-80-40
       "
     >
 
@@ -46,7 +47,7 @@ export default function AboutBanner() {
         <div
           className="
           flex
-          flex-col
+          flex-col-reverse
           lg:flex-row
           items-center
           gap-60-20
@@ -77,7 +78,7 @@ export default function AboutBanner() {
 
             <h1
               className="
-              fs-60-32
+              fs-52-32
               uppercase
               text-black
               !mb-8
@@ -126,6 +127,7 @@ export default function AboutBanner() {
             w-full
             lg:w-6/12
             flex-center
+            mt-15 lg:mt-0
             "
           >
 

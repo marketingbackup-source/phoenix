@@ -22,7 +22,7 @@ const visaLetters = [
 
 export default function AustraliaVisaGrantLetters() {
   return (
-    <section className="relative py-80-30 overflow-hidden bg-[#f7f7f7] nz-approvals-section">
+    <section className="relative py-80-40 overflow-hidden bg-[#f7f7f7] nz-approvals-section">
       <div className="absolute inset-0">
         <div
           className="
@@ -96,7 +96,7 @@ export default function AustraliaVisaGrantLetters() {
 
             <h1
               className="
-              fs-60-32
+              fs-52-32
               uppercase
               text-black
               !mb-8
@@ -153,9 +153,9 @@ export default function AustraliaVisaGrantLetters() {
                 effect="cards"
                 grabCursor={true}
                 modules={[EffectCards, Autoplay]}
-                speed={1000}
+                speed={2000}
                 autoplay={{
-                  delay: 0,
+                  delay: 2000,
                   disableOnInteraction: false,
                 }}
                 className="approvalSwiper shadow-none"

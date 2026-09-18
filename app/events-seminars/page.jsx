@@ -209,7 +209,7 @@ export default function EventsSeminarsPage() {
   return (
     <main>
       {/* Hero / Heading */}
-      <section className="pt-100-40 pb-60-20">
+      <section className="pt-100-40 pb-60-20 min-h-[30vh] lg:min-h-[30vh] flex flex-col justify-end items-end">
         <div className="container-main">
           <div className="text-center">
             <p className="text-sm uppercase tracking-[3px] text-gray-500 !mb-3">

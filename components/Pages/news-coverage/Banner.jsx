@@ -10,7 +10,7 @@ export default function NewsCoverageBanner() {
     <section
       className="
       relative
-      py-80-30
+      py-80-40
       overflow-hidden
       min-h-[100vh]
       flex
@@ -48,7 +48,7 @@ export default function NewsCoverageBanner() {
         <div
           className="
           flex
-          flex-col
+          flex-col-reverse
           lg:flex-row
           items-center
           gap-60-20
@@ -78,7 +78,7 @@ export default function NewsCoverageBanner() {
 
             <h1
               className="
-              fs-60-32
+              fs-52-32
               uppercase
               text-black
               !mb-8
@@ -127,6 +127,7 @@ export default function NewsCoverageBanner() {
             w-full
             lg:w-6/12
             flex-center
+            mt-15 lg:mt-0
             "
           >
 
@@ -139,12 +140,12 @@ export default function NewsCoverageBanner() {
             >
 
               <Image
-                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/news-coverage.webp"
+                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/News.png"
                 alt="Phoenix Business Advisory News Coverage"
                 width={700}
                 height={700}
                 className="
-                max-w-[500px]
+                max-w-[450px]
                 w-full
                 object-contain
                 mix-blend-multiply

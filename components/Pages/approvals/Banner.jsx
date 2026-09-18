@@ -10,7 +10,7 @@ export default function ApprovalBanner() {
     <section
       className="
       relative
-      py-80-30
+      py-80-40
       min-h-[100vh]
       overflow-hidden
       flex
@@ -50,7 +50,7 @@ export default function ApprovalBanner() {
         <div
           className="
           flex
-          flex-col
+          flex-col-reverse
           lg:flex-row
           items-center
           gap-60-20
@@ -81,7 +81,7 @@ export default function ApprovalBanner() {
 
             <h1
               className="
-              fs-60-32
+              fs-52-32
               uppercase
               text-black
               !mb-8
@@ -141,14 +141,14 @@ export default function ApprovalBanner() {
             >
 
               <Image
-                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Approvals-scaled.webp"
+                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Approvals.png"
                 alt="Phoenix Business Advisory Approvals"
                 width={700}
                 height={700}
                 className="
                 w-full
                 object-contain
-                max-w-[500px]
+                max-w-[450px]
                 mix-blend-multiply
                 "
                 priority
