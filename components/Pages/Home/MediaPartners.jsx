@@ -55,13 +55,13 @@ const partners = [
 
 export default function TrustedPartners() {
   return (
-    <section className="relative py-60-20 overflow-hidden">
+    <section className="relative py-60-40 overflow-hidden">
 
 
 
       <div className="container-main relative">
 
-        <div className="text-center !mb-12">
+        <div className="text-center !mb-6 !lg:mb-12">
 
           <h2
             className="

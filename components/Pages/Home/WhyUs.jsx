@@ -109,7 +109,7 @@ export default function WhyPhoenix() {
             border
             border-white
             shadow-[0_20px_50px_rgba(0,0,0,0.05)]
-            p-8
+            p-5
             lg:p-10
             "
           >
