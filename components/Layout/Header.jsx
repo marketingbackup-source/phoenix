@@ -9,10 +9,6 @@ import BaseButton from "@/components/UI/BaseButton";
 import CallbackModal from "@/components/UI/CallbackModal";
 const navigationItems = [
   {
-    label: "Home",
-    href: "/",
-  },
-  {
     label: "Our Success Story",
     children: [
       {
