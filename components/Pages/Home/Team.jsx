@@ -101,46 +101,6 @@ export default function OurTeam() {
                 to-transparent
               "
             />
-
-            <div
-              ref={badgeRef}
-              className="
-                absolute
-                bottom-8
-                right-8
-                rounded-2xl
-                bg-white/20
-                backdrop-blur-xl
-                border
-                border-white/30
-                px-6
-                py-4
-                hidden lg:block
-              "
-            >
-              <h3
-                className="
-                  !text-white
-                  uppercase
-                  text-xl
-                  font-medium
-                "
-              >
-                Phoenix Team
-              </h3>
-
-              <p
-                className="
-                  !text-white/80
-                  text-sm
-                  uppercase
-                  tracking-[2px]
-                  !mb-0
-                "
-              >
-                Global Business Advisors
-              </p>
-            </div>
           </div>
         </div>
       </div>

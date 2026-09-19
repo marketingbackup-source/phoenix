@@ -15,8 +15,8 @@ const howItWorks = [
 
 const testimonials = [
   {
-    title: "L1 Visa Success Story",
-    id: "pR6cUYSzjVQ",
+    title: "Success Story",
+    id: "X54FB7cMnOY",
   },
   {
     title: "Client Success Story",
@@ -248,36 +248,6 @@ export default function Youtube() {
 
 
         {/* MORE VIDEOS */}
-
-
-        <div>
-
-
-          <div
-            className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-6
-            "
-          >
-
-            {clientStories.map((video)=>(
-
-              <YoutubeEmbed
-                key={video.title}
-                video={video}
-              />
-
-            ))}
-
-
-          </div>
-
-
-        </div>
-
 
 
       </div>

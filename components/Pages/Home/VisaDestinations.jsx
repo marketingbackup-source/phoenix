@@ -17,7 +17,7 @@ const VISA_DESTINATIONS = [
       "Pathway toward permanent residency.",
     ],
     image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/usa.webp",
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/USA-texture.webp",
     link: "/visa-programs/us-green-card-by-investment",
   },
 
@@ -36,7 +36,7 @@ const VISA_DESTINATIONS = [
       "Pathway toward permanent residency.",
     ],
     image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/aus.webp",
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/AU-texture.webp",
     link: "/visa-programs/niv",
   },
 
@@ -55,7 +55,7 @@ const VISA_DESTINATIONS = [
       "Pathway toward residence.",
     ],
     image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/nz.webp",
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/NZ-texture.webp",
     link: "/visa-programs/european-union",
   },
 
@@ -74,7 +74,7 @@ const VISA_DESTINATIONS = [
       "Citizenship through investment.",
     ],
     image:
-      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/eu.webp",
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/EU-texture.webp",
     link: "/visa-programs/new-zealand-investor-work-visa",
   },
 ];
