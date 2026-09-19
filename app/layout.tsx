@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
 import "../styles/main.css";
 import "../styles/theme.css";
-import RevealProvider from "@/components/animations/RevealProvider";
-
-import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
-import FloatingActions from "@/components/UI/FloatingActions";
 
 export const metadata: Metadata = {
   title: "Phoenix Business Advisory",
@@ -29,18 +25,17 @@ export default function RootLayout({
 
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500sss,600,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap"
         />
-        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401&display=swap" rel="stylesheet"/>
+
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401&display=swap"
+          rel="stylesheet"
+        />
       </head>
 
-      <body className="min-h-full flex flex-col ">
-        <RevealProvider>
-        <Header />
+      <body className="min-h-full">
         {children}
-        <Footer />
-        <FloatingActions />
-        </RevealProvider>
       </body>
     </html>
   );
