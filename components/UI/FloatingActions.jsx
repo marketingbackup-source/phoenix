@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  CalendarDays,
-} from "lucide-react";
+import { Headset } from "lucide-react";
 
+import CallbackModal from "@/components/UI/CallbackModal";
 
 const actions = [
   {
     id: "consultation",
     title: "Schedule A Consultation",
-    image: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/calendar.png",
+    image:
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/calendar.png",
     type: "link",
     href: "https://calendly.com/deepika-wj1x/usa-business-migration-consulting?preview_source=et_card&month=2024-10",
     className: "bg-white !text-black border border-gray-200",
@@ -25,180 +25,161 @@ const actions = [
     href: "https://api.whatsapp.com/send?phone=+917698940001&text=Hello,+I+came+across+your+services+and+would+like+to+know+more+details+about+your+services.+Please+share+the+information.+Thank+you.",
     className: "bg-[#1f8f3a] !text-white",
   },
+
+  {
+    id: "callback",
+    title: "Get a Call in 55 Second",
+    icon: Headset,
+    type: "callback",
+    mobileOnly: true,
+    className:
+      "bg-[var(--color-red-1)] !text-white border border-black/5",
+  },
 ];
 
-
 export default function FloatingActions() {
-
   const [expanded, setExpanded] = useState(true);
-
+  const [isCallbackOpen, setIsCallbackOpen] = useState(false);
 
   useEffect(() => {
-
     let scrollTimer;
 
-
     const handleScroll = () => {
-
       setExpanded(false);
 
       clearTimeout(scrollTimer);
 
-
       scrollTimer = setTimeout(() => {
         setExpanded(true);
       }, 700);
-
     };
 
-
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      {
-        passive: true,
-      }
-    );
-
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => {
-
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+      window.removeEventListener("scroll", handleScroll);
 
       clearTimeout(scrollTimer);
-
     };
-
   }, []);
 
-
-
   return (
+    <>
+      <div
+        className="
+          fixed
+          right-[10px]
+          bottom-[20px]
+          z-[999]
+          flex
+          flex-col
+          items-end
+          gap-3
+        "
+      >
+        {actions.map((action) => {
+          const Icon = action.icon;
 
-    <div
-      className="
-      fixed
-      right-[10px]
-      bottom-[20px]
-      z-[999]
-      flex
-      flex-col
-      items-end
-      gap-3
-      "
-    >
+          const buttonContent = (
+            <>
+              <span
+                className="
+                  flex
+                  h-11
+                  w-11
+                  shrink-0
+                  items-center
+                  justify-center
+                "
+              >
+                {action.image ? (
+                  <img
+                    src={action.image}
+                    alt={action.title}
+                    className="
+                      h-6
+                      w-6
+                      object-contain
+                    "
+                  />
+                ) : Icon ? (
+                  <Icon
+                    size={20}
+                    strokeWidth={2}
+                  />
+                ) : null}
+              </span>
 
-      {actions.map((action) => {
+              <span
+                className={`
+                  overflow-hidden
+                  whitespace-nowrap
+                  text-[12px]
+                  sm:text-sm
+                  font-semibold!
+                  transition-all
+                  duration-500
+                  ease-in-out
+                  ${
+                    expanded
+                      ? "max-w-[240px] opacity-100 pr-5"
+                      : "max-w-0 opacity-0 pr-0"
+                  }
+                `}
+              >
+                {action.title}
+              </span>
+            </>
+          );
 
-        const Icon = action.icon;
+          const commonClass = `
+            flex
+            h-11
+            items-center
+            overflow-hidden
+            rounded-full
+            shadow-[0_5px_20px_rgba(0,0,0,0.15)]
+            transition-all
+            duration-500
+            ease-in-out
+            ${expanded ? "w-auto" : "w-11"}
+            ${action.mobileOnly ? "lg:hidden" : ""}
+            ${action.className}
+          `;
 
+          if (action.type === "callback") {
+            return (
+              <button
+                key={action.id}
+                type="button"
+                onClick={() => setIsCallbackOpen(true)}
+                className={commonClass}
+                aria-label={action.title}
+              >
+                {buttonContent}
+              </button>
+            );
+          }
 
-        const buttonContent = (
-
-          <>
-
-            <span
-              className="
-              flex
-              h-11
-              w-11
-              shrink-0
-              items-center
-              justify-center
-              "
+          return (
+            <a
+              key={action.id}
+              href={action.href}
+              className={commonClass}
+              aria-label={action.title}
             >
+              {buttonContent}
+            </a>
+          );
+        })}
+      </div>
 
-              {action.image ? (
-
-                <img
-                  src={action.image}
-                  alt={action.title}
-                  className="
-                  h-6
-                  w-6
-                  object-contain
-                  "
-                />
-
-              ) : (
-
-                <Icon
-                  size={20}
-                  strokeWidth={2}
-                />
-
-              )}
-
-            </span>
-
-
-
-            <span
-              className={`
-              overflow-hidden
-              whitespace-nowrap
-              text-sm
-              font-semibold!
-              transition-all
-              duration-500
-              ease-in-out
-              ${
-                expanded
-                  ? "max-w-[240px] opacity-100 pr-5"
-                  : "max-w-0 opacity-0 pr-0"
-              }
-              `}
-            >
-
-              {action.title}
-
-            </span>
-
-
-          </>
-
-        );
-
-
-
-        const commonClass = `
-        flex
-        h-11
-        items-center
-        overflow-hidden
-        rounded-full
-        shadow-[0_5px_20px_rgba(0,0,0,0.15)]
-        transition-all
-        duration-500
-        ease-in-out
-        ${expanded ? "w-auto" : "w-11"}
-        ${action.className}
-        `;
-
-
-
-        return (
-
-          <a
-            key={action.id}
-            href={action.href}
-            className={commonClass}
-          >
-
-            {buttonContent}
-
-          </a>
-
-        );
-
-      })}
-
-
-    </div>
-
+      <CallbackModal
+        open={isCallbackOpen}
+        onClose={() => setIsCallbackOpen(false)}
+      />
+    </>
   );
-
 }
