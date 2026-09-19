@@ -63,7 +63,7 @@ export default function CEOMessage() {
 
               <img
                 src="https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6651e4b27b190374f71726ab_Mp%20singh%20signature%20black-p-1080.png"
-                alt="MP Singh Signature"
+                alt="MP Singgh Signature"
                 className="w-[160px]"
                 data-reveal="left"
               />
@@ -96,7 +96,7 @@ export default function CEOMessage() {
                   src="https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/6a3149df6a3dc806a1492b42_mp-singh-profile-p-1080.jpeg"
                   width={700}
                   height={900}
-                  alt="MP Singh Founder and CEO"
+                  alt="MP Singgh Founder and CEO"
                   priority
                   className="w-full h-auto object-cover"
                   data-reveal="right"
@@ -108,7 +108,7 @@ export default function CEOMessage() {
                   <div className="rounded-2xl bg-black/40 backdrop-blur-xl border border-white/20 p-5">
 
                     <h3 className="!text-white uppercase text-xl">
-                      MP Singh
+                      MP Singgh
                     </h3>
 
 

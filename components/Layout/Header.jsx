@@ -526,10 +526,10 @@ export default function SiteHeader() {
 
             <div className="site-header__desktop-cta">
               <BaseButton
-                title="Get a Call in 55 Second"
+                title="Get a Call in 55 Seconds"
                 type="button"
                 onClick={() => setIsCallbackOpen(true)}
-                style="gray nav-shine"
+                style="primary nav-shine"
               >
                 <Headset
                   size={20}

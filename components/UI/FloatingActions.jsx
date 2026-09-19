@@ -81,8 +81,8 @@ export default function FloatingActions() {
     <div
       className="
       fixed
-      right-[35px]
-      bottom-[40px]
+      right-[10px]
+      bottom-[20px]
       z-[999]
       flex
       flex-col
@@ -141,7 +141,7 @@ export default function FloatingActions() {
               overflow-hidden
               whitespace-nowrap
               text-sm
-              font-medium!
+              font-semibold!
               transition-all
               duration-500
               ease-in-out

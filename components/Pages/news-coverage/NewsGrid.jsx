@@ -11,6 +11,7 @@ const newsItems = [
     logo:`${mediaBase}ET.webp`,
     title:"Global Entrepreneurs Eye New Zealand as Fast-Track Investor Visa Gains Attention",
     type:"article",
+    link: "https://etedge-insights.com/trending/new-zealand-opens-doors-to-global-entrepreneurs-with-a-fast-track-investor-visa/"
   },
   {
     logo:`${mediaBase}ani.webp`,
@@ -89,7 +90,7 @@ const newsItems = [
   },
   {
     logo:`${mediaBase}ptc.webp`,
-    title:"Business Migration with MP Singh",
+    title:"Business Migration with MP Singgh",
     type:"video",
   },
   {
@@ -104,12 +105,12 @@ const newsItems = [
   },
   {
     logo:`${mediaBase}daily-post.webp`,
-    title:"Mr MP Singh on Business Migration to Australia with Daily Post Punjabi",
+    title:"Mr MP Singgh on Business Migration to Australia with Daily Post Punjabi",
     type:"video",
   },
   {
     logo:`${mediaBase}daily-post.webp`,
-    title:"Meet Mr. MP Singh CEO of Phoenix Business Advisory | An interview with Daily Post Punjabi",
+    title:"Meet Mr. MP Singgh CEO of Phoenix Business Advisory | An interview with Daily Post Punjabi",
     type:"video",
   },
   {
