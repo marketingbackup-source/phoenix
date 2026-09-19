@@ -29,7 +29,8 @@ export default function PostCard({
       <div
         className="
         relative
-        h-[225px]
+        h-[200px]
+        lg:h-[225px]
         bg-gray-100
         overflow-hidden
         "
