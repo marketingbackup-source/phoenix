@@ -35,23 +35,76 @@ export default function TermsConditionsPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-black text-white py-100-40">
-        <div className="container-main">
-          <div className="max-w-4xl">
-            <p className=" text-[var(--color-red-1)] font-semibold uppercase tracking-widest !text-white/80">
-              Legal
-            </p>
+<section className="relative min-h-[50vh] overflow-hidden flex items-center">
 
-            <h1 className="uppercase !text-white/80">Terms & Conditions</h1>
+  {/* Background Video */}
+  <video
+    className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+      "
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+  >
+    <source
+      src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-1.mp4"
+      type="video/mp4"
+    />
+  </video>
 
-            <p className="fs-20-16 !mb-0 mt-6 text-white/70 max-w-3xl">
-              These Terms and Conditions govern your access to and use of the
-              Phoenix Business Advisory website and the services offered
-              through it.
-            </p>
-          </div>
-        </div>
-      </section>
+
+  {/* Hero Content */}
+  <div className="container-main relative z-10">
+
+    <div className="max-w-4xl">
+
+      <p
+        className="
+        text-white/80
+        font-semibold
+        uppercase
+        tracking-widest
+        !mb-5
+        "
+      >
+        Legal
+      </p>
+
+
+      <h1
+        className="
+        uppercase fs-52-32
+        "
+      >
+        Terms & Conditions
+      </h1>
+
+
+      <p
+        className="
+        fs-20-16
+        !mb-0
+        mt-6
+        text-white/75
+        max-w-3xl
+        "
+      >
+        These Terms and Conditions govern your access to and use of the
+        Phoenix Business Advisory website and the services offered
+        through it.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* Main Content */}
       <section className="py-100-40">

@@ -35,16 +35,57 @@ export default function PrivacyPolicyPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-black text-white py-100-40">
-        <div className="container-main">
+      <section className="relative min-h-[50vh] overflow-hidden flex items-center">
+        {/* Background Video */}
+        <video
+          className="
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+      "
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-1.mp4" type="video/mp4" />
+        </video>
+
+        {/* Hero Content */}
+        <div className="container-main relative z-10">
           <div className="max-w-4xl">
-            <p className=" text-[var(--color-red-1)] font-semibold uppercase tracking-widest !text-white/80">
+            <p
+              className="
+        text-white/80
+        font-semibold
+        uppercase
+        tracking-widest
+        !mb-5
+        "
+            >
               Legal
             </p>
 
-            <h1 className="uppercase !text-white/80">Privacy Policy</h1>
+            <h1
+              className="
+        uppercase fs-52-32
+        "
+            >
+              Privacy Policy
+            </h1>
 
-            <p className="fs-20-16 !mb-0 mt-6 text-white/70 max-w-3xl">
+            <p
+              className="
+        fs-20-16
+        !mb-0
+        mt-6
+        text-white/75
+        max-w-3xl
+        "
+            >
               This Privacy Policy explains how Phoenix Business Advisory
               collects, uses, protects, and manages information provided through
               our website and services.
@@ -57,7 +98,6 @@ export default function PrivacyPolicyPage() {
       <section className="py-100-40">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-60-20">
-            
             {/* Sidebar */}
             <aside className="lg:col-span-1">
               <div className="lg:sticky lg:top-28">
@@ -86,9 +126,7 @@ export default function PrivacyPolicyPage() {
             <article className="lg:col-span-3">
               {/* Introduction */}
               <div className="pb-60-20 border-b border-black/10">
-                <h2 className="fs-36-24 uppercase mb-6 ">
-                  Privacy Policy
-                </h2>
+                <h2 className="fs-36-24 uppercase mb-6 ">Privacy Policy</h2>
 
                 <p>
                   The terms &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot; and
@@ -117,9 +155,7 @@ export default function PrivacyPolicyPage() {
                 id="user-information"
                 className="pt-60-20 pb-60-20 border-b border-black/10 scroll-mt-28"
               >
-                <h2 className="fs-36-24 uppercase mb-6">
-                  User Information
-                </h2>
+                <h2 className="fs-36-24 uppercase mb-6">User Information</h2>
 
                 <p>
                   To access certain services or communicate with Phoenix
@@ -155,9 +191,7 @@ export default function PrivacyPolicyPage() {
                 id="cookies"
                 className="pt-60-20 pb-60-20 border-b border-black/10 scroll-mt-28"
               >
-                <h2 className="fs-36-24 uppercase mb-6">
-                  Cookies
-                </h2>
+                <h2 className="fs-36-24 uppercase mb-6">Cookies</h2>
 
                 <p>
                   Our website may use cookies and similar technologies to
@@ -191,8 +225,8 @@ export default function PrivacyPolicyPage() {
 
                 <p>
                   Our website may contain links to external websites,
-                  applications or third-party platforms that are not operated
-                  or controlled by Phoenix Business Advisory.
+                  applications or third-party platforms that are not operated or
+                  controlled by Phoenix Business Advisory.
                 </p>
 
                 <p className="!mb-0">
@@ -234,9 +268,9 @@ export default function PrivacyPolicyPage() {
 
                 <p className="!mb-0">
                   We may also disclose information where required by law,
-                  regulation, governmental authority, legal proceedings or
-                  where disclosure is necessary to protect our legal rights,
-                  users or business interests.
+                  regulation, governmental authority, legal proceedings or where
+                  disclosure is necessary to protect our legal rights, users or
+                  business interests.
                 </p>
               </section>
 
@@ -280,9 +314,7 @@ export default function PrivacyPolicyPage() {
                 id="grievance-redressal"
                 className="pt-60-20 scroll-mt-28"
               >
-                <h2 className="fs-36-24 uppercase mb-6">
-                  Grievance Redressal
-                </h2>
+                <h2 className="fs-36-24 uppercase mb-6">Grievance Redressal</h2>
 
                 <p>
                   If you have any concerns, questions or grievances regarding

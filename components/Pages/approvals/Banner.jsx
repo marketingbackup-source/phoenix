@@ -129,6 +129,7 @@ export default function ApprovalBanner() {
             w-full
             lg:w-6/12
             flex-center
+            mt-15 lg:mt-0
             "
           >
 

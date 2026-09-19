@@ -122,6 +122,7 @@ export default function VisaBanner({ title, excerpt, image }) {
             w-full
             lg:w-6/12
             flex-center
+            mt-15 lg:mt-0
             "
           >
 
