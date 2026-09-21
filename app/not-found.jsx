@@ -164,7 +164,7 @@ export default function NotFound() {
                 "
               >
                 <Image
-                  src="/images/404-image.pgnhttps://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/404-error-page-found-concept-red-block-letters-number-white-background-3d-render-illustration-scaled.jpg"
+                  src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/404-error-page-found-concept-red-block-letters-number-white-background-3d-render-illustration-scaled.jpg"
                   alt="404 Page Not Found"
                   width={1200}
                   height={800}
@@ -174,6 +174,7 @@ export default function NotFound() {
                     h-auto
                     object-contain
                     select-none
+                    rounded-[32px]
                   "
                 />
               </div>

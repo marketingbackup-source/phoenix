@@ -15,6 +15,9 @@ export async function getPosts({
     per_page: perPage,
     order: "desc",
     orderby: "date",
+
+    // Prevent stale REST API/CDN responses
+    _cb: Date.now(),
   };
 
   if (slug) {
@@ -42,8 +45,9 @@ export async function getPosts({
     params,
 
     headers: {
-      "Cache-Control": "no-cache, no-store, max-age=0",
+      "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
       Pragma: "no-cache",
+      Expires: "0",
     },
   });
 
@@ -53,6 +57,7 @@ export async function getPosts({
       id: post.id,
       slug: post.slug,
       date: post.date,
+      modified: post.modified,
       status: post.status,
       categories: post.categories,
     })),
