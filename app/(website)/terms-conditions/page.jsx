@@ -1,7 +1,55 @@
+
+
 export const metadata = {
-  title: "Terms & Conditions | Phoenix Business Advisory",
+  title: "Terms and Conditions - Phoenix Business Advisory",
+
   description:
-    "Read the Terms & Conditions of Phoenix Business Advisory governing the use of our website and services.",
+    "Review the terms and conditions for using the Phoenix Business Advisory website and services. Ensure you understand your rights and responsibilities as a user.",
+
+  alternates: {
+    canonical:
+      "https://www.phoenixbusinessadvisory.com/terms-conditions",
+  },
+
+  openGraph: {
+    title: "Terms and Conditions - Phoenix Business Advisory",
+
+    description:
+      "Review the terms and conditions for using the Phoenix Business Advisory website and services. Ensure you understand your rights and responsibilities as a user.",
+
+    url: "https://www.phoenixbusinessadvisory.com/terms-conditions",
+
+    siteName: "Phoenix Business Advisory",
+
+    type: "website",
+
+    images: [
+      {
+        url: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/open-graph.png",
+        width: 1200,
+        height: 630,
+        alt: "Phoenix Business Advisory",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Terms and Conditions - Phoenix Business Advisory",
+
+    description:
+      "Review the terms and conditions for using the Phoenix Business Advisory website and services. Ensure you understand your rights and responsibilities as a user.",
+
+    images: [
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/open-graph.png",
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const sections = [

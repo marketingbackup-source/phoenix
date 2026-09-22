@@ -1,28 +1,28 @@
-export default function mapVisaProgram(post){
+export default function mapVisaProgram(post) {
+  return {
+    id: post.id,
 
-    return {
+    slug: post.slug,
 
-        id: post.id,
+    title:
+      post.title?.rendered || "",
 
-        slug: post.slug,
+    excerpt:
+      post.excerpt?.rendered || "",
 
+    content:
+      post.content?.rendered || "",
 
-        title:
-            post.title?.rendered || "",
+    image:
+      post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
 
+    date:
+      post.date || null,
 
-        excerpt:
-            post.excerpt?.rendered || "",
+    modified:
+      post.modified || null,
 
-
-        content:
-            post.content?.rendered || "",
-
-
-
-        image:
-            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
-
-    };
-
+    acf:
+      post.acf || {},
+  };
 }

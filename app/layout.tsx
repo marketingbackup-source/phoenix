@@ -4,6 +4,9 @@ import "./globals.css";
 import "../styles/main.css";
 import "../styles/theme.css";
 
+import GlobalHeadTracking from "@/components/Tracking/GlobalHeadTracking";
+import GlobalBodyTracking from "@/components/Tracking/GlobalBodyTracking";
+
 export const metadata: Metadata = {
   title: "Phoenix Business Advisory",
   description:
@@ -32,9 +35,11 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?f[]=general-sans@200,201,300,301,400,401&display=swap"
           rel="stylesheet"
         />
+         <GlobalHeadTracking />
       </head>
 
       <body className="min-h-full">
+         <GlobalBodyTracking />
         {children}
       </body>
     </html>

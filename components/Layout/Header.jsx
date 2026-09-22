@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, Headset, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Phone, Menu, X } from "lucide-react";
 
 import BaseButton from "@/components/UI/BaseButton";
 import CallbackModal from "@/components/UI/CallbackModal";
@@ -114,11 +114,11 @@ const navigationItems = [
   },
   {
     label: "About Us",
-    href: "/about",
+    href: "/about-us",
   },
   {
     label: "Contact Us",
-    href: "/contact",
+    href: "/contact-us",
   },
 ];
 
@@ -531,7 +531,7 @@ export default function SiteHeader() {
                 onClick={() => setIsCallbackOpen(true)}
                 style="primary nav-shine"
               >
-                <Headset
+                <Phone
                   size={20}
                   className="
       ml-2

@@ -3,9 +3,15 @@ import Vision from '@/components/Pages/about/Vision';
 import CEOMessage from '@/components/common/CEOMessage';
 import TeamPanel from '@/components/common/TeamPanel';
 import Achievement from '@/components/common/Achievement';
+
+import { aboutMetadata } from "@/components/Meta/About/aboutMetadata";
+import AboutSchema from "@/components/Meta/About/AboutSchema";
+
+export const metadata = aboutMetadata;
 export default async function HomePage() {
   return (
     <main className="">
+       <AboutSchema />
       <Banner></Banner>
       <Vision></Vision>
       <CEOMessage></CEOMessage>

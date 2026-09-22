@@ -1,7 +1,53 @@
 export const metadata = {
-  title: "Disclaimer | Phoenix Business Advisory",
+  title: "Disclaimer - Phoenix Business Advisory",
+
   description:
-    "Read the Disclaimer of Phoenix Business Advisory regarding the information, links, and content provided on this website.",
+    "Read the disclaimer for Phoenix Business Advisory's website and services. Understand the limitations of our liability and the scope of our advisory services.",
+
+  alternates: {
+    canonical:
+      "https://www.phoenixbusinessadvisory.com/disclaimer",
+  },
+
+  openGraph: {
+    title: "Disclaimer - Phoenix Business Advisory",
+
+    description:
+      "Read the disclaimer for Phoenix Business Advisory's website and services. Understand the limitations of our liability and the scope of our advisory services.",
+
+    url: "https://www.phoenixbusinessadvisory.com/disclaimer",
+
+    siteName: "Phoenix Business Advisory",
+
+    type: "website",
+
+    images: [
+      {
+        url: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/open-graph.png",
+        width: 1200,
+        height: 630,
+        alt: "Phoenix Business Advisory",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Disclaimer - Phoenix Business Advisory",
+
+    description:
+      "Read the disclaimer for Phoenix Business Advisory's website and services. Understand the limitations of our liability and the scope of our advisory services.",
+
+    images: [
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/open-graph.png",
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function DisclaimerPage() {

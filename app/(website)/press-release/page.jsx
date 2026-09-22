@@ -3,7 +3,10 @@ import { getCategoryId } from "@/services/cms/categories/get-category-id";
 
 import PostGrid from "@/components/posts/PostGrid";
 import Pagination from "@/components/posts/Pagination";
+import { pressReleaseMetadata } from "@/components/Meta/PressRelease/pressReleaseMetadata";
+import PressReleaseSchema from "@/components/Meta/PressRelease/PressReleaseSchema";
 
+export const metadata = pressReleaseMetadata;
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -52,6 +55,8 @@ export default async function PressReleasePage({
 
   return (
 
+    <>
+     <PressReleaseSchema posts={posts} />
     <section
       className="
       py-80-30
@@ -107,6 +112,7 @@ export default async function PressReleasePage({
 
 
     </section>
+    </>
 
   );
 

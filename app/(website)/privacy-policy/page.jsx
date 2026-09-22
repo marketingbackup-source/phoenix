@@ -1,7 +1,53 @@
 export const metadata = {
-  title: "Privacy Policy | Phoenix Business Advisory",
+  title: "Privacy Policy - Phoenix Business Advisory",
+
   description:
-    "Read the Privacy Policy of Phoenix Business Advisory and learn how we collect, use, protect, and manage personal information.",
+    "Learn how Phoenix Business Advisory protects your personal information. Read our privacy policy to understand our data collection, usage, and security practices.",
+
+  alternates: {
+    canonical:
+      "https://www.phoenixbusinessadvisory.com/privacy-policy",
+  },
+
+  openGraph: {
+    title: "Privacy Policy - Phoenix Business Advisory",
+
+    description:
+      "Learn how Phoenix Business Advisory protects your personal information. Read our privacy policy to understand our data collection, usage, and security practices.",
+
+    url: "https://www.phoenixbusinessadvisory.com/privacy-policy",
+
+    siteName: "Phoenix Business Advisory",
+
+    type: "website",
+
+    images: [
+      {
+        url: "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/open-graph.png",
+        width: 1200,
+        height: 630,
+        alt: "Phoenix Business Advisory",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Privacy Policy - Phoenix Business Advisory",
+
+    description:
+      "Learn how Phoenix Business Advisory protects your personal information. Read our privacy policy to understand our data collection, usage, and security practices.",
+
+    images: [
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/open-graph.png",
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const sections = [
