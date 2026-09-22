@@ -93,8 +93,10 @@ export default function TrustedPartners() {
 
           <div
             className="
-            w-[220px]
-            h-[110px]
+            w-[180px]
+            h-[80px]
+            lg:w-[220px]
+            lg:h-[110px]
             rounded-3xl
             bg-white/[0.08]
             backdrop-blur-2xl

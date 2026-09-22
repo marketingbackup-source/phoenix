@@ -13,6 +13,7 @@ const actions = [
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/calendar.png",
     type: "link",
     href: "https://calendly.com/deepika-wj1x/usa-business-migration-consulting?preview_source=et_card&month=2024-10",
+    desktopOnly: true,
     className: "bg-white !text-black border border-gray-200",
   },
 
@@ -134,20 +135,21 @@ export default function FloatingActions() {
             </>
           );
 
-          const commonClass = `
-            flex
-            h-11
-            items-center
-            overflow-hidden
-            rounded-full
-            shadow-[0_5px_20px_rgba(0,0,0,0.15)]
-            transition-all
-            duration-500
-            ease-in-out
-            ${expanded ? "w-auto" : "w-11"}
-            ${action.mobileOnly ? "lg:hidden" : ""}
-            ${action.className}
-          `;
+         const commonClass = `
+  flex
+  h-11
+  items-center
+  overflow-hidden
+  rounded-full
+  shadow-[0_5px_20px_rgba(0,0,0,0.15)]
+  transition-all
+  duration-500
+  ease-in-out
+  ${expanded ? "w-auto" : "w-11"}
+  ${action.mobileOnly ? "lg:hidden" : ""}
+  ${action.desktopOnly ? "hidden lg:flex" : ""}
+  ${action.className}
+`;
 
           if (action.type === "callback") {
             return (

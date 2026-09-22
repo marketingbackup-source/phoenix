@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, Phone, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Phone, Menu, X, CalendarDays } from "lucide-react";
 
 import BaseButton from "@/components/UI/BaseButton";
 import CallbackModal from "@/components/UI/CallbackModal";
@@ -818,11 +818,19 @@ export default function SiteHeader() {
 
         <div className="mobile-menu__footer" onClick={closeMenu}>
           <BaseButton
-            title="Talk to an Advisor"
+            title="Schedule A Consultation"
             link
-            toLink="/contact"
+            toLink="https://calendly.com/deepika-wj1x/usa-business-migration-consulting?preview_source=et_card&month=2024-10"
             style="primary mobile-menu__base-button !w-fit"
-          />
+          ><CalendarDays
+                  size={20}
+                  className="
+      ml-2
+      transition-colors
+      duration-300
+      group-hover:text-[var(--color-white)]
+      "
+                /> </BaseButton>
         </div>
       </aside>
       <CallbackModal

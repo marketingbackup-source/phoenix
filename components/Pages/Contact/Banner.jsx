@@ -110,16 +110,6 @@ export default function ContactBanner() {
               international journey.
             </p>
 
-
-            <BaseButton
-              title="Contact Us"
-              link
-              toLink="/contact-us"
-              style="primary w-fit"
-            >
-              <ArrowRight size={20} />
-            </BaseButton>
-
           </div>
 
 

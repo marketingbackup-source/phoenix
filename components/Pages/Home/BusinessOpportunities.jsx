@@ -91,7 +91,7 @@ export default function BusinessOpportunities() {
         gap="gap-8"
         className="py-8 lg:py-15"
         renderItem={(business) => (
-          <div className="group relative w-[330px] sm:w-[420px] lg:w-[480px] bg-white p-4 shadow-2xl rounded-2xl">
+          <div className="group relative w-[280px] sm:w-[340px] lg:w-[390px] bg-white p-4 shadow-2xl rounded-2xl">
             {/* Image */}
             <div className="relative w-full aspect-[1.55/1] overflow-hidden rounded-[4px]">
               <img

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
@@ -94,6 +95,7 @@ const errorClass =
   "!mt-2 !mb-0 text-sm text-[var(--color-red-1)]";
 
 export default function VisaInquiryForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -126,6 +128,7 @@ export default function VisaInquiryForm() {
 
     if (result.success) {
       reset();
+      router.push("/thankyou");
     }
   }
 

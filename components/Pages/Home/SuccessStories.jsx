@@ -89,8 +89,10 @@ export default function IndustryPartners() {
               flex
               items-center
               justify-center
-              w-[220px]
-              h-[110px]
+              w-[180px]
+            h-[80px]
+            lg:w-[220px]
+            lg:h-[110px]
               rounded-3xl
               bg-white/[0.05]
               backdrop-blur-xl
@@ -127,8 +129,10 @@ export default function IndustryPartners() {
   flex
   items-center
   justify-center
-  w-[220px]
-  h-[110px]
+  w-[180px]
+            h-[80px]
+            lg:w-[220px]
+            lg:h-[110px]
   rounded-3xl
   bg-white/[0.05]
   backdrop-blur-xl

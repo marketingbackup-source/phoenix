@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
@@ -128,7 +129,7 @@ const errorClass =
 
 
 export default function ContactForm() {
-
+  const router = useRouter();
 
   const {
     register,
@@ -176,6 +177,7 @@ export default function ContactForm() {
 
     if (result.success) {
       reset();
+      router.push("/thankyou");
     }
 
   }
