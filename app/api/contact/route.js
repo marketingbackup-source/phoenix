@@ -10,15 +10,15 @@ dotenv.config({
   override: true,
 });
 
-
 const allowedOrigins = [
   "https://www.phoenixbusinessadvisory.com",
   "https://phoenixbusinessadvisory.com",
   "https://l1visausa.com",
   "https://www.l1visausa.com",
   "https://cornflowerblue-cod-866086.hostingersite.com",
-  "http://localhost:3000"
+  "http://localhost:3000",
 ];
+
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(100),
 
@@ -26,7 +26,7 @@ const contactSchema = z.object({
     .string()
     .trim()
     .min(7)
-    .max(20)
+    .max(30)
     .regex(/^[0-9+\-\s()]+$/),
 
   email: z.string().trim().email().max(150).optional(),
@@ -56,6 +56,43 @@ function getHighestNumber(value) {
   return Math.max(...matches.map(Number));
 }
 
+/*
+  LeadSquared Phone Format
+
+  Accepted:
+  +919876543210
+  +1 4155552671
+
+  Converted:
+  +91-9876543210
+  +1-4155552671
+
+
+  If no country code:
+  9876543210
+
+  Converted:
+  +91-9876543210
+*/
+
+function formatPhoneForLeadSquared(phone = "") {
+  const cleaned = String(phone).replace(/\s+/g, "").replace(/[()]/g, "");
+
+  if (!cleaned) {
+    return "";
+  }
+
+  if (cleaned.startsWith("+")) {
+    const match = cleaned.match(/^(\+\d{1,4})(\d+)$/);
+
+    if (match) {
+      return `${match[1]}-${match[2]}`;
+    }
+  }
+
+  return `+91-${cleaned}`;
+}
+
 function createLeadSquaredPayload(data, tracking) {
   const payload = [
     {
@@ -65,7 +102,7 @@ function createLeadSquaredPayload(data, tracking) {
 
     {
       Attribute: "Phone",
-      Value: data.phone,
+      Value: formatPhoneForLeadSquared(data.phone),
     },
 
     {
@@ -77,6 +114,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.email) {
     payload.push({
       Attribute: "EmailAddress",
+
       Value: data.email,
     });
   }
@@ -84,6 +122,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.city) {
     payload.push({
       Attribute: "mx_City",
+
       Value: data.city,
     });
   }
@@ -91,6 +130,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.companyName) {
     payload.push({
       Attribute: "mx_Company_Name",
+
       Value: data.companyName,
     });
   }
@@ -98,6 +138,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.annualTurnover) {
     payload.push({
       Attribute: "mx_Lead_Annual_Turnover",
+
       Value: data.annualTurnover,
     });
   }
@@ -105,6 +146,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.businessAge) {
     payload.push({
       Attribute: "mx_Client_Business_Age",
+
       Value: getHighestNumber(data.businessAge),
     });
   }
@@ -112,6 +154,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.employees) {
     payload.push({
       Attribute: "mx_Current_Employees",
+
       Value: getHighestNumber(data.employees),
     });
   }
@@ -119,6 +162,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.inquiryPurpose) {
     payload.push({
       Attribute: "mx_Purpose_of_Inquiry",
+
       Value: data.inquiryPurpose,
     });
   }
@@ -126,18 +170,21 @@ function createLeadSquaredPayload(data, tracking) {
   if (data.comment) {
     payload.push({
       Attribute: "mx_Remarks",
+
       Value: data.comment,
     });
   }
 
   payload.push({
     Attribute: "Source",
+
     Value: tracking.utmSource || "Website",
   });
 
   if (tracking.utmCampaign) {
     payload.push({
       Attribute: "SourceCampaign",
+
       Value: tracking.utmCampaign,
     });
   }
@@ -145,6 +192,7 @@ function createLeadSquaredPayload(data, tracking) {
   if (tracking.utmContent) {
     payload.push({
       Attribute: "SourceContent",
+
       Value: tracking.utmContent,
     });
   }
@@ -190,8 +238,11 @@ export async function POST(request) {
         },
       );
     }
+
     const accessKey = process.env.LSQ_ACCESS_KEY;
+
     const secretKey = process.env.LSQ_SECRET_KEY;
+
     const endpoint = process.env.LSQ_ENDPOINT;
 
     if (!accessKey || !secretKey || !endpoint) {
@@ -200,7 +251,6 @@ export async function POST(request) {
           success: false,
           message: "Server configuration is incomplete.",
         },
-
         {
           status: 500,
         },
@@ -217,7 +267,6 @@ export async function POST(request) {
           success: false,
           message: "Invalid request body.",
         },
-
         {
           status: 400,
         },
@@ -231,9 +280,9 @@ export async function POST(request) {
         {
           success: false,
           message: "Please check the submitted form details.",
+
           errors: validationResult.error.flatten().fieldErrors,
         },
-
         {
           status: 400,
         },
@@ -295,7 +344,6 @@ export async function POST(request) {
             getLeadSquaredError(responseData) ||
             "Unable to submit your details at this time.",
         },
-
         {
           status: 502,
         },
@@ -311,7 +359,6 @@ export async function POST(request) {
 
           message: leadSquaredError,
         },
-
         {
           status: 400,
         },
@@ -324,7 +371,6 @@ export async function POST(request) {
 
         message: "Your details have been submitted successfully.",
       },
-
       {
         status: 200,
       },
@@ -338,7 +384,6 @@ export async function POST(request) {
 
         message: "Something went wrong while submitting your details.",
       },
-
       {
         status: 500,
       },

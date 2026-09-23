@@ -9,16 +9,14 @@ import { useRouter } from "next/navigation";
 import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
 import useFormSubmission from "@/hooks/useFormSubmission";
-
+import BasePhoneInput from "@/components/UI/PhoneInput";
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name"),
 
   phone: z
-    .string()
-    .trim()
-    .min(7, "Please enter a valid phone number")
-    .regex(/^[0-9+\-\s()]+$/, "Please enter a valid phone number"),
+  .string()
+  .min(1, "Please enter a valid phone number"),
 
   email: z.string().trim().email("Please enter a valid email address"),
 
@@ -132,10 +130,11 @@ export default function ContactForm() {
   const router = useRouter();
 
   const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
+     register,
+  control,
+  handleSubmit,
+  reset,
+  formState: { errors },
   } = useForm({
 
     resolver: zodResolver(formSchema),
@@ -225,19 +224,11 @@ export default function ContactForm() {
 
       <div>
 
-        <input
-          type="tel"
-          placeholder="Phone"
-          aria-label="Phone"
-          className={inputClass}
-          {...register("phone")}
-        />
-
-        {errors.phone && (
-          <p className={errorClass}>
-            {errors.phone.message}
-          </p>
-        )}
+       <BasePhoneInput
+  name="phone"
+  control={control}
+  error={errors.phone}
+/>
 
       </div>
 

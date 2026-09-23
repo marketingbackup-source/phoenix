@@ -9,21 +9,16 @@ import { useRouter } from "next/navigation";
 import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
 import useFormSubmission from "@/hooks/useFormSubmission";
+import BasePhoneInput from "@/components/UI/PhoneInput";
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name"),
 
-  phone: z
-    .string()
-    .trim()
-    .min(7, "Please enter a valid phone number")
-    .regex(/^[0-9+\-\s()]+$/, "Please enter a valid phone number"),
+  phone: z.string().min(1, "Please enter your phone number"),
 
   annualTurnover: z.string().min(1, "Please select annual turnover"),
 
-  inquiryPurpose: z
-    .string()
-    .min(1, "Please select the purpose of inquiry"),
+  inquiryPurpose: z.string().min(1, "Please select the purpose of inquiry"),
 });
 
 const annualTurnoverOptions = [
@@ -91,13 +86,13 @@ const inputClass = `
   focus:border-[var(--color-red-1)]
 `;
 
-const errorClass =
-  "!mt-2 !mb-0 text-sm text-[var(--color-red-1)]";
+const errorClass = "!mt-2 !mb-0 text-sm text-[var(--color-red-1)]";
 
 export default function VisaInquiryForm() {
   const router = useRouter();
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors },
@@ -168,27 +163,11 @@ export default function VisaInquiryForm() {
             {...register("name")}
           />
 
-          {errors.name && (
-            <p className={errorClass}>
-              {errors.name.message}
-            </p>
-          )}
+          {errors.name && <p className={errorClass}>{errors.name.message}</p>}
         </div>
 
         <div>
-          <input
-            type="tel"
-            placeholder="Phone"
-            aria-label="Phone"
-            className={inputClass}
-            {...register("phone")}
-          />
-
-          {errors.phone && (
-            <p className={errorClass}>
-              {errors.phone.message}
-            </p>
-          )}
+          <BasePhoneInput name="phone" control={control} error={errors.phone} />
         </div>
 
         <BaseSelect

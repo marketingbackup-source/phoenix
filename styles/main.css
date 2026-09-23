@@ -347,3 +347,46 @@
 .footer-bottom-text{
   @apply text-white/50 text-sm;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Number Field CSS */
+
+.phone-input-wrapper {
+  @apply flex items-center;
+}
+
+
+.phone-input-wrapper .PhoneInputCountry {
+  @apply mr-3;
+}
+
+
+.phone-input-wrapper .PhoneInputInput {
+  @apply w-full
+  rounded-lg
+  border
+  border-gray-200
+  bg-white
+  px-5
+  py-4
+  text-black
+  outline-none
+  transition-all
+  duration-300;
+}
+
+
+.phone-input-wrapper .PhoneInputInput:focus {
+  @apply border-[var(--color-red-1)]
+  ring-2
+  ring-[var(--color-red-1)]/10;
+}
