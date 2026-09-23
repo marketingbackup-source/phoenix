@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     {
-      url: `${BASE_URL}/about`,
+      url: `${BASE_URL}/about-us`,
       changeFrequency: "monthly",
       priority: 0.8,
     },
