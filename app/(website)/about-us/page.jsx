@@ -4,8 +4,8 @@ import CEOMessage from '@/components/common/CEOMessage';
 import TeamPanel from '@/components/common/TeamPanel';
 import Achievement from '@/components/common/Achievement';
 
-import { aboutMetadata } from "@/components/Meta/About/aboutMetadata";
-import AboutSchema from "@/components/Meta/About/AboutSchema";
+import { aboutMetadata } from "@/components/Meta/about/aboutMetadata";
+import AboutSchema from "@/components/Meta/about/AboutSchema";
 
 export const metadata = aboutMetadata;
 export default async function HomePage() {
