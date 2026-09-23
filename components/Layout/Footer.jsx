@@ -61,7 +61,7 @@ const navigation = [
     items: [
       {
         title: "About Us",
-        link: "/about",
+        link: "/about-us",
       },
       {
         title: "Our Offices",
