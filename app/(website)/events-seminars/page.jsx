@@ -180,6 +180,8 @@ const EVENTS = [
     id: "gujarat-excellence-award-2026",
     title: "Gujarat Excellence Award 2026",
     images: [
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/1C0A9937.JPG-scaled.jpeg",
+      "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/1C0A9929.JPG-scaled.jpeg",
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/6a69a85f6b1099c252b0fa68_1.png",
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/6a69a85f778f09196d90a596_ChatGPT-Image-Jul-29-2026-11_49_13-AM.png",
       "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/6a69a85fc048aca1f7e3f9cd_2.png",
