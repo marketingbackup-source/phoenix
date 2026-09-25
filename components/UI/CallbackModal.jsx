@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import BaseModal from "@/components/UI/BaseModal";
 import BasePhoneInput from "@/components/UI/PhoneInput";
+import { formatPhoneForLSQ } from "@/utils/phone";
 
 
 const callbackSchema = z.object({
@@ -119,7 +120,7 @@ export default function CallbackModal({
 
               name: data.name,
 
-              phone: data.phone,
+              phone: formatPhoneForLSQ(data.phone),
 
             }),
 

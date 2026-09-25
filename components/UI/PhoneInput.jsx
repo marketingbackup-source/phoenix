@@ -18,6 +18,7 @@ export default function BasePhoneInput({
   error,
 }) {
 
+
   function getValidationMessage(value) {
 
     if (!value) {
@@ -58,46 +59,70 @@ export default function BasePhoneInput({
 
 
     return true;
+
   }
 
 
+
   return (
+
     <div>
 
       <Controller
+
         name={name}
+
         control={control}
 
         rules={{
           validate: getValidationMessage,
         }}
 
+
         render={({ field }) => (
+
           <PhoneInput
+
             value={field.value || undefined}
+
 
             defaultCountry="IN"
 
+
             international
+
 
             countryCallingCodeEditable={false}
 
+
             limitMaxLength
+
 
             placeholder="Phone"
 
-            onChange={field.onChange}
+
+            onChange={(value)=>{
+
+              field.onChange(value || "");
+
+            }}
+
 
             onBlur={field.onBlur}
 
+
             className="phone-input-wrapper"
+
           />
+
         )}
 
       />
 
 
+
       {error && (
+
         <p
           role="alert"
           className="
@@ -106,10 +131,15 @@ export default function BasePhoneInput({
             text-[var(--color-red-1)]
           "
         >
+
           {error.message}
+
         </p>
+
       )}
 
     </div>
+
   );
+
 }

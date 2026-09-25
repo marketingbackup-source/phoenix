@@ -19,7 +19,7 @@ const navigation = [
       },
       {
         title: "Investor Work Visa NZ",
-        link: "/visa-programs/niv",
+        link: "/visa-programs/new-zealand-investor-work-visa",
       },
       {
         title: "National Innovation Visa",
@@ -43,16 +43,12 @@ const navigation = [
         link: "/news-coverage",
       },
       {
-        title: "Success Stories",
-        link: "#",
+        title: "Our approvals",
+        link: "/approval-track-record",
       },
       {
         title: "Events & Seminars",
         link: "/events-seminars",
-      },
-      {
-        title: "Careers",
-        link: "#",
       },
     ],
   },
@@ -69,7 +65,7 @@ const navigation = [
       },
       {
         title: "Contact Us",
-        link: "/contact",
+        link: "/contact-us",
       },
       {
         title: "Testimonials",

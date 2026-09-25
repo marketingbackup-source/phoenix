@@ -3,36 +3,47 @@
 const successStories = [
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac1e477a56620b573111d_podcast-thumbnail1.jpg",
+    link: "https://www.youtube.com/shorts/ZeUK_ImiJpA",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac2e825a492436db49890_podcast-thumbnail2.jpg",
+    link: "https://www.youtube.com/shorts/C0cXGQN2StI",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac36fb196ac166dc85fb9_podcast-thumbnail3.jpg",
+    link: "#",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac1e3f4d0630111b9d2f6_podcast-thumbnail4.jpg",
+    link: "https://www.youtube.com/shorts/wXcz8RxvBAg",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac68fc9d9b02867f78479_L1petition.jpg",
+    link: "#",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac68da15cfc0fd4ab00dd_deepak-kumar-thumbnail.jpg",
+    link: "#",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac690239d5e0dae6ab6dc_vijay-kumar-thumbnail.jpg",
+    link: "#",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac691f8ee93a8bfd94706_visa-approved.png",
+    link: "#",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/693ac692cef8003bd4ba353a_rakesh-thumbnail.jpg",
+    link: "#",
   },
   {
     image: "https://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/66e7c2079798fc06d9a6d471_WhatsApp%20Image%202024-09-16%20at%2010.48.44_1eb2e874.jpg",
+    link: "youtube.com/shorts/OJZuoqYUPyU?feature=share",
   },
   {
     image: "http://cdn.prod.website-files.com/658d4930f1d45343af3cc4b5/66f516b7ce701370ef8a22ee_L1A-Khurmi-thumbnail.jpg",
+    link: "youtube.com/watch?v=qfUcKjtuw0E&feature=youtu.be",
   }
 ];
 
@@ -81,7 +92,8 @@ export default function SuccessStories() {
 
           {successStories.map((item,index)=>(
 
-            <div
+            <a
+            href={item.link}
               key={index}
               className={`
               group
@@ -141,7 +153,7 @@ export default function SuccessStories() {
               </div>
 
 
-            </div>
+            </a>
 
           ))}
 

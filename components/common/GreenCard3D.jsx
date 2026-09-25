@@ -140,7 +140,7 @@ export default function GreenCardFooterBadge() {
                       </div>
 
                       <div className={styles["gcfb-value"]}>
-                        EB-1A
+                        L-1
                       </div>
                     </div>
                   </div>

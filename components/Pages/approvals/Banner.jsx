@@ -113,7 +113,7 @@ export default function ApprovalBanner() {
             <BaseButton
               title="View Success Stories"
               link
-              toLink="/success-stories"
+              toLink="/testimonials"
               style="primary w-fit"
             >
               <ArrowRight size={20} />

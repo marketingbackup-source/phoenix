@@ -17,7 +17,7 @@ const navigationItems = [
       },
       {
         label: "Our Approvals",
-        href: "/approvals",
+        href: "/approval-track-record",
       },
     ],
   },

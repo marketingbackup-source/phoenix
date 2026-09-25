@@ -18,9 +18,7 @@ export default function VisaMobile({ destinations }) {
 
         <h2 className="fs-52-32 font-normal leading-[1] uppercase">
           Choose Your{" "}
-          <span className="text-[var(--color-red-1)]">
-            Destination
-          </span>
+          <span className="text-[var(--color-red-1)]">Destination</span>
         </h2>
       </div>
 
@@ -32,7 +30,9 @@ export default function VisaMobile({ destinations }) {
         loop={true}
         autoplay={{
           delay: 1000,
+
           disableOnInteraction: false,
+
           pauseOnMouseEnter: false,
         }}
       >
@@ -40,6 +40,7 @@ export default function VisaMobile({ destinations }) {
           <SwiperSlide key={destination.country}>
             <div>
               {/* Destination Image */}
+
               <div className="relative overflow-hidden rounded-4xl h-[300px] !mb-8">
                 <Image
                   src={destination.image}
@@ -51,6 +52,7 @@ export default function VisaMobile({ destinations }) {
               </div>
 
               {/* Content */}
+
               <div>
                 <div className="flex items-center gap-3 !mb-3">
                   <Image
@@ -73,21 +75,22 @@ export default function VisaMobile({ destinations }) {
                   {destination.subtitle}
                 </p>
 
+                {destination.title2 && (
+                  <h4 className="uppercase text-lg font-medium !mb-4">
+                    {destination.title2}
+                  </h4>
+                )}
+
                 <p className="text-gray-500 fs-18-16 leading-[1.5] !mb-3">
                   {destination.description}
                 </p>
 
                 <div className="flex flex-col gap-3 !mb-4">
                   {destination.points.map((point) => (
-                    <div
-                      key={point}
-                      className="flex items-start gap-3"
-                    >
+                    <div key={point} className="flex items-start gap-3">
                       <span className="mt-2 w-2 h-2 rounded-full bg-[var(--color-red-1)] shrink-0" />
 
-                      <span className="text-gray-600">
-                        {point}
-                      </span>
+                      <span className="text-gray-600">{point}</span>
                     </div>
                   ))}
                 </div>

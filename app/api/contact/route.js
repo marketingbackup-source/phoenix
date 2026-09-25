@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { formatPhoneForLSQ } from "@/utils/phone";
 
 export const runtime = "nodejs";
 
@@ -75,23 +76,7 @@ function getHighestNumber(value) {
   +91-9876543210
 */
 
-function formatPhoneForLeadSquared(phone = "") {
-  const cleaned = String(phone).replace(/\s+/g, "").replace(/[()]/g, "");
 
-  if (!cleaned) {
-    return "";
-  }
-
-  if (cleaned.startsWith("+")) {
-    const match = cleaned.match(/^(\+\d{1,4})(\d+)$/);
-
-    if (match) {
-      return `${match[1]}-${match[2]}`;
-    }
-  }
-
-  return `+91-${cleaned}`;
-}
 
 function createLeadSquaredPayload(data, tracking) {
   const payload = [
@@ -102,7 +87,7 @@ function createLeadSquaredPayload(data, tracking) {
 
     {
       Attribute: "Phone",
-      Value: formatPhoneForLeadSquared(data.phone),
+      Value: formatPhoneForLSQ(data.phone),
     },
 
     {
@@ -300,6 +285,10 @@ export async function POST(request) {
     };
 
     const leadSquaredPayload = createLeadSquaredPayload(data, tracking);
+    console.log(
+  "LeadSquared Payload:",
+  JSON.stringify(leadSquaredPayload, null, 2)
+);
 
     const leadSquaredUrl = new URL(endpoint);
 
