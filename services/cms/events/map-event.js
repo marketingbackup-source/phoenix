@@ -6,7 +6,18 @@ function extractImages(content = "") {
   let match;
 
   while ((match = imageRegex.exec(content)) !== null) {
-    images.push(match[1]);
+
+    let imageUrl = match[1];
+
+
+    // Convert WordPress generated sizes to original image
+    imageUrl = imageUrl.replace(
+      /-\d+x\d+(?=\.(jpg|jpeg|png|webp))/,
+      ""
+    );
+
+
+    images.push(imageUrl);
   }
 
   return images;
