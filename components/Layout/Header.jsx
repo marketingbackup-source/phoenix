@@ -3,7 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronDown, Phone, Menu, X, CalendarDays } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  Phone,
+  Menu,
+  X,
+  CalendarDays,
+} from "lucide-react";
 
 import BaseButton from "@/components/UI/BaseButton";
 import CallbackModal from "@/components/UI/CallbackModal";
@@ -523,7 +530,6 @@ export default function SiteHeader() {
                 </div>
               ))}
             </nav>
-
             <div className="site-header__desktop-cta">
               <BaseButton
                 title="Get a Call in 55 Seconds"
@@ -822,15 +828,17 @@ export default function SiteHeader() {
             link
             toLink="https://calendly.com/deepika-wj1x/usa-business-migration-consulting?preview_source=et_card&month=2024-10"
             style="primary mobile-menu__base-button !w-fit"
-          ><CalendarDays
-                  size={20}
-                  className="
+          >
+            <CalendarDays
+              size={20}
+              className="
       ml-2
       transition-colors
       duration-300
       group-hover:text-[var(--color-white)]
       "
-                /> </BaseButton>
+            />{" "}
+          </BaseButton>
         </div>
       </aside>
       <CallbackModal

@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, Phone } from "lucide-react";
@@ -94,7 +94,7 @@ const navigation = [
       },
       {
         title: "Sitemap",
-        link: "/sitemap.xml",
+        link: "/sitemap",
       },
     ],
   },
@@ -156,6 +156,47 @@ const socials = [
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [newsletterMessage, setNewsletterMessage] = useState("");
+  const [newsletterLoading, setNewsletterLoading] = useState(false);
+  async function submitNewsletter(e) {
+    e.preventDefault();
+
+    setNewsletterMessage("");
+
+    if (!email) {
+      setNewsletterMessage("Please enter your email");
+      return;
+    }
+
+    try {
+      setNewsletterLoading(true);
+
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Something went wrong");
+      }
+
+      setNewsletterMessage("Subscribed successfully");
+
+      setEmail("");
+    } catch (error) {
+      setNewsletterMessage(error.message);
+    } finally {
+      setNewsletterLoading(false);
+    }
+  }
   return (
     <footer className="relative overflow-hidden bg-[#050b14] pt-16 pb-0">
       <div
@@ -239,30 +280,30 @@ export default function Footer() {
                 <p className="footer-nav-item !mb-0">+91 9964544000</p>
               </div>
               <div
-              className="
+                className="
   flex
   items-center
   gap-4
   mt-3
   "
-            >
-              {aiPromts.map((ai) => (
-                <Link
-                  href={ai.link}
-                  key={ai.name}
-                  target={ai.link !== "#" ? "_blank" : undefined}
-                  className="
+              >
+                {aiPromts.map((ai) => (
+                  <Link
+                    href={ai.link}
+                    key={ai.name}
+                    target={ai.link !== "#" ? "_blank" : undefined}
+                    className="
       w-8
       h-8
       flex
       items-center
       justify-center
       "
-                >
-                  <img
-                    src={`https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/${ai.image}`}
-                    alt={ai.name}
-                    className="
+                  >
+                    <img
+                      src={`https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/${ai.image}`}
+                      alt={ai.name}
+                      className="
         w-6
         h-6
         object-contain
@@ -271,12 +312,11 @@ export default function Footer() {
         transition-opacity
         duration-300
         "
-                  />
-                </Link>
-              ))}
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
-            </div>
-            
 
             <div
               className="
@@ -285,44 +325,55 @@ export default function Footer() {
             >
               <p className="footer-nav-heading !mb-3">Stay Updated</p>
 
-              <div
+              <form
+                onSubmit={submitNewsletter}
                 className="
-                flex
-                overflow-hidden
-                rounded-lg
-                border
-                border-white/10
-                bg-black/20
-                "
+ flex
+ overflow-hidden
+ rounded-lg
+ border
+ border-white/10
+ bg-black/20
+ "
               >
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   className="
-                  w-full
-                  bg-transparent
-                  px-3
-                  py-3
-                  text-sm
-                  !text-white/80
-                  outline-none
-                  placeholder:text-white/40
-                  "
+ w-full
+ bg-transparent
+ px-3
+ py-3
+ text-sm
+ !text-white/80
+ outline-none
+ placeholder:text-white/40
+ "
                 />
 
                 <button
+                  type="submit"
+                  disabled={newsletterLoading}
                   className="
-                  flex
-                  items-center
-                  justify-center
-                  px-4
-                  bg-[var(--color-red-1)]
-                  !text-white
-                  "
+ flex
+ items-center
+ justify-center
+ px-4
+ bg-[var(--color-red-1)]
+ !text-white
+ disabled:opacity-50
+ "
                 >
                   <ArrowRight size={17} />
                 </button>
-              </div>
+              </form>
+              {newsletterMessage && (
+                <p className="mt-2 text-xs text-white/90">
+                  {newsletterMessage}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -445,7 +496,17 @@ export default function Footer() {
           <img
             src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/BLACK-e1788156161191.png"
             alt="Phoenix Logo bleeded"
-            className="w-auto h-[140px] md:h-[250px] mb-[-2%]"
+            className="
+    w-auto
+    h-[140px]
+    md:h-[250px]
+    mb-[-2%]
+
+    max-md:w-full
+    max-md:h-full
+    max-md:object-contain
+    max-md:object-bottom
+  "
           />
         </div>
       </div>

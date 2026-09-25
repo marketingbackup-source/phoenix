@@ -77,7 +77,7 @@ export function initRevealAnimations() {
     const animations = {
 
       default: {
-        start: "top 65%",
+        start: "top 75%",
 
         from: {
           opacity: 0,
