@@ -161,7 +161,7 @@ export default function Banner() {
             <BaseButton
               title="START YOUR VISA JOURNEY"
               link
-              toLink="/contact"
+              toLink="/contact-us"
               style="secondary"
             >
 
