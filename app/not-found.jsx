@@ -124,7 +124,7 @@ export default function NotFound() {
               </BaseButton>
 
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="
                   inline-flex
                   items-center

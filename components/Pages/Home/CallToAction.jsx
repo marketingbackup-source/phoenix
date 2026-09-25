@@ -17,7 +17,7 @@ export default function CallToAction({
                         <BaseButton
                             title="Talk To An Advisor"
                             link
-                            toLink="/contact"
+                            toLink="/contact-us"
                             style="white"
                         ><Headset
                 className="ml-2 transition-colors duration-300 group-hover:text-[var(--color-white)]"

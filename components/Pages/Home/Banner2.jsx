@@ -87,7 +87,7 @@ export default function Banner() {
                             markets. From business setup to immigration strategy, our
                             experts guide you through every step.
                         </p>
-                        <BaseButton title="Contact Us" link toLink="/contact" style="secondary">
+                        <BaseButton title="Contact Us" link toLink="/contact-us" style="secondary">
                             <Headset
                                 className="ml-2 transition-colors duration-300 group-hover:text-[var(--color-red-1)]"
                                 size={20}

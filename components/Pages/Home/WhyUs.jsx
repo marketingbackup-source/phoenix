@@ -156,7 +156,7 @@ export default function WhyPhoenix() {
             <BaseButton
               title="Looking For Best Advisor?"
               link
-              toLink="/contact"
+              toLink="/contact-us"
               style="primary w-fit"
             >
               <ArrowRight size={20}/>

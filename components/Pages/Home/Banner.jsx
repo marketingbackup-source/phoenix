@@ -78,7 +78,7 @@ export default function Banner() {
             <BaseButton
               title="Contact Us"
               link
-              toLink="/contact"
+              toLink="/contact-us"
               style="secondary"
             >
               <Headset

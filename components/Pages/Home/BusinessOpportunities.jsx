@@ -136,7 +136,7 @@ export default function BusinessOpportunities() {
                 </div>
 
                 {/* Arrow */}
-<a className="absolute right-10 bottom-[30px]" href="/contact">
+<a className="absolute right-10 bottom-[30px]" href="/contact-us">
   <div
     className="
     absolute
