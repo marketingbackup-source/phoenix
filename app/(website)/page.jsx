@@ -1,7 +1,7 @@
 import { homeMetadata } from "@/components/Meta/Home/homeMetadata";
 import HomeSchema from "@/components/Meta/Home/HomeSchema";
 
-import Banner from "@/components/Pages/Home/Banner3";
+import Banner from "@/components/Pages/Home/Banner";
 import TrustAuthority from "@/components/Pages/Home/TrustAuthority";
 import Proof from "@/components/Pages/Home/Proof";
 import Faq from "@/components/Pages/Home/Faq";

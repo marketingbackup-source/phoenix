@@ -4,43 +4,120 @@ import Image from "next/image";
 import BaseButton from "@/components/UI/BaseButton";
 import { Headset } from "lucide-react";
 
+const videoUrl =
+  "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/webpage-3-_-new.mp4";
+
+
 const flagBaseUrl =
   "https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/";
 
+
 const countries = [
   {
-    image: `${flagBaseUrl}us-flag.png`,
+    image: `${flagBaseUrl}usa.png`,
     label: "United States",
   },
   {
-    image: `${flagBaseUrl}nz-flag.png`,
+    image: `${flagBaseUrl}new-zealand.png`,
     label: "New Zealand",
   },
   {
-    image: `${flagBaseUrl}uae.png`,
+    image: `${flagBaseUrl}flag-2.png`,
     label: "UAE",
   },
   {
-    image: `${flagBaseUrl}eu-flag.png`,
+    image: `${flagBaseUrl}european-union.png`,
     label: "Europe",
   },
   {
-    image: `${flagBaseUrl}aus-flag.png`,
+    image: `${flagBaseUrl}australia.png`,
     label: "Australia",
   },
 ];
 
+
 const marqueeItems = [...countries, ...countries];
+
 
 export default function Banner() {
   return (
-    <section className="bg-[#f2f2f278]">
-      <div className="container-main rounded-4xl pt-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+    <section
+      className="
+      relative
+      overflow-hidden
+      bg-black
+      min-h-[93vh]
+      flex
+      items-center
+      pt-20
+      "
+    >
+
+      {/* Background Video */}
+
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="
+        absolute
+        inset-0
+        h-full
+        w-full
+        object-cover
+        z-0
+        "
+      >
+        <source
+          src={videoUrl}
+          type="video/mp4"
+        />
+      </video>
+
+
+      {/* Video Overlay */}
+
+      <div
+        className="
+        absolute
+        inset-0
+        bg-white/0
+        z-10
+        "
+      />
+
+
+
+      <div
+        className="
+        container-main
+        relative
+        z-20
+        rounded-4xl
+        pt-10
+        "
+      >
+
+        <div
+          className="
+          flex
+          flex-col
+          lg:flex-row
+          items-center
+          gap-12
+          "
+        >
+
 
           {/* Left Content */}
 
-          <div className="w-full lg:w-7/12">
+          <div
+            className="
+            w-full
+            lg:w-7/12
+            "
+          >
 
             <h1
               className="
@@ -49,14 +126,18 @@ export default function Banner() {
               uppercase
               !mb-8
               "
-              data-reveal
             >
+
               Acquire Business in USA Get{" "}
+
               <span className="text-green-700">
                 Green Card
               </span>{" "}
+
               in 2 Years*
+
             </h1>
+
 
 
             <p
@@ -65,22 +146,25 @@ export default function Banner() {
               !mb-8
               lg:!mb-10
               "
-              data-reveal
             >
+
               Phoenix Business Advisory has helped entrepreneurs, investors,
               founders, and business owners confidently establish and expand
               their businesses in the USA, Australia, and other global
               markets. From business setup to immigration strategy, our
               experts guide you through every step.
+
             </p>
 
 
+
             <BaseButton
-              title="Contact Us"
+              title="START YOUR VISA JOURNEY"
               link
               toLink="/contact-us"
               style="secondary"
             >
+
               <Headset
                 className="
                 ml-2
@@ -90,7 +174,9 @@ export default function Banner() {
                 "
                 size={20}
               />
+
             </BaseButton>
+
 
 
 
@@ -115,14 +201,14 @@ export default function Banner() {
                 "
               >
 
-                {marqueeItems.map((country, index) => (
+                {marqueeItems.map((country,index)=>(
 
                   <div
                     key={index}
                     className="
                     flex
                     items-center
-                    gap-3
+                    gap-8
                     whitespace-nowrap
                     "
                   >
@@ -140,6 +226,7 @@ export default function Banner() {
                       "
                     />
 
+
                     <span
                       className="
                       text-sm
@@ -149,45 +236,57 @@ export default function Banner() {
                       {country.label}
                     </span>
 
+
                   </div>
 
                 ))}
+
 
               </div>
 
             </div>
 
+
           </div>
+
 
 
 
           {/* Right Image */}
 
-          <div className="w-full lg:w-5/12">
+          <div
+            className="
+            w-full
+            lg:w-5/12
+            relative
+            z-20
+            "
+          >
 
-            <img
-              src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/08/statue-liberty-isolated-e1786780508702.png"
-              alt="Statue of Liberty"
-              className="
-              w-full
-              h-auto
-              object-contain
-              "
-            />
+           
 
           </div>
 
+
+
         </div>
+
       </div>
 
 
+
+
       <style>{`
+
         .phx-marquee {
           animation: phx-marquee-scroll 22s linear infinite;
         }
 
+
         .phx-marquee-mask {
-          -webkit-mask-image: linear-gradient(
+
+          -webkit-mask-image:
+          linear-gradient(
             to right,
             transparent,
             black 8%,
@@ -195,16 +294,21 @@ export default function Banner() {
             transparent
           );
 
-          mask-image: linear-gradient(
+
+          mask-image:
+          linear-gradient(
             to right,
             transparent,
             black 8%,
             black 92%,
             transparent
           );
+
         }
 
+
         @keyframes phx-marquee-scroll {
+
           from {
             transform: translateX(0);
           }
@@ -212,14 +316,20 @@ export default function Banner() {
           to {
             transform: translateX(-50%);
           }
+
         }
 
+
         @media (prefers-reduced-motion: reduce) {
+
           .phx-marquee {
-            animation: none;
+            animation:none;
           }
+
         }
+
       `}</style>
+
 
     </section>
   );
