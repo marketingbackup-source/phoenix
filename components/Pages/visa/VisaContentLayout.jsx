@@ -6,88 +6,141 @@ import VisaTOC from "./VisaTOC";
 import VisaContent from "./VisaContent";
 import VisaInquiryForm from "./VisaInquiryForm";
 
-export default function VisaContentLayout({ content }) {
-  const headings = useMemo(() => {
-    if (!content) return [];
+/**
+ * Convert a heading title into a URL-friendly anchor ID.
+ */
+function createHeadingId(title = "") {
+  return title
+    .toLowerCase()
+    .replace(/<[^>]*>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&#8211;|&#8212;/gi, "-")
+    .replace(/&#8217;|&#39;/gi, "'")
+    .replace(/&quot;|&#34;/gi, '"')
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
 
-    const parser = new DOMParser();
+/**
+ * Convert basic HTML entities / markup into readable TOC text.
+ *
+ * This deliberately avoids DOMParser because DOMParser is a browser API
+ * and is unavailable during Next.js server rendering.
+ */
+function getHeadingText(html = "") {
+  return html
+    .replace(/<[^>]*>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#34;/gi, '"')
+    .replace(/&#39;|&#8217;/gi, "'")
+    .replace(/&#8211;/gi, "–")
+    .replace(/&#8212;/gi, "—")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
-    const doc = parser.parseFromString(content, "text/html");
+/**
+ * Remove unwanted markup coming from WordPress.
+ */
+function cleanContent(html = "") {
+  return html
+    // Remove BR tags
+    .replace(/<br\s*\/?>/gi, "")
 
-    return Array.from(doc.querySelectorAll("h2")).map((heading, index) => {
-      const title = heading.textContent.trim();
+    // Remove empty paragraphs
+    .replace(/<p(?:\s[^>]*)?>\s*<\/p>/gi, "")
 
-      return {
-        id: title
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
-          .replace(/\s+/g, "-"),
+    // Remove paragraphs containing only &nbsp;
+    .replace(/<p(?:\s[^>]*)?>\s*&nbsp;\s*<\/p>/gi, "");
+}
 
+/**
+ * Extract H2 headings and add matching IDs to the HTML.
+ *
+ * This implementation is server-safe and does not depend on DOMParser.
+ */
+function processContent(html = "") {
+  if (!html) {
+    return {
+      html: "",
+      headings: [],
+    };
+  }
+
+  const cleanedHTML = cleanContent(html);
+
+  const headings = [];
+  let headingIndex = 0;
+
+  const updatedHTML = cleanedHTML.replace(
+    /<h2([^>]*)>([\s\S]*?)<\/h2>/gi,
+    (fullMatch, attributes = "", innerHTML = "") => {
+      const title = getHeadingText(innerHTML);
+
+      if (!title) {
+        return fullMatch;
+      }
+
+      const id = createHeadingId(title);
+
+      headingIndex += 1;
+
+      headings.push({
+        id,
         title,
+        number: headingIndex,
+      });
 
-        number: index + 1,
-      };
-    });
-  }, [content]);
+      /*
+       * Remove an existing ID from WordPress before adding ours.
+       * This prevents duplicate id attributes.
+       */
+      const cleanAttributes = attributes.replace(
+        /\s+id=(["']).*?\1/gi,
+        ""
+      );
 
-  const cleanContent = (html) => {
-    if (!html) return "";
+      return `<h2${cleanAttributes} id="${id}">${innerHTML}</h2>`;
+    }
+  );
 
-    return (
-      html
-
-        // Remove all br tags
-        .replace(/<br\s*\/?>/gi, "")
-
-        // Remove empty paragraphs
-        .replace(/<p>\s*<\/p>/gi, "")
-
-        // Remove paragraphs containing only whitespace
-        .replace(/<p>\s*&nbsp;\s*<\/p>/gi, "")
-    );
+  return {
+    html: updatedHTML,
+    headings,
   };
+}
 
-  const updatedContent = useMemo(() => {
-    if (!content) return "";
-
-    const cleanHTML = cleanContent(content);
-
-    const parser = new DOMParser();
-
-    const doc = parser.parseFromString(cleanHTML, "text/html");
-
-    const headings = doc.querySelectorAll("h2");
-
-    headings.forEach((heading) => {
-      const title = heading.textContent.trim();
-
-      const id = title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "-");
-
-      heading.setAttribute("id", id);
-    });
-
-    return doc.body.innerHTML;
+export default function VisaContentLayout({ content }) {
+  const processedContent = useMemo(() => {
+    return processContent(content);
   }, [content]);
+
+  const { html: updatedContent, headings } = processedContent;
 
   return (
     <section className="py-80-30 bg-white">
-      <div className="container-main ">
+      <div className="container-main">
         <div
           className="
-          grid
-          grid-cols-1
-          lg:grid-cols-12
-          gap-60-20
+            grid
+            grid-cols-1
+            lg:grid-cols-12
+            gap-60-20
           "
         >
+          {/* Desktop Table of Contents */}
           <aside
             className="
-            hidden
-            lg:block
-            lg:col-span-3
+              hidden
+              lg:block
+              lg:col-span-3
             "
           >
             <div className="sticky top-28">
@@ -95,32 +148,27 @@ export default function VisaContentLayout({ content }) {
             </div>
           </aside>
 
-          <div
-            className="
-            lg:col-span-6
-            "
-          >
+          {/* Main Content */}
+          <div className="lg:col-span-6">
+            {/* Mobile Table of Contents */}
             <div
               className="
-              lg:hidden
-              !mb-8
+                lg:hidden
+                !mb-8
               "
             >
               <VisaTOC headings={headings} />
             </div>
 
-            <VisaContent  content={updatedContent} />
+            <VisaContent content={updatedContent} />
           </div>
 
-          <aside
-            className="
-            lg:col-span-3
-            "
-          >
+          {/* Inquiry Form */}
+          <aside className="lg:col-span-3">
             <div
               className="
-              lg:sticky
-              lg:top-28
+                lg:sticky
+                lg:top-28
               "
             >
               <VisaInquiryForm />
