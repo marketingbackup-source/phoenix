@@ -142,97 +142,163 @@ export default function EligibilityTracker() {
   }
 
   async function sendEligibilityLead(eligibility) {
-    const utm = getEligibilityUTMs();
+  const utm = getEligibilityUTMs();
 
-    const payload = {
-      formType: "business-consultation",
-      name: data.name,
-      phone: data.phone,
-      email: data.email,
-      city: data.city,
-      companyName: data.biz,
-      businessAge: data.age.label,
-      employeeCount: data.emp.label,
-      businessType: data.bizType.label,
-      businessInquiry: "USA Business Migration Eligibility Checker",
-      annualTurnover: data.turnover.val,
-      comments:
-        "Eligibility checker completed. " +
-        `Eligibility status: ${eligibility.eligible ? "Eligible" : "Not Eligible"}. ` +
-        `Business type: ${data.bizType.label}. ` +
-        `Turnover range: ${data.turnover.label}. ` +
-        `Investment readiness: ${data.invest.label}`,
-      utmSource: utm.utmSource,
-      utmCampaign: utm.utmCampaign,
-      utmTerm: utm.utmTerm,
-      utmContent: utm.utmContent,
-      pageUrl: window.location.href,
-    };
+  const payload = {
+    formType: "business-consultation",
+    name: data.name,
+    phone: data.phone,
+    email: data.email,
+    city: data.city,
+    companyName: data.biz,
+    businessAge: data.age.label,
+    employeeCount: data.emp.label,
+    businessType: data.bizType.label,
+    businessInquiry: "USA Business Migration Eligibility Checker",
+    annualTurnover: data.turnover.val,
+    comments:
+      "Eligibility checker completed. " +
+      `Eligibility status: ${eligibility.eligible ? "Eligible" : "Not Eligible"}. ` +
+      `Business type: ${data.bizType.label}. ` +
+      `Turnover range: ${data.turnover.label}. ` +
+      `Investment readiness: ${data.invest.label}`,
+    utmSource: utm.utmSource,
+    utmCampaign: utm.utmCampaign,
+    utmTerm: utm.utmTerm,
+    utmContent: utm.utmContent,
+    pageUrl: window.location.href,
+  };
+
+  console.group("Eligibility LSQ Submission");
+
+  console.log("Worker URL:", ELIGIBILITY_WORKER_URL);
+  console.log("Eligibility result:", eligibility);
+  console.log("Payload:", payload);
+
+  try {
+    const response = await fetch(ELIGIBILITY_WORKER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    console.log("HTTP status:", response.status);
+    console.log("HTTP status text:", response.statusText);
+    console.log("Response OK:", response.ok);
+
+    const rawResponse = await response.text();
+
+    console.log("Raw worker response:", rawResponse);
+
+    let result = null;
 
     try {
-      const response = await fetch(ELIGIBILITY_WORKER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      result = rawResponse ? JSON.parse(rawResponse) : null;
+    } catch (jsonError) {
+      console.error("Worker returned invalid JSON:", jsonError);
+
+      console.groupEnd();
+
+      return {
+        success: false,
+        error: `Invalid server response. HTTP ${response.status}`,
+      };
+    }
+
+    console.log("Parsed worker response:", result);
+
+    if (!response.ok || result?.success !== true) {
+      console.error("Worker rejected submission:", {
+        status: response.status,
+        result,
       });
 
-      let result;
-      try {
-        result = await response.json();
-      } catch {
-        return {
-          success: false,
-          error: "The server returned an invalid response. Please try again.",
-        };
-      }
+      console.groupEnd();
 
-      if (!response.ok || result.success !== true) {
-        return {
-          success: false,
-          error:
-            result.error ||
-            result.message ||
-            "Unable to submit your information.",
-        };
-      }
-
-      return { success: true, data: result };
-    } catch (error) {
       return {
         success: false,
         error:
-          error?.message || "Unable to connect to the server. Please try again.",
+          result?.error ||
+          result?.message ||
+          `Unable to submit. HTTP ${response.status}`,
       };
     }
+
+    console.log("LSQ submission successful");
+
+    console.groupEnd();
+
+    return {
+      success: true,
+      data: result,
+    };
+  } catch (error) {
+    console.error("FETCH FAILED");
+    console.error("Error object:", error);
+    console.error("Error name:", error?.name);
+    console.error("Error message:", error?.message);
+    console.error("Error stack:", error?.stack);
+
+    console.groupEnd();
+
+    return {
+      success: false,
+      error:
+        error?.message ||
+        "Unable to connect to the server. Please try again.",
+    };
   }
+}
 
   async function submitEligibility() {
-    if (!data.invest.val || isSubmitting) return;
+  if (!data.invest.val || isSubmitting) return;
 
-    setIsSubmitting(true);
-    setSubmissionError("");
+  setIsSubmitting(true);
+  setSubmissionError("");
 
-    const eligibility = calculateEligibility(data);
-    const resultData = {
-      ...data,
-      checks: eligibility,
-      eligible: eligibility.eligible,
-    };
+  const eligibility = calculateEligibility(data);
 
-    sessionStorage.setItem(RESULT_STORAGE_KEY, JSON.stringify(resultData));
+  const resultData = {
+    ...data,
+    checks: eligibility,
+    eligible: eligibility.eligible,
+  };
 
-    const leadResult = await sendEligibilityLead(eligibility);
+  // Save result for result page
+  sessionStorage.setItem(
+    RESULT_STORAGE_KEY,
+    JSON.stringify(resultData)
+  );
 
-    if (!leadResult.success) {
-      setSubmissionError(
-        leadResult.error || "We could not submit your information. Please try again."
-      );
-      setIsSubmitting(false);
-      return;
-    }
-
-    router.push(eligibility.eligible ? "/eligibility-result" : "/not-eligible");
+  /*
+   * IMPORTANT:
+   * Do NOT send Not Eligible users to LeadSquared.
+   */
+  if (!eligibility.eligible) {
+    router.push("/not-eligible");
+    return;
   }
+
+  /*
+   * Only eligible users reach this point,
+   * so only eligible leads are submitted to LSQ.
+   */
+  const leadResult = await sendEligibilityLead(eligibility);
+
+  if (!leadResult.success) {
+    setSubmissionError(
+      leadResult.error ||
+        "We could not submit your information. Please try again."
+    );
+
+    setIsSubmitting(false);
+    return;
+  }
+
+  router.push("/eligibility-result");
+}
 
   return (
     <EligibilityShell stepLabel={`Step ${step} of ${TOTAL_STEPS}`} progress={progress}>
