@@ -1,24 +1,12 @@
-import dotenv from "dotenv";
-import path from "node:path";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+
 import { formatPhoneForLSQ } from "@/utils/phone";
 
 export const runtime = "nodejs";
 
-dotenv.config({
-  path: path.resolve(process.cwd(), ".env.local"),
-  override: true,
-});
-
-const allowedOrigins = [
-  "https://www.phoenixbusinessadvisory.com",
-  "https://phoenixbusinessadvisory.com",
-  "https://l1visausa.com",
-  "https://www.l1visausa.com",
-  "https://cornflowerblue-cod-866086.hostingersite.com",
-  "http://localhost:3000",
-];
+const WORKER_URL =
+  "https://lsq-website-forms.marketingbackup.workers.dev/lead";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(100),
@@ -47,201 +35,8 @@ const contactSchema = z.object({
   comment: z.string().trim().max(1000).optional(),
 });
 
-function getHighestNumber(value) {
-  const matches = String(value).match(/\d+/g);
-
-  if (!matches?.length) {
-    return value;
-  }
-
-  return Math.max(...matches.map(Number));
-}
-
-/*
-  LeadSquared Phone Format
-
-  Accepted:
-  +919876543210
-  +1 4155552671
-
-  Converted:
-  +91-9876543210
-  +1-4155552671
-
-
-  If no country code:
-  9876543210
-
-  Converted:
-  +91-9876543210
-*/
-
-
-
-function createLeadSquaredPayload(data, tracking) {
-  const payload = [
-    {
-      Attribute: "FirstName",
-      Value: data.name,
-    },
-
-    {
-      Attribute: "Phone",
-      Value: formatPhoneForLSQ(data.phone),
-    },
-
-    {
-      Attribute: "SearchBy",
-      Value: "Phone",
-    },
-  ];
-
-  if (data.email) {
-    payload.push({
-      Attribute: "EmailAddress",
-
-      Value: data.email,
-    });
-  }
-
-  if (data.city) {
-    payload.push({
-      Attribute: "mx_City",
-
-      Value: data.city,
-    });
-  }
-
-  if (data.companyName) {
-    payload.push({
-      Attribute: "mx_Company_Name",
-
-      Value: data.companyName,
-    });
-  }
-
-  if (data.annualTurnover) {
-    payload.push({
-      Attribute: "mx_Lead_Annual_Turnover",
-
-      Value: data.annualTurnover,
-    });
-  }
-
-  if (data.businessAge) {
-    payload.push({
-      Attribute: "mx_Client_Business_Age",
-
-      Value: getHighestNumber(data.businessAge),
-    });
-  }
-
-  if (data.employees) {
-    payload.push({
-      Attribute: "mx_Current_Employees",
-
-      Value: getHighestNumber(data.employees),
-    });
-  }
-
-  if (data.inquiryPurpose) {
-    payload.push({
-      Attribute: "mx_Purpose_of_Inquiry",
-
-      Value: data.inquiryPurpose,
-    });
-  }
-
-  if (data.comment) {
-    payload.push({
-      Attribute: "mx_Remarks",
-
-      Value: data.comment,
-    });
-  }
-
-  payload.push({
-    Attribute: "Source",
-
-    Value: tracking.utmSource || "Website",
-  });
-
-  if (tracking.utmCampaign) {
-    payload.push({
-      Attribute: "SourceCampaign",
-
-      Value: tracking.utmCampaign,
-    });
-  }
-
-  if (tracking.utmContent) {
-    payload.push({
-      Attribute: "SourceContent",
-
-      Value: tracking.utmContent,
-    });
-  }
-
-  return payload;
-}
-
-function getLeadSquaredError(responseData) {
-  if (!responseData) {
-    return null;
-  }
-
-  if (responseData.Status === "Error") {
-    return (
-      responseData.ExceptionMessage ||
-      responseData.Message ||
-      responseData.ErrorMessage ||
-      "LeadSquared rejected the submission."
-    );
-  }
-
-  if (responseData.ExceptionType || responseData.ExceptionMessage) {
-    return (
-      responseData.ExceptionMessage || "LeadSquared rejected the submission."
-    );
-  }
-
-  return null;
-}
-
 export async function POST(request) {
   try {
-    const origin = request.headers.get("origin");
-
-    if (!origin || !allowedOrigins.includes(origin)) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Unauthorized request.",
-        },
-        {
-          status: 403,
-        },
-      );
-    }
-
-    const accessKey = process.env.LSQ_ACCESS_KEY;
-
-    const secretKey = process.env.LSQ_SECRET_KEY;
-
-    const endpoint = process.env.LSQ_ENDPOINT;
-
-    if (!accessKey || !secretKey || !endpoint) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Server configuration is incomplete.",
-        },
-        {
-          status: 500,
-        },
-      );
-    }
-
     let requestBody;
 
     try {
@@ -254,128 +49,100 @@ export async function POST(request) {
         },
         {
           status: 400,
-        },
+        }
       );
     }
 
-    const validationResult = contactSchema.safeParse(requestBody);
+    const validationResult =
+      contactSchema.safeParse(requestBody);
 
     if (!validationResult.success) {
       return NextResponse.json(
         {
           success: false,
           message: "Please check the submitted form details.",
-
-          errors: validationResult.error.flatten().fieldErrors,
+          errors:
+            validationResult.error.flatten().fieldErrors,
         },
         {
           status: 400,
-        },
+        }
       );
     }
 
     const data = validationResult.data;
 
-    const tracking = {
-      utmSource: request.cookies.get("utm_source")?.value || "",
+    /*
+     * Keep the same phone formatting
+     * your old API was already using.
+     *
+     * Example:
+     * +919876543210
+     * becomes:
+     * +91-9876543210
+     */
+    const formattedPhone =
+      formatPhoneForLSQ(data.phone);
 
-      utmCampaign: request.cookies.get("utm_campaign")?.value || "",
+    const workerPayload = {
+      formType: "business-consultation",
 
-      utmContent: request.cookies.get("utm_content")?.value || "",
+      name: data.name,
+      phone: formattedPhone,
+
+      email: data.email || "",
+      city: data.city || "",
+      companyName: data.companyName || "",
+
+      businessAge: data.businessAge || "",
+      employeeCount: data.employees || "",
+
+      businessInquiry: data.inquiryPurpose,
+
+      annualTurnover: data.annualTurnover,
+
+      comments: data.comment || "",
+
+      pageUrl:
+        request.headers.get("referer") || "",
     };
 
-    const leadSquaredPayload = createLeadSquaredPayload(data, tracking);
-    console.log(
-  "LeadSquared Payload:",
-  JSON.stringify(leadSquaredPayload, null, 2)
-);
-
-    const leadSquaredUrl = new URL(endpoint);
-
-    leadSquaredUrl.searchParams.set("postUpdatedLead", "true");
-
-    leadSquaredUrl.searchParams.set("accessKey", accessKey);
-
-    leadSquaredUrl.searchParams.set("secretKey", secretKey);
-
-    const leadSquaredResponse = await fetch(leadSquaredUrl.toString(), {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(leadSquaredPayload),
-
-      cache: "no-store",
-
-      signal: AbortSignal.timeout(30000),
-    });
-
-    const responseText = await leadSquaredResponse.text();
-
-    let responseData = null;
-
-    if (responseText) {
-      try {
-        responseData = JSON.parse(responseText);
-      } catch {
-        console.error("LeadSquared returned non JSON response:", responseText);
+    const workerResponse = await fetch(
+      WORKER_URL,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(workerPayload),
+        cache: "no-store",
       }
-    }
+    );
 
-    if (!leadSquaredResponse.ok) {
-      return NextResponse.json(
-        {
-          success: false,
-
-          message:
-            getLeadSquaredError(responseData) ||
-            "Unable to submit your details at this time.",
-        },
-        {
-          status: 502,
-        },
-      );
-    }
-
-    const leadSquaredError = getLeadSquaredError(responseData);
-
-    if (leadSquaredError) {
-      return NextResponse.json(
-        {
-          success: false,
-
-          message: leadSquaredError,
-        },
-        {
-          status: 400,
-        },
-      );
-    }
+    const workerData =
+      await workerResponse.json();
 
     return NextResponse.json(
+      workerData,
       {
-        success: true,
-
-        message: "Your details have been submitted successfully.",
-      },
-      {
-        status: 200,
-      },
+        status: workerResponse.status,
+      }
     );
   } catch (error) {
-    console.error("Contact form API error:", error);
+    console.error(
+      "Contact form API error:",
+      error
+    );
 
     return NextResponse.json(
       {
         success: false,
-
-        message: "Something went wrong while submitting your details.",
+        message:
+          "Something went wrong while submitting your details.",
       },
       {
         status: 500,
-      },
+      }
     );
   }
 }
