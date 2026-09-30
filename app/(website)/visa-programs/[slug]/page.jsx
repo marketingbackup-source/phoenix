@@ -19,6 +19,21 @@ function stripHtml(value = "") {
     .trim();
 }
 
+function parseRobots(value) {
+  if (!value) {
+    return {
+      index: true,
+      follow: true,
+    };
+  }
+
+  return {
+    index: value.includes("index"),
+
+    follow: value.includes("follow"),
+  };
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
@@ -30,6 +45,7 @@ export async function generateMetadata({ params }) {
 
       robots: {
         index: false,
+
         follow: false,
       },
     };
@@ -37,30 +53,27 @@ export async function generateMetadata({ params }) {
 
   const seo = visa.acf || {};
 
-  const fallbackTitle =
-    visa.title || "Phoenix Business Advisory";
+  const fallbackTitle = visa.title || "Phoenix Business Advisory";
 
   const fallbackDescription =
     stripHtml(visa.excerpt || "") ||
     "Explore global business and immigration programs with Phoenix Business Advisory.";
 
-  const title =
-    seo.seo_title?.trim() || fallbackTitle;
+  const title = seo.seo_title?.trim() || fallbackTitle;
 
-  const description =
-    seo.seo_description?.trim() || fallbackDescription;
+  const description = seo.seo_description?.trim() || fallbackDescription;
 
   const canonical =
-    seo.seo_canonical?.trim() ||
-    `${SITE_URL}/visa-programs/${slug}`;
+    seo.seo_canonical?.trim() || `${SITE_URL}/visa-programs/${slug}`;
 
-  const ogTitle =
-    seo.og_title?.trim() || title;
+  const ogTitle = seo.og_title?.trim() || title;
 
-  const ogDescription =
-    seo.og_description?.trim() || description;
+  const ogDescription = seo.og_description?.trim() || description;
+
+  const keywords = visa.tags?.map((tag) => tag.name) || [];
 
   let ogImage = DEFAULT_OG_IMAGE;
+
   let ogImageAlt = ogTitle;
 
   if (seo.og_image) {
@@ -68,13 +81,17 @@ export async function generateMetadata({ params }) {
 
     if (media?.url) {
       ogImage = media.url;
+
       ogImageAlt = media.alt || ogTitle;
     }
   }
 
   return {
     title,
+
     description,
+
+    keywords,
 
     alternates: {
       canonical,
@@ -82,16 +99,23 @@ export async function generateMetadata({ params }) {
 
     openGraph: {
       title: ogTitle,
+
       description: ogDescription,
+
       url: canonical,
+
       siteName: "Phoenix Business Advisory",
+
       type: "website",
 
       images: [
         {
           url: ogImage,
+
           width: 1200,
+
           height: 630,
+
           alt: ogImageAlt,
         },
       ],
@@ -99,15 +123,15 @@ export async function generateMetadata({ params }) {
 
     twitter: {
       card: "summary_large_image",
+
       title: ogTitle,
+
       description: ogDescription,
+
       images: [ogImage],
     },
 
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: parseRobots(seo.robots),
   };
 }
 
