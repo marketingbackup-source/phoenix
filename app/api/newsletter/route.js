@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-import path from "node:path";
+
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -7,12 +6,6 @@ import { verifyRecaptcha } from "@/utils/verifyRecaptcha";
 
 
 export const runtime = "nodejs";
-
-
-dotenv.config({
-  path: path.resolve(process.cwd(), ".env.local"),
-  override: true,
-});
 
 
 const allowedOrigins = [
