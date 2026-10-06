@@ -116,6 +116,7 @@ export async function POST(request) {
           headers: {
             "Content-Type":
               "application/json",
+              "Origin": "https://www.phoenixbusinessadvisory.com",
           },
 
           body:
