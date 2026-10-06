@@ -7,10 +7,10 @@ import { verifyRecaptcha } from "@/utils/verifyRecaptcha";
 export const runtime = "nodejs";
 
 const WORKER_URL =
-  "https://lsq-website-forms.marketingbackup.workers.dev/lead";
+  "https://call-in-55-seconds.marketingbackup.workers.dev/lead";
 
 
-const contactSchema = z.object({
+const callbackSchema = z.object({
   name: z
     .string()
     .trim()
@@ -21,57 +21,7 @@ const contactSchema = z.object({
     .string()
     .trim()
     .min(7)
-    .max(30)
-    .regex(/^[0-9+\-\s()]+$/),
-
-  email: z
-    .string()
-    .trim()
-    .email()
-    .max(150)
-    .optional(),
-
-  city: z
-    .string()
-    .trim()
-    .max(100)
-    .optional(),
-
-  companyName: z
-    .string()
-    .trim()
-    .max(150)
-    .optional(),
-
-  annualTurnover: z
-    .string()
-    .trim()
-    .min(1)
-    .max(100),
-
-  businessAge: z
-    .string()
-    .trim()
-    .max(50)
-    .optional(),
-
-  employees: z
-    .string()
-    .trim()
-    .max(50)
-    .optional(),
-
-  inquiryPurpose: z
-    .string()
-    .trim()
-    .min(1)
-    .max(250),
-
-  comment: z
-    .string()
-    .trim()
-    .max(1000)
-    .optional(),
+    .max(30),
 
   recaptchaToken: z
     .string()
@@ -99,7 +49,7 @@ export async function POST(request) {
 
 
     const validationResult =
-      contactSchema.safeParse(requestBody);
+      callbackSchema.safeParse(requestBody);
 
 
     if (!validationResult.success) {
@@ -107,7 +57,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "Please check the submitted form details.",
+            "Please check your details and complete reCAPTCHA.",
           errors:
             validationResult.error.flatten().fieldErrors,
         },
@@ -122,11 +72,12 @@ export async function POST(request) {
 
 
     /*
-     * Google reCAPTCHA verification
-     * Nothing reaches Worker/LSQ unless this passes.
+     * Verify CAPTCHA before Worker/LSQ
      */
     const recaptchaResult =
-      await verifyRecaptcha(data.recaptchaToken);
+      await verifyRecaptcha(
+        data.recaptchaToken
+      );
 
 
     if (!recaptchaResult.success) {
@@ -144,55 +95,18 @@ export async function POST(request) {
 
 
     /*
-     * Existing phone formatting
-     */
-    const formattedPhone =
-      formatPhoneForLSQ(data.phone);
-
-
-    /*
      * Existing Worker payload
-     *
-     * recaptchaToken is deliberately NOT
-     * forwarded to the Worker or LeadSquared.
      */
     const workerPayload = {
-      formType: "business-consultation",
-
       name: data.name,
 
-      phone: formattedPhone,
-
-      email: data.email || "",
-
-      city: data.city || "",
-
-      companyName:
-        data.companyName || "",
-
-      businessAge:
-        data.businessAge || "",
-
-      employeeCount:
-        data.employees || "",
-
-      businessInquiry:
-        data.inquiryPurpose,
-
-      annualTurnover:
-        data.annualTurnover,
-
-      comments:
-        data.comment || "",
-
-      pageUrl:
-        request.headers.get("referer") || "",
+      phone:
+        formatPhoneForLSQ(
+          data.phone
+        ),
     };
 
 
-    /*
-     * Existing Cloudflare Worker request
-     */
     const workerResponse =
       await fetch(
         WORKER_URL,
@@ -205,18 +119,21 @@ export async function POST(request) {
           },
 
           body:
-            JSON.stringify(workerPayload),
+            JSON.stringify(
+              workerPayload
+            ),
 
           cache: "no-store",
+
+          signal:
+            AbortSignal.timeout(30000),
         }
       );
 
 
-    /*
-     * Safely read Worker response
-     */
     const responseText =
       await workerResponse.text();
+
 
     let workerData = null;
 
@@ -227,16 +144,13 @@ export async function POST(request) {
           JSON.parse(responseText);
       } catch {
         console.error(
-          "Worker returned non-JSON response:",
+          "Callback Worker returned non-JSON response:",
           responseText
         );
       }
     }
 
 
-    /*
-     * Worker failed
-     */
     if (!workerResponse.ok) {
       return NextResponse.json(
         {
@@ -244,32 +158,48 @@ export async function POST(request) {
 
           message:
             workerData?.message ||
-            "Unable to submit your details.",
+            "Unable to submit callback request.",
         },
         {
-          status: workerResponse.status,
+          status: 502,
         }
       );
     }
 
 
-    /*
-     * Success
-     */
+    if (
+      workerData &&
+      workerData.success === false
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+
+          message:
+            workerData.message ||
+            "Unable to submit callback request.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+
     return NextResponse.json(
       workerData || {
         success: true,
         message:
-          "Your details have been submitted successfully.",
+          "Callback request submitted successfully.",
       },
       {
-        status: workerResponse.status,
+        status: 200,
       }
     );
 
   } catch (error) {
     console.error(
-      "Contact form API error:",
+      "Callback API error:",
       error
     );
 
@@ -279,7 +209,7 @@ export async function POST(request) {
         success: false,
 
         message:
-          "Something went wrong while submitting your details.",
+          "Something went wrong while submitting your callback request.",
       },
       {
         status: 500,

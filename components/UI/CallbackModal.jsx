@@ -1,29 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import BaseModal from "@/components/UI/BaseModal";
 import BasePhoneInput from "@/components/UI/PhoneInput";
-import { formatPhoneForLSQ } from "@/utils/phone";
 
 
 const callbackSchema = z.object({
-
   name: z
     .string()
     .trim()
     .min(2, "Please enter your name"),
 
-
   phone: z
     .string()
     .min(1, "Please enter your phone number"),
-
 });
-
 
 
 export default function CallbackModal({
@@ -31,9 +32,19 @@ export default function CallbackModal({
   onClose,
 }) {
 
-  const [countdown, setCountdown] = useState(null);
+  const [countdown, setCountdown] =
+    useState(null);
 
-  const [apiError, setApiError] = useState("");
+  const [apiError, setApiError] =
+    useState("");
+
+  const [recaptchaToken, setRecaptchaToken] =
+    useState("");
+
+  const [recaptchaError, setRecaptchaError] =
+    useState("");
+
+  const recaptchaRef = useRef(null);
 
 
   const {
@@ -41,22 +52,21 @@ export default function CallbackModal({
     control,
     handleSubmit,
     reset,
+
     formState: {
       errors,
       isSubmitting,
     },
 
   } = useForm({
-
-    resolver: zodResolver(callbackSchema),
+    resolver:
+      zodResolver(callbackSchema),
 
     defaultValues: {
       name: "",
       phone: "",
     },
-
   });
-
 
 
   useEffect(() => {
@@ -72,22 +82,24 @@ export default function CallbackModal({
 
       reset();
 
+      setRecaptchaToken("");
+      setRecaptchaError("");
+
+      recaptchaRef.current?.reset();
+
       onClose();
 
       return;
-
     }
 
 
     const timer = setTimeout(() => {
-
       setCountdown(countdown - 1);
-
     }, 1000);
 
 
-    return () => clearTimeout(timer);
-
+    return () =>
+      clearTimeout(timer);
 
   }, [
     countdown,
@@ -96,42 +108,46 @@ export default function CallbackModal({
   ]);
 
 
-
   async function submitForm(data) {
 
     setApiError("");
+    setRecaptchaError("");
+
+
+    if (!recaptchaToken) {
+
+      setRecaptchaError(
+        "Please confirm that you are not a robot."
+      );
+
+      return;
+    }
 
 
     try {
 
       const response =
         await fetch(
-          "https://call-in-55-seconds.marketingbackup.workers.dev/lead",
+          "/api/callback",
           {
-
             method: "POST",
 
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type":
+                "application/json",
             },
 
-
             body: JSON.stringify({
-
               name: data.name,
-
-              phone: formatPhoneForLSQ(data.phone),
-
+              phone: data.phone,
+              recaptchaToken,
             }),
-
           }
         );
 
 
-
       const result =
         await response.json();
-
 
 
       if (
@@ -143,10 +159,15 @@ export default function CallbackModal({
           result.message ||
           "Unable to submit request"
         );
-
       }
 
 
+      /*
+       * Successful callback request
+       */
+      setRecaptchaToken("");
+
+      recaptchaRef.current?.reset();
 
       setCountdown(55);
 
@@ -164,18 +185,21 @@ export default function CallbackModal({
         "Something went wrong. Please try again."
       );
 
+
+      /*
+       * Don't reuse CAPTCHA token
+       */
+      setRecaptchaToken("");
+
+      recaptchaRef.current?.reset();
     }
-
   }
-
 
 
   return (
 
     <BaseModal
-
       isOpen={open}
-
       onClose={onClose}
 
       modalClass="
@@ -189,7 +213,6 @@ export default function CallbackModal({
         bg-black/70
         backdrop-blur-md
       "
-
     >
 
       {countdown !== null ? (
@@ -226,9 +249,7 @@ export default function CallbackModal({
               text-[var(--color-red-1)]
             "
           >
-
             {countdown}
-
           </div>
 
 
@@ -242,7 +263,6 @@ export default function CallbackModal({
             <br />
             the next 55 seconds.
           </p>
-
 
         </div>
 
@@ -300,10 +320,8 @@ export default function CallbackModal({
                   text-[var(--color-red-1)]
                 "
               >
-
                 {" "}
                 55 Seconds
-
               </span>
 
             </h2>
@@ -319,9 +337,7 @@ export default function CallbackModal({
               Enter your details and our team will contact you shortly.
             </p>
 
-
           </div>
-
 
 
           {apiError && (
@@ -337,20 +353,18 @@ export default function CallbackModal({
                 text-red-600
               "
             >
-
               {apiError}
-
             </div>
 
           )}
 
 
-
           <form
-            onSubmit={handleSubmit(submitForm)}
+            onSubmit={
+              handleSubmit(submitForm)
+            }
             className="space-y-5"
           >
-
 
             <div>
 
@@ -368,7 +382,6 @@ export default function CallbackModal({
 
 
               <input
-
                 {...register("name")}
 
                 placeholder="Enter your full name"
@@ -384,22 +397,18 @@ export default function CallbackModal({
                   outline-none
                   focus:border-[var(--color-red-1)]
                 "
-
               />
 
 
               {errors.name && (
 
                 <p className="mt-1 text-sm text-red-500">
-
                   {errors.name.message}
-
                 </p>
 
               )}
 
             </div>
-
 
 
             <div>
@@ -418,22 +427,78 @@ export default function CallbackModal({
 
 
               <BasePhoneInput
-
                 name="phone"
-
                 control={control}
-
                 error={errors.phone}
-
               />
-
 
             </div>
 
 
+            {/* Google reCAPTCHA */}
+            <div className="w-full overflow-hidden">
+
+              <div
+                className="
+                  origin-top-left
+                  scale-[0.90]
+                "
+                style={{
+                  width: "304px",
+                  marginBottom: "-7px",
+                }}
+              >
+
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+
+                  sitekey={
+                    process.env
+                      .NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+                  }
+
+                  onChange={(token) => {
+
+                    setRecaptchaToken(
+                      token || ""
+                    );
+
+                    if (token) {
+                      setRecaptchaError("");
+                    }
+
+                  }}
+
+                  onExpired={() => {
+                    setRecaptchaToken("");
+                  }}
+
+                  onErrored={() => {
+
+                    setRecaptchaToken("");
+
+                    setRecaptchaError(
+                      "reCAPTCHA could not be loaded. Please try again."
+                    );
+
+                  }}
+                />
+
+              </div>
+
+
+              {recaptchaError && (
+
+                <p className="mt-2 text-sm text-red-500">
+                  {recaptchaError}
+                </p>
+
+              )}
+
+            </div>
+
 
             <button
-
               type="submit"
 
               disabled={isSubmitting}
@@ -450,7 +515,6 @@ export default function CallbackModal({
                 hover:opacity-90
                 disabled:opacity-50
               "
-
             >
 
               {isSubmitting
@@ -458,7 +522,6 @@ export default function CallbackModal({
                 : "Request a Callback"}
 
             </button>
-
 
           </form>
 
@@ -469,5 +532,4 @@ export default function CallbackModal({
     </BaseModal>
 
   );
-
 }

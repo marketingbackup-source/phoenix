@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import GreenCard3D from "../common/GreenCard3D";
+import NewsletterForm from "../common/NewsletterForm";
 
 const navigation = [
   {
@@ -156,47 +156,6 @@ const socials = [
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [newsletterMessage, setNewsletterMessage] = useState("");
-  const [newsletterLoading, setNewsletterLoading] = useState(false);
-  async function submitNewsletter(e) {
-    e.preventDefault();
-
-    setNewsletterMessage("");
-
-    if (!email) {
-      setNewsletterMessage("Please enter your email");
-      return;
-    }
-
-    try {
-      setNewsletterLoading(true);
-
-      const response = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || "Something went wrong");
-      }
-
-      setNewsletterMessage("Subscribed successfully");
-
-      setEmail("");
-    } catch (error) {
-      setNewsletterMessage(error.message);
-    } finally {
-      setNewsletterLoading(false);
-    }
-  }
   return (
     <footer className="relative overflow-hidden bg-[#050b14] pt-16 pb-0">
       <div
@@ -318,63 +277,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div
-              className="
-              w-full
-              "
-            >
-              <p className="footer-nav-heading !mb-3">Stay Updated</p>
-
-              <form
-                onSubmit={submitNewsletter}
-                className="
- flex
- overflow-hidden
- rounded-lg
- border
- border-white/10
- bg-black/20
- "
-              >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="
- w-full
- bg-transparent
- px-3
- py-3
- text-sm
- !text-white/80
- outline-none
- placeholder:text-white/40
- "
-                />
-
-                <button
-                  type="submit"
-                  disabled={newsletterLoading}
-                  className="
- flex
- items-center
- justify-center
- px-4
- bg-[var(--color-red-1)]
- !text-white
- disabled:opacity-50
- "
-                >
-                  <ArrowRight size={17} />
-                </button>
-              </form>
-              {newsletterMessage && (
-                <p className="mt-2 text-xs text-white/90">
-                  {newsletterMessage}
-                </p>
-              )}
-            </div>
+            <NewsletterForm />
           </div>
         </div>
 

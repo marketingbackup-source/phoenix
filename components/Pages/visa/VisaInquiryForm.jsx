@@ -1,10 +1,12 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
@@ -86,10 +88,23 @@ const inputClass = `
   focus:border-[var(--color-red-1)]
 `;
 
-const errorClass = "!mt-2 !mb-0 text-sm text-[var(--color-red-1)]";
+const errorClass =
+  "!mt-2 !mb-0 text-sm text-[var(--color-red-1)]";
 
 export default function VisaInquiryForm() {
   const router = useRouter();
+
+  /*
+   * reCAPTCHA
+   */
+  const recaptchaRef = useRef(null);
+
+  const [recaptchaToken, setRecaptchaToken] =
+    useState("");
+
+  const [recaptchaError, setRecaptchaError] =
+    useState("");
+
   const {
     register,
     control,
@@ -98,6 +113,7 @@ export default function VisaInquiryForm() {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchema),
+
     defaultValues: {
       name: "",
       phone: "",
@@ -119,12 +135,47 @@ export default function VisaInquiryForm() {
   async function submitForm(data) {
     clearSubmissionState();
 
-    const result = await submitVisaInquiry(data);
+    /*
+     * Do not submit without CAPTCHA.
+     */
+    if (!recaptchaToken) {
+      setRecaptchaError(
+        "Please confirm that you are not a robot."
+      );
+
+      return;
+    }
+
+    setRecaptchaError("");
+
+    /*
+     * Send the CAPTCHA token together with
+     * the existing form data.
+     */
+    const result = await submitVisaInquiry({
+      ...data,
+      recaptchaToken,
+    });
 
     if (result.success) {
       reset();
+
+      recaptchaRef.current?.reset();
+
+      setRecaptchaToken("");
+
       router.push("/thankyou");
+
+      return;
     }
+
+    /*
+     * A reCAPTCHA token should not be reused
+     * after a submission attempt.
+     */
+    recaptchaRef.current?.reset();
+
+    setRecaptchaToken("");
   }
 
   return (
@@ -163,11 +214,19 @@ export default function VisaInquiryForm() {
             {...register("name")}
           />
 
-          {errors.name && <p className={errorClass}>{errors.name.message}</p>}
+          {errors.name && (
+            <p className={errorClass}>
+              {errors.name.message}
+            </p>
+          )}
         </div>
 
         <div>
-          <BasePhoneInput name="phone" control={control} error={errors.phone} />
+          <BasePhoneInput
+            name="phone"
+            control={control}
+            error={errors.phone}
+          />
         </div>
 
         <BaseSelect
@@ -185,6 +244,52 @@ export default function VisaInquiryForm() {
           register={register}
           error={errors.inquiryPurpose}
         />
+
+        {/* Google reCAPTCHA */}
+        {/* Google reCAPTCHA */}
+<div className="w-full overflow-hidden">
+  <div
+    className="
+      origin-top-left
+      scale-[0.82]
+      sm:scale-[0.85]
+    "
+    style={{
+      width: "304px",
+      marginBottom: "-10px",
+    }}
+  >
+    <ReCAPTCHA
+      ref={recaptchaRef}
+      sitekey={
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      }
+      onChange={(token) => {
+        setRecaptchaToken(token || "");
+
+        if (token) {
+          setRecaptchaError("");
+        }
+      }}
+      onExpired={() => {
+        setRecaptchaToken("");
+      }}
+      onErrored={() => {
+        setRecaptchaToken("");
+
+        setRecaptchaError(
+          "reCAPTCHA could not be loaded. Please try again."
+        );
+      }}
+    />
+  </div>
+
+  {recaptchaError && (
+    <p className={errorClass}>
+      {recaptchaError}
+    </p>
+  )}
+</div>
 
         {submissionError && (
           <p
@@ -225,7 +330,11 @@ export default function VisaInquiryForm() {
         )}
 
         <BaseButton
-          title={isSubmitting ? "Submitting..." : "Submit Enquiry"}
+          title={
+            isSubmitting
+              ? "Submitting..."
+              : "Submit Enquiry"
+          }
           type="submit"
           style="primary w-fit"
           disabled={isSubmitting}

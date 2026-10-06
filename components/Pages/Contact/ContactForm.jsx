@@ -1,10 +1,12 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MoveRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import BaseButton from "@/components/UI/BaseButton";
 import BaseSelect from "@/components/UI/BaseSelect";
@@ -15,23 +17,35 @@ const formSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name"),
 
   phone: z
-  .string()
-  .min(1, "Please enter a valid phone number"),
+    .string()
+    .min(1, "Please enter a valid phone number"),
 
-  email: z.string().trim().email("Please enter a valid email address"),
+  email: z
+    .string()
+    .trim()
+    .email("Please enter a valid email address"),
 
-  city: z.string().trim().min(2, "Please enter your city"),
+  city: z
+    .string()
+    .trim()
+    .min(2, "Please enter your city"),
 
   companyName: z
     .string()
     .trim()
     .min(2, "Please enter your company name"),
 
-  annualTurnover: z.string().min(1, "Please select annual turnover"),
+  annualTurnover: z
+    .string()
+    .min(1, "Please select annual turnover"),
 
-  businessAge: z.string().min(1, "Please select business age"),
+  businessAge: z
+    .string()
+    .min(1, "Please select business age"),
 
-  employees: z.string().min(1, "Please select number of employees"),
+  employees: z
+    .string()
+    .min(1, "Please select number of employees"),
 
   inquiryPurpose: z
     .string()
@@ -102,8 +116,7 @@ const inquiryPurposeOptions = [
 ];
 
 
-const inputClass =
-  `
+const inputClass = `
   w-full
   rounded-lg
   border
@@ -119,7 +132,7 @@ const inputClass =
   focus:border-[var(--color-red-1)]
   focus:ring-2
   focus:ring-[var(--color-red-1)]/10
-  `;
+`;
 
 
 const errorClass =
@@ -129,14 +142,22 @@ const errorClass =
 export default function ContactForm() {
   const router = useRouter();
 
-  const {
-     register,
-  control,
-  handleSubmit,
-  reset,
-  formState: { errors },
-  } = useForm({
+  const recaptchaRef = useRef(null);
 
+  const [recaptchaToken, setRecaptchaToken] =
+    useState("");
+
+  const [recaptchaError, setRecaptchaError] =
+    useState("");
+
+
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(formSchema),
 
     defaultValues: {
@@ -151,9 +172,7 @@ export default function ContactForm() {
       inquiryPurpose: "",
       comment: "",
     },
-
   });
-
 
 
   const {
@@ -167,43 +186,61 @@ export default function ContactForm() {
   });
 
 
-
   async function submitForm(data) {
-
     clearSubmissionState();
 
-    const result = await submitContactForm(data);
+    if (!recaptchaToken) {
+      setRecaptchaError(
+        "Please confirm that you are not a robot."
+      );
+      return;
+    }
+
+    setRecaptchaError("");
+
+    const result = await submitContactForm({
+      ...data,
+      recaptchaToken,
+    });
 
     if (result.success) {
       reset();
+
+      recaptchaRef.current?.reset();
+
+      setRecaptchaToken("");
+
       router.push("/thankyou");
+      return;
     }
 
+    /*
+     * Reset CAPTCHA after a failed submission.
+     * reCAPTCHA tokens should not be reused.
+     */
+    recaptchaRef.current?.reset();
+    setRecaptchaToken("");
   }
 
 
-
   return (
-
     <form
       onSubmit={handleSubmit(submitForm)}
       noValidate
       className="
-      grid
-      gap-5
-      rounded-2xl
-      border
-      border-gray-100
-      bg-white
-      p-6
-      md:grid-cols-2
-      shadow-[0_15px_40px_rgba(0,0,0,0.06)]
+        grid
+        gap-5
+        rounded-2xl
+        border
+        border-gray-100
+        bg-white
+        p-6
+        md:grid-cols-2
+        shadow-[0_15px_40px_rgba(0,0,0,0.06)]
       "
     >
 
-
       <div>
-
         <input
           type="text"
           placeholder="Name"
@@ -217,25 +254,19 @@ export default function ContactForm() {
             {errors.name.message}
           </p>
         )}
-
       </div>
 
 
-
       <div>
-
-       <BasePhoneInput
-  name="phone"
-  control={control}
-  error={errors.phone}
-/>
-
+        <BasePhoneInput
+          name="phone"
+          control={control}
+          error={errors.phone}
+        />
       </div>
 
 
-
       <div>
-
         <input
           type="email"
           placeholder="Email"
@@ -249,13 +280,10 @@ export default function ContactForm() {
             {errors.email.message}
           </p>
         )}
-
       </div>
 
 
-
       <div>
-
         <input
           type="text"
           placeholder="City"
@@ -269,13 +297,10 @@ export default function ContactForm() {
             {errors.city.message}
           </p>
         )}
-
       </div>
 
 
-
       <div>
-
         <input
           type="text"
           placeholder="Company Name"
@@ -289,9 +314,7 @@ export default function ContactForm() {
             {errors.companyName.message}
           </p>
         )}
-
       </div>
-
 
 
       <BaseSelect
@@ -303,7 +326,6 @@ export default function ContactForm() {
       />
 
 
-
       <BaseSelect
         name="businessAge"
         placeholder="Business Age"
@@ -311,7 +333,6 @@ export default function ContactForm() {
         register={register}
         error={errors.businessAge}
       />
-
 
 
       <BaseSelect
@@ -323,9 +344,7 @@ export default function ContactForm() {
       />
 
 
-
       <div className="md:col-span-2">
-
         <BaseSelect
           name="inquiryPurpose"
           placeholder="Purpose of Inquiry"
@@ -333,13 +352,10 @@ export default function ContactForm() {
           register={register}
           error={errors.inquiryPurpose}
         />
-
       </div>
 
 
-
       <div className="md:col-span-2">
-
         <textarea
           rows={3}
           placeholder="Comment"
@@ -353,67 +369,99 @@ export default function ContactForm() {
             {errors.comment.message}
           </p>
         )}
+      </div>
+
+
+      {/* Google reCAPTCHA */}
+      <div className="md:col-span-2">
+
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={
+            process.env
+              .NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+          }
+          onChange={(token) => {
+            setRecaptchaToken(token || "");
+
+            if (token) {
+              setRecaptchaError("");
+            }
+          }}
+          onExpired={() => {
+            setRecaptchaToken("");
+          }}
+          onErrored={() => {
+            setRecaptchaToken("");
+            setRecaptchaError(
+              "reCAPTCHA could not be loaded. Please try again."
+            );
+          }}
+        />
+
+        {recaptchaError && (
+          <p className={errorClass}>
+            {recaptchaError}
+          </p>
+        )}
 
       </div>
 
 
-
       {submissionError && (
-
         <div className="md:col-span-2">
 
           <p
             role="alert"
             className="
-            rounded-lg
-            border
-            border-red-200
-            bg-red-50
-            px-4
-            py-3
-            text-sm
-            text-[var(--color-red-1)]
+              rounded-lg
+              border
+              border-red-200
+              bg-red-50
+              px-4
+              py-3
+              text-sm
+              text-[var(--color-red-1)]
             "
           >
             {submissionError}
           </p>
 
         </div>
-
       )}
 
 
-
       {submissionMessage && (
-
         <div className="md:col-span-2">
 
           <p
             role="status"
             className="
-            rounded-lg
-            border
-            border-green-200
-            bg-green-50
-            px-4
-            py-3
-            text-sm
-            text-green-700
+              rounded-lg
+              border
+              border-green-200
+              bg-green-50
+              px-4
+              py-3
+              text-sm
+              text-green-700
             "
           >
             {submissionMessage}
           </p>
 
         </div>
-
       )}
-
 
 
       <div className="md:col-span-2">
 
         <BaseButton
-          title={isSubmitting ? "Submitting..." : "Submit"}
+          title={
+            isSubmitting
+              ? "Submitting..."
+              : "Submit"
+          }
           type="submit"
           style="primary"
           disabled={isSubmitting}
@@ -422,10 +470,10 @@ export default function ContactForm() {
           <MoveRight
             size={20}
             className="
-            ml-2
-            transition-colors
-            duration-300
-            group-hover:text-[var(--color-white)]
+              ml-2
+              transition-colors
+              duration-300
+              group-hover:text-[var(--color-white)]
             "
           />
 
@@ -433,9 +481,6 @@ export default function ContactForm() {
 
       </div>
 
-
     </form>
-
   );
-
 }
