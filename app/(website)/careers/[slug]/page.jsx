@@ -7,6 +7,8 @@ import CareerApplicationForm from "@/components/Pages/careers/CareerApplicationF
 import { getCareerBySlug } from "@/services/cms/careers/get-career-by-slug";
 import { getCareers } from "@/services/cms/careers/get-careers";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
