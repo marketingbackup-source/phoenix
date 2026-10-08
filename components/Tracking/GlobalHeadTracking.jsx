@@ -15,7 +15,6 @@ export default function GlobalHeadTracking() {
         content="l0ckuwpncc7041wtr7ct158jausk11"
       />
 
-
       {/* =====================================================
           OPENAI PIXELS
           SDK loaded once, both existing Pixel IDs initialized
@@ -24,43 +23,37 @@ export default function GlobalHeadTracking() {
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            !function(w,d,s,u){
-              if(w.oaiq)return;
+      !function(w,d,s,u){
+        if(w.oaiq)return;
 
-              var q=function(){
-                q.q.push(arguments)
-              };
+        var q=function(){
+          q.q.push(arguments)
+        };
 
-              q.q=[];
-              w.oaiq=q;
+        q.q=[];
+        w.oaiq=q;
 
-              var j=d.createElement(s);
-              j.async=1;
-              j.src=u;
+        var j=d.createElement(s);
+        j.async=1;
+        j.src=u;
 
-              var f=d.getElementsByTagName(s)[0];
-              f.parentNode.insertBefore(j,f);
+        var f=d.getElementsByTagName(s)[0];
+        f.parentNode.insertBefore(j,f);
 
-            }(
-              window,
-              document,
-              "script",
-              "https://bzrcdn.openai.com/sdk/oaiq.min.js"
-            );
+      }(
+        window,
+        document,
+        "script",
+        "https://bzrcdn.openai.com/sdk/oaiq.min.js"
+      );
 
-            oaiq("init",{
-              pixelId:"VwuNrvn5VmEtkPCkgRLo2X",
-              debug:true
-            });
-
-            oaiq("init",{
-              pixelId:"LwqpnxZV9ci6pPbq2groRa",
-              debug:true
-            });
-          `,
+      oaiq("init",{
+        pixelId:"HnTxzb75zyG9EA55JdXhuH",
+        debug:true
+      });
+    `,
         }}
       />
-
 
       {/* =====================================================
           GOOGLE ANALYTICS + GOOGLE ADS
@@ -90,7 +83,6 @@ export default function GlobalHeadTracking() {
           `,
         }}
       />
-
 
       {/* =====================================================
           GOOGLE TAG MANAGER
@@ -122,7 +114,6 @@ export default function GlobalHeadTracking() {
         }}
       />
 
-
       {/* =====================================================
           GOOGLE TAG MANAGER
           GTM-T7TS9CSB
@@ -152,7 +143,6 @@ export default function GlobalHeadTracking() {
           `,
         }}
       />
-
 
       {/* =====================================================
           META PIXELS
@@ -202,7 +192,6 @@ export default function GlobalHeadTracking() {
           `,
         }}
       />
-
 
       {/* =====================================================
           MICROSOFT CLARITY
