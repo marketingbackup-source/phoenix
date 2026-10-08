@@ -2,9 +2,7 @@ import wordpressClient from "@/services/cms/wordpress-client";
 
 import { mapCareer } from "@/services/cms/careers/map-career";
 
-export async function getCareers({
-  onlyOpen = true,
-} = {}) {
+export async function getCareers({ onlyOpen = true } = {}) {
   const cacheVersion = Math.floor(Date.now() / 60000);
 
   const response = await wordpressClient.get("/careers", {
@@ -15,21 +13,21 @@ export async function getCareers({
       orderby: "date",
       v: cacheVersion,
     },
+    headers: {
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
   });
 
-  let careers = response.data
-    .map(mapCareer)
-    .filter(Boolean);
+  let careers = response.data.map(mapCareer).filter(Boolean);
 
   if (onlyOpen) {
-    careers = careers.filter(
-      (career) => career.jobStatus === "open"
-    );
+    careers = careers.filter((career) => career.jobStatus === "open");
   }
 
   careers.sort((a, b) => {
-    const orderDifference =
-      a.displayOrder - b.displayOrder;
+    const orderDifference = a.displayOrder - b.displayOrder;
 
     if (orderDifference !== 0) {
       return orderDifference;
