@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import OpenAILeadConversion from "@/components/Tracking/thankyou/OpenAILeadConversion";
 
 export const metadata = {
   title: "Thank You | Phoenix Business Advisory",
@@ -16,7 +17,8 @@ export const metadata = {
 export default function ThankYouPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-white flex items-center justify-center px-5 py-10">
-
+       {/* OpenAI Lead Conversion */}
+      <OpenAILeadConversion />
       {/* Soft Background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[420px] w-[700px] -translate-x-1/2 rounded-full bg-[var(--color-red-1)]/5 blur-[120px]" />
