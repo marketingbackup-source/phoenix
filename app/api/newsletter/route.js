@@ -16,7 +16,7 @@ const allowedOrigins = [
 
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxePR9PrRIBvkPx-XefWkh5kvCGOsrBcAx4iGKpOBPzn7qtwCACsHEhc_Raz5kpDS0sfw/exec";
+  "https://script.google.com/macros/s/AKfycbxx_bbtWtSAS3Ru8IRB75jSz_K5gKXNuOrIiSuVyVRhsbtTgtEhEMqKQH8HnlQ8qHgtDg/exec";
 
 
 const newsletterSchema = z.object({
