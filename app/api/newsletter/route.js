@@ -1,4 +1,3 @@
-
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -16,6 +15,10 @@ const allowedOrigins = [
 ];
 
 
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxePR9PrRIBvkPx-XefWkh5kvCGOsrBcAx4iGKpOBPzn7qtwCACsHEhc_Raz5kpDS0sfw/exec";
+
+
 const newsletterSchema = z.object({
   email: z
     .string()
@@ -29,64 +32,15 @@ const newsletterSchema = z.object({
 });
 
 
-function getLeadSquaredError(responseData) {
-  if (!responseData) {
-    return null;
-  }
-
-  if (responseData.Status === "Error") {
-    return (
-      responseData.ExceptionMessage ||
-      responseData.Message ||
-      responseData.ErrorMessage ||
-      "LeadSquared rejected the submission."
-    );
-  }
-
-  if (
-    responseData.ExceptionType ||
-    responseData.ExceptionMessage
-  ) {
-    return (
-      responseData.ExceptionMessage ||
-      "LeadSquared rejected the submission."
-    );
-  }
-
-  return null;
-}
-
-
-function createNewsletterPayload(data) {
-  return [
-    {
-      Attribute: "EmailAddress",
-      Value: data.email,
-    },
-
-    {
-      Attribute: "SearchBy",
-      Value: "EmailAddress",
-    },
-
-    {
-      Attribute: "Source",
-      Value: "Website",
-    },
-
-    {
-      Attribute: "SourceCampaign",
-      Value: "Newsletter Subscription",
-    },
-  ];
-}
-
-
 export async function POST(request) {
   try {
     const origin = request.headers.get("origin");
 
 
+    /*
+     * Allow newsletter submissions only
+     * from our approved websites.
+     */
     if (
       !origin ||
       !allowedOrigins.includes(origin)
@@ -103,29 +57,9 @@ export async function POST(request) {
     }
 
 
-    const accessKey = process.env.LSQ_ACCESS_KEY;
-    const secretKey = process.env.LSQ_SECRET_KEY;
-    const endpoint = process.env.LSQ_ENDPOINT;
-
-
-    if (
-      !accessKey ||
-      !secretKey ||
-      !endpoint
-    ) {
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            "Server configuration is incomplete.",
-        },
-        {
-          status: 500,
-        }
-      );
-    }
-
-
+    /*
+     * Parse request body.
+     */
     let requestBody;
 
 
@@ -144,6 +78,9 @@ export async function POST(request) {
     }
 
 
+    /*
+     * Validate email and reCAPTCHA token.
+     */
     const validationResult =
       newsletterSchema.safeParse(requestBody);
 
@@ -152,8 +89,10 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
+
           message:
             "Please enter a valid email address and complete reCAPTCHA.",
+
           errors:
             validationResult.error.flatten()
               .fieldErrors,
@@ -169,10 +108,10 @@ export async function POST(request) {
 
 
     /*
-     * Google reCAPTCHA verification.
+     * Verify Google reCAPTCHA first.
      *
-     * Nothing reaches LeadSquared unless
-     * Google accepts the CAPTCHA token.
+     * Nothing will be sent to Google Sheets
+     * unless the CAPTCHA verification succeeds.
      */
     const recaptchaResult =
       await verifyRecaptcha(
@@ -184,6 +123,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
+
           message:
             "reCAPTCHA verification failed. Please try again.",
         },
@@ -195,50 +135,16 @@ export async function POST(request) {
 
 
     /*
-     * Existing LSQ logic starts here.
+     * Send only the email address to
+     * the Google Apps Script Web App.
      *
-     * recaptchaToken is deliberately NOT
-     * included in the LeadSquared payload.
+     * The Apps Script itself generates
+     * the Date before adding the row
+     * to Google Sheets.
      */
-    const leadSquaredPayload =
-      createNewsletterPayload(data);
-
-
-    console.log(
-      "Newsletter LeadSquared Payload:",
-      JSON.stringify(
-        leadSquaredPayload,
-        null,
-        2
-      )
-    );
-
-
-    const leadSquaredUrl =
-      new URL(endpoint);
-
-
-    leadSquaredUrl.searchParams.set(
-      "postUpdatedLead",
-      "true"
-    );
-
-
-    leadSquaredUrl.searchParams.set(
-      "accessKey",
-      accessKey
-    );
-
-
-    leadSquaredUrl.searchParams.set(
-      "secretKey",
-      secretKey
-    );
-
-
-    const leadSquaredResponse =
+    const googleResponse =
       await fetch(
-        leadSquaredUrl.toString(),
+        GOOGLE_SCRIPT_URL,
         {
           method: "POST",
 
@@ -247,49 +153,44 @@ export async function POST(request) {
               "application/json",
           },
 
-          body:
-            JSON.stringify(
-              leadSquaredPayload
-            ),
+          body: JSON.stringify({
+            email: data.email,
+          }),
 
           cache: "no-store",
 
           signal:
-            AbortSignal.timeout(30000),
+            AbortSignal.timeout(15000),
         }
       );
 
 
+    /*
+     * Apps Script returns JSON.
+     */
     const responseText =
-      await leadSquaredResponse.text();
+      await googleResponse.text();
 
 
-    let responseData = null;
+    let googleData = null;
 
 
-    if (responseText) {
-      try {
-        responseData =
-          JSON.parse(responseText);
-      } catch {
-        console.error(
-          "LeadSquared returned non JSON response:",
-          responseText
-        );
-      }
-    }
+    try {
+      googleData =
+        JSON.parse(responseText);
+    } catch {
+      console.error(
+        "Google Apps Script returned invalid response:",
+        responseText
+      );
 
 
-    if (!leadSquaredResponse.ok) {
       return NextResponse.json(
         {
           success: false,
 
           message:
-            getLeadSquaredError(
-              responseData
-            ) ||
-            "Unable to submit newsletter request.",
+            "Unable to save newsletter subscription.",
         },
         {
           status: 502,
@@ -298,17 +199,49 @@ export async function POST(request) {
     }
 
 
-    const leadSquaredError =
-      getLeadSquaredError(
-        responseData
+    /*
+     * Handle HTTP failure from
+     * the Google Apps Script endpoint.
+     */
+    if (!googleResponse.ok) {
+      console.error(
+        "Google Apps Script request failed:",
+        googleData
       );
 
 
-    if (leadSquaredError) {
       return NextResponse.json(
         {
           success: false,
-          message: leadSquaredError,
+
+          message:
+            "Unable to save newsletter subscription.",
+        },
+        {
+          status: 502,
+        }
+      );
+    }
+
+
+    /*
+     * Handle an error returned explicitly
+     * by our Apps Script.
+     */
+    if (!googleData.success) {
+      console.error(
+        "Google Apps Script rejected newsletter:",
+        googleData
+      );
+
+
+      return NextResponse.json(
+        {
+          success: false,
+
+          message:
+            googleData.message ||
+            "Unable to save newsletter subscription.",
         },
         {
           status: 400,
@@ -317,6 +250,10 @@ export async function POST(request) {
     }
 
 
+    /*
+     * Subscription successfully stored
+     * in Google Sheets.
+     */
     return NextResponse.json(
       {
         success: true,
