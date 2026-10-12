@@ -17,31 +17,12 @@ export default function ApprovalBanner() {
       flex-col
       items-center
       justify-center
+      bg-[url('https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/10/Banner2.webp')]
+      bg-cover
+      bg-center
+      bg-no-repeat
       "
     >
-
-      {/* Background Video */}
-
-      <video
-        className="
-        absolute
-        inset-0
-        w-full
-        h-full
-        object-cover
-        "
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source
-          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-katko.mp4"
-          type="video/mp4"
-        />
-      </video>
-
 
       {/* Content */}
 
@@ -78,7 +59,6 @@ export default function ApprovalBanner() {
               Our Approvals
             </p>
 
-
             <h1
               className="
               fs-52-32
@@ -92,7 +72,6 @@ export default function ApprovalBanner() {
                 Immigration Approvals
               </span>
             </h1>
-
 
             <p
               className="
@@ -109,7 +88,6 @@ export default function ApprovalBanner() {
               documentation, and expert guidance throughout the process.
             </p>
 
-
             <BaseButton
               title="View Success Stories"
               link
@@ -120,7 +98,6 @@ export default function ApprovalBanner() {
             </BaseButton>
 
           </div>
-
 
           {/* Right Image */}
 

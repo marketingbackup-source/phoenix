@@ -8,156 +8,129 @@ import BaseButton from "@/components/UI/BaseButton";
 export default function VisaBanner({ title, excerpt, image }) {
   return (
     <section
+  className="
+  relative
+  py-80-30
+  overflow-hidden
+  min-h-[100vh]
+  flex
+  items-center
+  bg-[url('https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/10/Banner2.webp')]
+  bg-cover
+  bg-center
+  bg-no-repeat
+  "
+>
+
+  {/* Content */}
+
+  <div className="container-main relative z-10">
+
+    <div
       className="
-      relative
-      py-80-30
-      overflow-hidden
-      min-h-[100vh]
       flex
+      flex-col-reverse
+      lg:flex-row
       items-center
+      gap-60-20
       "
     >
 
-      {/* Background Video */}
+      {/* Left Content */}
 
-      <video
+      <div
         className="
-        absolute
-        inset-0
         w-full
-        h-full
-        object-cover
+        lg:w-6/12
         "
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
       >
-        <source
-          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-katko.mp4"
-          type="video/mp4"
+
+        <p
+          className="
+          uppercase
+          tracking-[2px]
+          text-[var(--color-red-1)]
+          !mb-5
+          "
+        >
+          Immigration Program
+        </p>
+
+        <h1
+          className="
+          fs-60-32
+          uppercase
+          text-black
+          !mb-8
+          "
+          dangerouslySetInnerHTML={{
+            __html: title,
+          }}
         />
-      </video>
-
-
-      {/* Content */}
-
-      <div className="container-main relative z-10">
 
         <div
           className="
-          flex
-          flex-col-reverse
-          lg:flex-row
-          items-center
-          gap-60-20
+          text-gray-500
+          fs-20-16
+          leading-[1.7]
+          max-w-xl
+          !mb-8
+          "
+          dangerouslySetInnerHTML={{
+            __html: excerpt,
+          }}
+        />
+
+        <BaseButton
+          title="Speak With Expert"
+          link
+          toLink="/contact-us"
+          style="primary w-fit"
+        >
+          <ArrowRight size={20} />
+        </BaseButton>
+
+      </div>
+
+      {/* Right Image */}
+
+      <div
+        className="
+        w-full
+        lg:w-6/12
+        flex-center
+        mt-15 lg:mt-0
+        "
+      >
+
+        <div
+          className="
+          relative
+          w-full
+          max-w-[600px]
           "
         >
 
-          {/* Left Content */}
-
           <div
             className="
-            w-full
-            lg:w-6/12
+            relative
             "
           >
 
-            <p
-              className="
-              uppercase
-              tracking-[2px]
-              text-[var(--color-red-1)]
-              !mb-5
-              "
-            >
-              Immigration Program
-            </p>
-
-
-            <h1
-              className="
-              fs-60-32
-              uppercase
-              text-black
-              !mb-8
-              "
-              dangerouslySetInnerHTML={{
-                __html: title,
-              }}
-            />
-
-
-            <div
-              className="
-              text-gray-500
-              fs-20-16
-              leading-[1.7]
-              max-w-xl
-              !mb-8
-              "
-              dangerouslySetInnerHTML={{
-                __html: excerpt,
-              }}
-            />
-
-
-            <BaseButton
-              title="Speak With Expert"
-              link
-              toLink="/contact-us"
-              style="primary w-fit"
-            >
-              <ArrowRight size={20} />
-            </BaseButton>
-
-          </div>
-
-
-          {/* Right Image */}
-
-          <div
-            className="
-            w-full
-            lg:w-6/12
-            flex-center
-            mt-15 lg:mt-0
-            "
-          >
-
-            <div
-              className="
-              relative
-              w-full
-              max-w-[600px]
-              "
-            >
-
-              <div
+            {image && (
+              <Image
+                src={image}
+                alt={title || "Immigration Program"}
+                width={600}
+                height={600}
                 className="
-                relative
+                  w-full
+                  max-w-[500px]
+                  object-contain
                 "
-              >
-
-                {image && (
-  <Image
-    src={image}
-    alt={title || "Immigration Program"}
-    width={600}
-    height={600}
-    className="
-      w-full
-      max-w-[500px]
-      object-contain
-    "
-    priority
-  />
-)}
-
-              </div>
-
-            </div>
+                priority
+              />
+            )}
 
           </div>
 
@@ -165,6 +138,10 @@ export default function VisaBanner({ title, excerpt, image }) {
 
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
   );
 }

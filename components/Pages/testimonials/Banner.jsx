@@ -58,29 +58,12 @@ export default function TestimonialsBanner() {
         min-h-[100vh]
         flex
         items-center
+        bg-[url('https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/10/Banner3.webp')]
+        bg-cover
+        bg-center
+        bg-no-repeat
       "
     >
-      {/* Background Video */}
-      <video
-        className="
-          absolute
-          inset-0
-          w-full
-          h-full
-          object-cover
-        "
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source
-          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/background-2.mp4"
-          type="video/mp4"
-        />
-      </video>
-
       {/* Content */}
       <div className="container-main relative z-10">
         <div

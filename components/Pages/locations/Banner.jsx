@@ -8,162 +8,139 @@ import BaseButton from "@/components/UI/BaseButton";
 export default function LocationsBanner() {
   return (
     <section
+  className="
+  relative
+  py-80-40
+  overflow-hidden
+  min-h-[100vh]
+  flex
+  items-center
+  bg-[url('https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/10/Banner4.webp')]
+  bg-cover
+  bg-center
+  bg-no-repeat
+  "
+>
+
+  {/* Content */}
+
+  <div className="container-main relative z-10">
+
+    <div
       className="
-      relative
-      py-80-40
-      overflow-hidden
-      min-h-[100vh]
       flex
+      flex-col-reverse
+      lg:flex-row
       items-center
+      gap-60-20
       "
     >
 
-      {/* Background Video */}
+      {/* Left Content */}
 
-      <video
+      <div
         className="
-        absolute
-        inset-0
         w-full
-        h-full
-        object-cover
+        lg:w-6/12
         "
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
       >
-        <source
-          src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/webpage-3_2.mp4"
-          type="video/mp4"
-        />
-      </video>
 
+        <p
+          className="
+          uppercase
+          tracking-[2px]
+          text-[var(--color-red-1)]
+          !mb-5
+          "
+          data-reveal
+        >
+          Our Presence
+        </p>
 
-      {/* Content */}
+        <h1
+          className="
+          fs-52-32
+          uppercase
+          text-black
+          !mb-8
+          "
+          data-reveal
+        >
+          Connecting Businesses Across{" "}
+          <span className="text-[var(--color-red-1)]">
+            The Globe
+          </span>
+        </h1>
 
-      <div className="container-main relative z-10">
+        <p
+          className="
+          text-gray-500
+          fs-20-16
+          leading-[1.7]
+          max-w-xl
+          !mb-8
+          "
+          data-reveal
+        >
+          Phoenix Business Advisory supports entrepreneurs, investors, and
+          businesses across key international markets through strategic
+          immigration and business advisory solutions. With experience
+          across regions including the United States, Australia, the UAE,
+          and India, we help clients pursue global opportunities with
+          confidence and clarity.
+        </p>
+
+        <BaseButton
+          title="Explore Locations"
+          link
+          toLink="/contact-us"
+          style="primary w-fit"
+        >
+          <ArrowRight size={20} />
+        </BaseButton>
+
+      </div>
+
+      {/* Right Image */}
+
+      <div
+        className="
+        w-full
+        lg:w-6/12
+        flex-center
+        "
+      >
 
         <div
           className="
-          flex
-          flex-col-reverse
-          lg:flex-row
-          items-center
-          gap-60-20
+          relative
+          w-full
+          max-w-[600px]
           "
         >
 
-          {/* Left Content */}
-
-          <div
+          <Image
+            src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Our-Office-scaled-e1789620528474.webp"
+            alt="Phoenix Global Presence"
+            width={700}
+            height={700}
             className="
             w-full
-            lg:w-6/12
+            object-contain
+            mix-blend-multiply
+            mt-8 lg:mt-0
             "
-          >
-
-            <p
-              className="
-              uppercase
-              tracking-[2px]
-              text-[var(--color-red-1)]
-              !mb-5
-              "
-              data-reveal
-            >
-              Our Presence
-            </p>
-
-
-            <h1
-              className="
-              fs-52-32
-              uppercase
-              text-black
-              !mb-8
-              "
-              data-reveal
-            >
-              Connecting Businesses Across{" "}
-              <span className="text-[var(--color-red-1)]">
-                The Globe
-              </span>
-            </h1>
-
-
-            <p
-              className="
-              text-gray-500
-              fs-20-16
-              leading-[1.7]
-              max-w-xl
-              !mb-8
-              "
-              data-reveal
-            >
-              Phoenix Business Advisory supports entrepreneurs, investors, and
-              businesses across key international markets through strategic
-              immigration and business advisory solutions. With experience
-              across regions including the United States, Australia, the UAE,
-              and India, we help clients pursue global opportunities with
-              confidence and clarity.
-            </p>
-
-
-            <BaseButton
-              title="Explore Locations"
-              link
-              toLink="/contact-us"
-              style="primary w-fit"
-            >
-              <ArrowRight size={20} />
-            </BaseButton>
-
-          </div>
-
-
-          {/* Right Image */}
-
-          <div
-            className="
-            w-full
-            lg:w-6/12
-            flex-center
-            "
-          >
-
-            <div
-              className="
-              relative
-              w-full
-              max-w-[600px]
-              "
-            >
-
-              <Image
-                src="https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/09/Our-Office-scaled-e1789620528474.webp"
-                alt="Phoenix Global Presence"
-                width={700}
-                height={700}
-                className="
-                w-full
-                object-contain
-                mix-blend-multiply
-                mt-8 lg:mt-0
-                "
-                priority
-              />
-
-            </div>
-
-          </div>
+            priority
+          />
 
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
   );
 }

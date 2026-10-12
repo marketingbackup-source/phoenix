@@ -46,37 +46,18 @@ export default function Banner() {
       relative
       overflow-hidden
       bg-black
-      min-h-[93vh]
+      bg-[url('https://cms.phoenixbusinessadvisory.com/wp-content/uploads/2026/10/HomeBanner.webp')]
+      bg-cover
+      bg-center
+      bg-no-repeat
+      min-h-[100vh]
       flex
       items-center
       pt-20
       "
     >
 
-      {/* Background Video */}
-
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="
-        absolute
-        inset-0
-        h-full
-        w-full
-        object-cover
-        z-0
-        "
-      >
-        <source
-          src={videoUrl}
-          type="video/mp4"
-        />
-      </video>
-
-
-      {/* Video Overlay */}
+      {/* Background Overlay */}
 
       <div
         className="
@@ -86,8 +67,6 @@ export default function Banner() {
         z-10
         "
       />
-
-
 
       <div
         className="
@@ -108,7 +87,6 @@ export default function Banner() {
           gap-12
           "
         >
-
 
           {/* Left Content */}
 
@@ -138,8 +116,6 @@ export default function Banner() {
 
             </h1>
 
-
-
             <p
               className="
               text-gray-500
@@ -155,8 +131,6 @@ export default function Banner() {
               experts guide you through every step.
 
             </p>
-
-
 
             <BaseButton
               title="START YOUR VISA JOURNEY"
@@ -176,9 +150,6 @@ export default function Banner() {
               />
 
             </BaseButton>
-
-
-
 
             <div
               className="
@@ -226,7 +197,6 @@ export default function Banner() {
                       "
                     />
 
-
                     <span
                       className="
                       text-sm
@@ -236,21 +206,15 @@ export default function Banner() {
                       {country.label}
                     </span>
 
-
                   </div>
 
                 ))}
-
 
               </div>
 
             </div>
 
-
           </div>
-
-
-
 
           {/* Right Image */}
 
@@ -262,19 +226,11 @@ export default function Banner() {
             z-20
             "
           >
-
-           
-
           </div>
-
-
 
         </div>
 
       </div>
-
-
-
 
       <style>{`
 
@@ -282,9 +238,7 @@ export default function Banner() {
           animation: phx-marquee-scroll 22s linear infinite;
         }
 
-
         .phx-marquee-mask {
-
           -webkit-mask-image:
           linear-gradient(
             to right,
@@ -294,7 +248,6 @@ export default function Banner() {
             transparent
           );
 
-
           mask-image:
           linear-gradient(
             to right,
@@ -303,12 +256,9 @@ export default function Banner() {
             black 92%,
             transparent
           );
-
         }
 
-
         @keyframes phx-marquee-scroll {
-
           from {
             transform: translateX(0);
           }
@@ -316,20 +266,15 @@ export default function Banner() {
           to {
             transform: translateX(-50%);
           }
-
         }
 
-
         @media (prefers-reduced-motion: reduce) {
-
           .phx-marquee {
             animation:none;
           }
-
         }
 
       `}</style>
-
 
     </section>
   );
