@@ -6,16 +6,10 @@ import { verifyRecaptcha } from "@/utils/verifyRecaptcha";
 
 export const runtime = "nodejs";
 
-const WORKER_URL =
-  "https://lsq-website-forms.marketingbackup.workers.dev/lead";
-
+const WORKER_URL = "https://lsq-website-forms.marketingbackup.workers.dev/lead";
 
 const contactSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(2)
-    .max(100),
+  name: z.string().trim().min(2).max(100),
 
   phone: z
     .string()
@@ -24,60 +18,24 @@ const contactSchema = z.object({
     .max(30)
     .regex(/^[0-9+\-\s()]+$/),
 
-  email: z
-    .string()
-    .trim()
-    .email()
-    .max(150)
-    .optional(),
+  email: z.string().trim().email().max(150).optional(),
 
-  city: z
-    .string()
-    .trim()
-    .max(100)
-    .optional(),
+  city: z.string().trim().max(100).optional(),
 
-  companyName: z
-    .string()
-    .trim()
-    .max(150)
-    .optional(),
+  companyName: z.string().trim().max(150).optional(),
 
-  annualTurnover: z
-    .string()
-    .trim()
-    .min(1)
-    .max(100),
+  annualTurnover: z.string().trim().min(1).max(100),
 
-  businessAge: z
-    .string()
-    .trim()
-    .max(50)
-    .optional(),
+  businessAge: z.string().trim().max(50).optional(),
 
-  employees: z
-    .string()
-    .trim()
-    .max(50)
-    .optional(),
+  employees: z.string().trim().max(50).optional(),
 
-  inquiryPurpose: z
-    .string()
-    .trim()
-    .min(1)
-    .max(250),
+  inquiryPurpose: z.string().trim().min(1).max(250),
 
-  comment: z
-    .string()
-    .trim()
-    .max(1000)
-    .optional(),
+  comment: z.string().trim().max(1000).optional(),
 
-  recaptchaToken: z
-    .string()
-    .min(1),
+  recaptchaToken: z.string().min(1),
 });
-
 
 export async function POST(request) {
   try {
@@ -93,62 +51,49 @@ export async function POST(request) {
         },
         {
           status: 400,
-        }
+        },
       );
     }
 
-
-    const validationResult =
-      contactSchema.safeParse(requestBody);
-
+    const validationResult = contactSchema.safeParse(requestBody);
 
     if (!validationResult.success) {
       return NextResponse.json(
         {
           success: false,
-          message:
-            "Please check the submitted form details.",
-          errors:
-            validationResult.error.flatten().fieldErrors,
+          message: "Please check the submitted form details.",
+          errors: validationResult.error.flatten().fieldErrors,
         },
         {
           status: 400,
-        }
+        },
       );
     }
 
-
     const data = validationResult.data;
-
 
     /*
      * Google reCAPTCHA verification
      * Nothing reaches Worker/LSQ unless this passes.
      */
-    const recaptchaResult =
-      await verifyRecaptcha(data.recaptchaToken);
-
+    const recaptchaResult = await verifyRecaptcha(data.recaptchaToken);
 
     if (!recaptchaResult.success) {
       return NextResponse.json(
         {
           success: false,
-          message:
-            "reCAPTCHA verification failed. Please try again.",
+          message: "reCAPTCHA verification failed. Please try again.",
         },
         {
           status: 400,
-        }
+        },
       );
     }
-
 
     /*
      * Existing phone formatting
      */
-    const formattedPhone =
-      formatPhoneForLSQ(data.phone);
-
+    const formattedPhone = formatPhoneForLSQ(data.phone);
 
     /*
      * Existing Worker payload
@@ -167,72 +112,51 @@ export async function POST(request) {
 
       city: data.city || "",
 
-      companyName:
-        data.companyName || "",
+      companyName: data.companyName || "",
 
-      businessAge:
-        data.businessAge || "",
+      businessAge: data.businessAge || "",
 
-      employeeCount:
-        data.employees || "",
+      employeeCount: data.employees || "",
 
-      businessInquiry:
-        data.inquiryPurpose,
+      businessInquiry: data.inquiryPurpose,
 
-      annualTurnover:
-        data.annualTurnover,
+      annualTurnover: data.annualTurnover,
 
-      comments:
-        data.comment || "",
+      comments: data.comment || "",
 
-      pageUrl:
-        request.headers.get("referer") || "",
+      pageUrl: request.headers.get("referer") || "",
     };
-
 
     /*
      * Existing Cloudflare Worker request
      */
-    const workerResponse =
-      await fetch(
-        WORKER_URL,
-        {
-          method: "POST",
+    const workerResponse = await fetch(WORKER_URL, {
+      method: "POST",
 
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Phoenix-API-Key": process.env.INTERNAL_API_KEY,
+      },
 
-          body:
-            JSON.stringify(workerPayload),
+      body: JSON.stringify(workerPayload),
 
-          cache: "no-store",
-        }
-      );
-
+      cache: "no-store",
+    });
 
     /*
      * Safely read Worker response
      */
-    const responseText =
-      await workerResponse.text();
+    const responseText = await workerResponse.text();
 
     let workerData = null;
 
-
     if (responseText) {
       try {
-        workerData =
-          JSON.parse(responseText);
+        workerData = JSON.parse(responseText);
       } catch {
-        console.error(
-          "Worker returned non-JSON response:",
-          responseText
-        );
+        console.error("Worker returned non-JSON response:", responseText);
       }
     }
-
 
     /*
      * Worker failed
@@ -242,16 +166,13 @@ export async function POST(request) {
         {
           success: false,
 
-          message:
-            workerData?.message ||
-            "Unable to submit your details.",
+          message: workerData?.message || "Unable to submit your details.",
         },
         {
           status: workerResponse.status,
-        }
+        },
       );
     }
-
 
     /*
      * Success
@@ -259,31 +180,24 @@ export async function POST(request) {
     return NextResponse.json(
       workerData || {
         success: true,
-        message:
-          "Your details have been submitted successfully.",
+        message: "Your details have been submitted successfully.",
       },
       {
         status: workerResponse.status,
-      }
+      },
     );
-
   } catch (error) {
-    console.error(
-      "Contact form API error:",
-      error
-    );
-
+    console.error("Contact form API error:", error);
 
     return NextResponse.json(
       {
         success: false,
 
-        message:
-          "Something went wrong while submitting your details.",
+        message: "Something went wrong while submitting your details.",
       },
       {
         status: 500,
-      }
+      },
     );
   }
 }
