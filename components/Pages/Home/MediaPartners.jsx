@@ -1,4 +1,4 @@
-"use client";
+
 
 import MarqueeSlider from "@/components/UI/MarqueeSlider";
 

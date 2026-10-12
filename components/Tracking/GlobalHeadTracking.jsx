@@ -1,10 +1,8 @@
+import Script from "next/script";
+
 export default function GlobalHeadTracking() {
   return (
     <>
-      {/* =====================================================
-          FACEBOOK DOMAIN VERIFICATION
-      ====================================================== */}
-
       <meta
         name="facebook-domain-verification"
         content="6oh5hjh861cpi953x2q79cltg5ju55"
@@ -15,57 +13,15 @@ export default function GlobalHeadTracking() {
         content="l0ckuwpncc7041wtr7ct158jausk11"
       />
 
-      {/* =====================================================
-          OPENAI PIXELS
-          SDK loaded once, both existing Pixel IDs initialized
-      ====================================================== */}
-
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-      !function(w,d,s,u){
-        if(w.oaiq)return;
-
-        var q=function(){
-          q.q.push(arguments)
-        };
-
-        q.q=[];
-        w.oaiq=q;
-
-        var j=d.createElement(s);
-        j.async=1;
-        j.src=u;
-
-        var f=d.getElementsByTagName(s)[0];
-        f.parentNode.insertBefore(j,f);
-
-      }(
-        window,
-        document,
-        "script",
-        "https://bzrcdn.openai.com/sdk/oaiq.min.js"
-      );
-
-      oaiq("init",{
-        pixelId:"HnTxzb75zyG9EA55JdXhuH",
-        debug:true
-      });
-    `,
-        }}
-      />
-
-      {/* =====================================================
-          GOOGLE ANALYTICS + GOOGLE ADS
-          gtag.js loaded once
-      ====================================================== */}
-
-      <script
-        async
+      {/* Google Analytics */}
+      <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-XQWDH6B407"
+        strategy="afterInteractive"
       />
 
-      <script
+      <Script
+        id="google-analytics-ads"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -84,12 +40,10 @@ export default function GlobalHeadTracking() {
         }}
       />
 
-      {/* =====================================================
-          GOOGLE TAG MANAGER
-          GTM-TR3QM3V
-      ====================================================== */}
-
-      <script
+      {/* GTM 1 */}
+      <Script
+        id="gtm-tr3qm3v"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){
@@ -114,12 +68,10 @@ export default function GlobalHeadTracking() {
         }}
       />
 
-      {/* =====================================================
-          GOOGLE TAG MANAGER
-          GTM-T7TS9CSB
-      ====================================================== */}
-
-      <script
+      {/* GTM 2 */}
+      <Script
+        id="gtm-t7ts9csb"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){
@@ -144,12 +96,10 @@ export default function GlobalHeadTracking() {
         }}
       />
 
-      {/* =====================================================
-          META PIXELS
-          Facebook SDK loaded once, both existing Pixels initialized
-      ====================================================== */}
-
-      <script
+      {/* Meta Pixel */}
+      <Script
+        id="meta-pixels"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             !function(f,b,e,v,n,t,s){
@@ -193,11 +143,48 @@ export default function GlobalHeadTracking() {
         }}
       />
 
-      {/* =====================================================
-          MICROSOFT CLARITY
-      ====================================================== */}
+      {/* OpenAI Pixel */}
+      <Script
+        id="openai-pixel"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(w,d,s,u){
+              if(w.oaiq)return;
 
-      <script
+              var q=function(){
+                q.q.push(arguments)
+              };
+
+              q.q=[];
+              w.oaiq=q;
+
+              var j=d.createElement(s);
+              j.async=1;
+              j.src=u;
+
+              var f=d.getElementsByTagName(s)[0];
+              f.parentNode.insertBefore(j,f);
+
+            }(
+              window,
+              document,
+              "script",
+              "https://bzrcdn.openai.com/sdk/oaiq.min.js"
+            );
+
+            oaiq("init",{
+              pixelId:"HnTxzb75zyG9EA55JdXhuH",
+              debug:true
+            });
+          `,
+        }}
+      />
+
+      {/* Microsoft Clarity */}
+      <Script
+        id="microsoft-clarity"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             (function(c,l,a,r,i,t,y){

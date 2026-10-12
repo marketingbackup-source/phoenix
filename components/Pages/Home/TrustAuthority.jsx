@@ -1,4 +1,3 @@
-"use client";
 
 import MediaPartners from "@/components/Pages/Home/MediaPartners";
 import WhyUs from "@/components/Pages/Home/WhyUs";

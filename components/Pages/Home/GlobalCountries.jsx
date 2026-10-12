@@ -1,4 +1,4 @@
-"use client";
+
 
 import { ArrowUpRight } from "lucide-react";
 import MarqueeSlider from "@/components/UI/MarqueeSlider";

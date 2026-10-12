@@ -1,4 +1,4 @@
-"use client";
+
 
 import { ArrowUpRight, MapPin } from "lucide-react";
 import MarqueeSlider from "@/components/UI/MarqueeSlider";
