@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { Play } from "lucide-react";
 
 
 const howItWorks = [
@@ -28,23 +30,19 @@ const testimonials = [
 ];
 
 
-const clientStories = [
-  {
-    title: "Client Testimonial",
-    id: "_UseCx9-6K0",
-  },
-  {
-    title: "Visa Journey",
-    id: "X54FB7cMnOY",
-  },
-];
+function YoutubeCard({ video }) {
+  const youtubeUrl = `https://www.youtube.com/watch?v=${video.id}`;
 
+  const thumbnail = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
 
-
-function YoutubeEmbed({ video }) {
   return (
-    <div
+    <a
+      href={youtubeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className="
+      group
+      block
       overflow-hidden
       rounded-4xl
       bg-white
@@ -54,36 +52,75 @@ function YoutubeEmbed({ video }) {
       "
       data-reveal="bottom"
     >
-
       <div
         className="
+        relative
         aspect-video
         w-full
         overflow-hidden
+        bg-black
         "
       >
-
-        <iframe
-          src={`https://www.youtube.com/embed/${video.id}`}
-          title={video.title}
+        <Image
+          src={thumbnail}
+          alt={video.title}
+          fill
+          sizes="
+            (max-width: 768px) 100vw,
+            (max-width: 1024px) 50vw,
+            33vw
+          "
           className="
-          h-full
-          w-full
+          object-cover
+          transition-transform
+          duration-500
+          group-hover:scale-105
           "
-          allow="
-          accelerometer;
-          autoplay;
-          clipboard-write;
-          encrypted-media;
-          gyroscope;
-          picture-in-picture;
-          web-share
-          "
-          allowFullScreen
         />
 
-      </div>
+        <div
+          className="
+          absolute
+          inset-0
+          bg-black/15
+          transition-colors
+          duration-300
+          group-hover:bg-black/25
+          "
+        />
 
+        <div
+          className="
+          absolute
+          inset-0
+          flex
+          items-center
+          justify-center
+          "
+        >
+          <div
+            className="
+            flex
+            h-16
+            w-16
+            items-center
+            justify-center
+            rounded-full
+            bg-white
+            text-[var(--color-red-1)]
+            shadow-lg
+            transition-transform
+            duration-300
+            group-hover:scale-110
+            "
+          >
+            <Play
+              size={28}
+              fill="currentColor"
+            />
+          </div>
+        </div>
+      </div>
 
       <div
         className="
@@ -92,7 +129,6 @@ function YoutubeEmbed({ video }) {
         py-5
         "
       >
-
         <h3
           className="
           text-lg
@@ -104,23 +140,15 @@ function YoutubeEmbed({ video }) {
         >
           {video.title}
         </h3>
-
       </div>
-
-
-    </div>
+    </a>
   );
 }
 
 
-
 export default function Youtube() {
-
   return (
-
     <section className="relative py-80-40 overflow-hidden bg-[#f7f7f7]">
-
-
       <div
         className="
         absolute
@@ -136,17 +164,11 @@ export default function Youtube() {
         "
       />
 
-
-
       <div className="container-main relative">
-
-
 
         {/* HOW IT WORKS */}
 
         <div className="!mb-20">
-
-
           <h2
             className="
             fs-52-32
@@ -156,15 +178,11 @@ export default function Youtube() {
             !mb-10
             "
           >
-
             <span className="text-[var(--color-red-1)]">
               See
             </span>{" "}
             How It Works
-
           </h2>
-
-
 
           <div
             className="
@@ -174,31 +192,19 @@ export default function Youtube() {
             gap-8
             "
           >
-
-            {howItWorks.map((video)=>(
-
-              <YoutubeEmbed
-                key={video.title}
+            {howItWorks.map((video) => (
+              <YoutubeCard
+                key={video.id}
                 video={video}
               />
-
             ))}
-
-
           </div>
-
-
         </div>
-
-
 
 
         {/* CLIENT STORIES */}
 
-
         <div className="!mb-8">
-
-
           <h2
             className="
             fs-52-32
@@ -208,15 +214,11 @@ export default function Youtube() {
             !mb-10
             "
           >
-
             <span className="text-[var(--color-red-1)]">
               What Our Clients
             </span>{" "}
             Think About Us?
-
           </h2>
-
-
 
           <div
             className="
@@ -226,34 +228,16 @@ export default function Youtube() {
             gap-8
             "
           >
-
-            {testimonials.map((video)=>(
-
-              <YoutubeEmbed
-                key={video.title}
+            {testimonials.map((video) => (
+              <YoutubeCard
+                key={video.id}
                 video={video}
               />
-
             ))}
-
-
           </div>
-
-
         </div>
 
-
-
-
-
-        {/* MORE VIDEOS */}
-
-
       </div>
-
-
     </section>
-
   );
-
 }
