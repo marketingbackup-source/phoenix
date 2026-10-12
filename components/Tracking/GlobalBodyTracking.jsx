@@ -19,7 +19,6 @@ export default function GlobalBodyTracking() {
         />
       </noscript>
 
-
       {/* =====================================================
           GOOGLE TAG MANAGER NOSCRIPT
           GTM-T7TS9CSB
@@ -38,7 +37,6 @@ export default function GlobalBodyTracking() {
         />
       </noscript>
 
-
       {/* =====================================================
           META PIXEL NOSCRIPT
           PIXEL: 1643723480621799
@@ -55,7 +53,6 @@ export default function GlobalBodyTracking() {
           alt=""
         />
       </noscript>
-
 
       {/* =====================================================
           META PIXEL NOSCRIPT
